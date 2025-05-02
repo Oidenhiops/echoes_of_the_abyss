@@ -439,15 +439,16 @@ MonoBehaviour:
       managementCharacterObjects: {fileID: 7985792512032563270}
       managementCharacterSkills: {fileID: 2849091386784508898}
       managementPlayerCamera: {fileID: 0}
-      dissolve: {fileID: 334464347712420031}
-      characterAnimations: {fileID: 2731720836664213740}
+      managementCharacterInteract: {fileID: 0}
       characterAttack: {fileID: 4901381864539942042}
+      characterAnimations: {fileID: 2731720836664213740}
+      managementStatusEffect: {fileID: 0}
+      dissolve: {fileID: 334464347712420031}
       owner: {fileID: 3267473307002927260}
     initialData: {fileID: 11400000, guid: fbcd7d4f710bf254a81b8d8d0fe93deb, type: 2}
     isPlayer: 0
-    isInitialize: 0
     isActive: 0
-    isPushed: 0
+    rb: {fileID: 0}
     characterStatistics:
       _serializedList:
       - Key: 1
@@ -551,6 +552,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93cbcf675c07a5f41a1d4dbe8e0d2cff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  character: {fileID: 3267473307002927260}
   characterUi:
     hudUi:
       healthBarBack: {fileID: 520263412315394904}
@@ -590,6 +592,8 @@ MonoBehaviour:
         amount: {fileID: 0}
       bannerTakeObjects: {fileID: 0}
       containerTakeObjects: {fileID: 0}
+      containerObjects: {fileID: 0}
+      containerObjectsSecondaryActionColor: {r: 0, g: 0, b: 0, a: 0}
       objectsForTake: []
       bannerTakeObjectsScrollRect: {fileID: 0}
     skillsUi:
@@ -647,6 +651,7 @@ MonoBehaviour:
         _serializedList: []
     informationMessageUi:
       containerInformationMessage: {fileID: 0}
+    mobileHud: []
 --- !u!114 &8022874114501886702
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -671,6 +676,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aef4706bf99b922478364beff020cf01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  character: {fileID: 3267473307002927260}
   rayDistanceTarget: 10
   targetMask:
     serializedVersion: 2
@@ -694,10 +700,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   character: {fileID: 3267473307002927260}
-  characterSprite: {fileID: 1943684605592120774}
-  meshRenderer: {fileID: 142328112063515667}
   originalMesh: {fileID: 6622264641530768373, guid: 4385848d124d476478957ebbe044aec6,
     type: 3}
+  characterSprite: {fileID: 1943684605592120774}
+  meshRendererCharacter: {fileID: 142328112063515667}
+  meshRendererHand: {fileID: 0}
   characterAnimationsInfo:
     baseSpritePerTime: 0.1
     currentSpritePerTime: 0.1
@@ -705,17 +712,17 @@ MonoBehaviour:
     animations: []
   currentAnimation:
     typeAnimation: 0
-    spritesDown: []
-    spritesUp: []
+    spritesInfoDown: []
+    spritesInfoUp: []
     animationsEffects: 
     needAnimationEnd: 0
     loop: 0
-    needInstance: 0
-    needFrameToInstance: 0
     frameToInstance: 0
     speedSpritesPerTimeMultplier: 1
     instanceObj: {fileID: 0}
     instance: {fileID: 0}
+  leftHand: {fileID: 0}
+  rightHand: {fileID: 0}
   characterAnimationsEffectsInfo:
     animationEffectsInfo:
     - typeAnimationsEffects: 1
@@ -726,6 +733,7 @@ MonoBehaviour:
       amplitude: 0.1
       frequency: 100
       colorBlink: {r: 1, g: 1, b: 1, a: 1}
+  isUp: 0
 --- !u!114 &7985792512032563270
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -739,6 +747,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   character: {fileID: 3267473307002927260}
+  rightHandPos: {fileID: 0}
   objects:
   - objectData: {fileID: 0}
     amount: 0
@@ -770,12 +779,10 @@ MonoBehaviour:
     isUsingItem: 0
     id: 0
     objectInstance: {fileID: 0}
-  objectsForTake: []
   objectsPositionsInfo:
   - typeObjectPosition: 2
     objectPosition: {fileID: 7465426428550166288}
-  currentObjectForTakePosition: 0
-  currentObject: {fileID: 0}
+  objectSelectedPosition: 0
 --- !u!114 &4901381864539942042
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -835,7 +842,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fee42218cd7d3324283ae29d1de1b417, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectToDisolve: {fileID: 1943684605592120774}
+  objectsToDisolve:
+  - {fileID: 1943684605592120774}
   needAppear: 1
 --- !u!114 &6354645912475856525
 MonoBehaviour:
@@ -849,7 +857,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19ab0bcea2d327448bb74f26f96ff02b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  character: {fileID: 0}
+  character: {fileID: 3267473307002927260}
   na: {fileID: 2745207021960222820}
   target: {fileID: 0}
   canMove: 0

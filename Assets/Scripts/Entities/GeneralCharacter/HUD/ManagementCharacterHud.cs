@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using System;
 using System.Linq;
 using AYellowpaper.SerializedCollections;
+using UnityEngine.InputSystem;
 
 public class ManagementCharacterHud : MonoBehaviour
 {
@@ -15,12 +16,18 @@ public class ManagementCharacterHud : MonoBehaviour
         if (character.characterInfo.isPlayer){
             GameManager.Instance.OnDeviceChanged += EnabledMobileHUD;
             character.characterInputs.characterActionsInfo.OnSecondaryActionChange += ToggleSecondaryAction;
+            character.characterInputs.characterActions.CharacterInputs.ShowStats.started += ToggleShowStatistics;
             EnabledMobileHUD(GameManager.Instance.currentDevice);
         }
     }
     void OnDestroy()
     {
-        
+        if (character.characterInfo.isPlayer)
+        {
+            GameManager.Instance.OnDeviceChanged -= EnabledMobileHUD;
+            character.characterInputs.characterActionsInfo.OnSecondaryActionChange -= ToggleSecondaryAction;
+            character.characterInputs.characterActions.CharacterInputs.ShowStats.started -= ToggleShowStatistics;
+        }
     }
     void EnabledMobileHUD(GameManager.TypeDevice typeDevice)
     {
@@ -92,10 +99,6 @@ public class ManagementCharacterHud : MonoBehaviour
                 float realValueValue = status.Value.statusEffectsData.currentTime - status.Value.statusEffectsData.statusEffectSO.timePerAcumulation * (status.Value.statusEffectsData.currentAccumulations - 1);
                 status.Value.statusEffectUi.statusEffectFill.fillAmount = realValueValue / status.Value.statusEffectsData.statusEffectSO.timePerAcumulation;
             }
-        }
-        if (character.characterInputs.characterActions.CharacterInputs.ShowStats.triggered)
-        {
-            ToggleShowStatistics();
         }
     }
     public void SendInformationMessage(string messageText, Color color)
@@ -173,7 +176,7 @@ public class ManagementCharacterHud : MonoBehaviour
                 bannerTakeObjects.managementCharacterObjects = character.characterInfo.characterScripts.managementCharacterObjects;
                 bannerTakeObjects.managementLanguage.currentLanguage = GameData.Instance.saveData.configurationsInfo.currentLanguage;
                 bannerTakeObjects.textObject.gameObject.SetActive(true);                
-                if (objectsForTake[i].TryGetComponent<ManagementObject>(out ManagementObject managementObject))
+                if (objectsForTake[i].TryGetComponent<ObjectBase>(out ObjectBase managementObject))
                 {
                     bannerTakeObjects.spriteObject.sprite = managementObject.objectInfo.objectData.objectSprite;
                     bannerTakeObjects.managementLanguage.id = managementObject.managementInteract.IDText;
@@ -285,7 +288,7 @@ public class ManagementCharacterHud : MonoBehaviour
             characterUi.statusEffectsUi.statusEffectsData.Remove(typeStatusEffect);
         }
     }
-    void ToggleShowStatistics()
+    void ToggleShowStatistics(InputAction.CallbackContext context)
     {
         bool isOpen = !characterUi.statisticsUi.mStatistics.GetBool("IsOpen");
         characterUi.statisticsUi.mStatistics.SetBool("IsOpen", isOpen);

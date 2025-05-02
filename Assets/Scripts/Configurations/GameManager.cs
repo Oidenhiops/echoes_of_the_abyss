@@ -61,8 +61,6 @@ public class GameManager : MonoBehaviour
         switch (typeScene)
         {
             case TypeScene.OptionsScene:
-                Time.timeScale = 0;
-                isPause = true;
                 if (!SceneManager.GetSceneByName("OptionsScene").isLoaded) SceneManager.LoadScene("OptionsScene", LoadSceneMode.Additive);
                 break;
             case TypeScene.CreditsScene:
@@ -79,7 +77,6 @@ public class GameManager : MonoBehaviour
     }
     public async Awaitable ChangeScene(TypeScene typeScene)
     {
-        Time.timeScale = 1;
         startGame = false;
         openCloseScene.openCloseSceneAnimator.SetBool("Out", true);
         await AudioManager.Instance.FadeOut();

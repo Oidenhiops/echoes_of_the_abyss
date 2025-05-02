@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 5219054886191899557}
   - component: {fileID: 7511431953475828164}
   - component: {fileID: 4638073080283901398}
-  - component: {fileID: 6296118507598586525}
   - component: {fileID: 9213540675471327006}
   m_Layer: 14
   m_Name: WoodShield
@@ -100,24 +99,6 @@ MonoBehaviour:
   IDText: 21
   typeInteract: 0
   canInteract: 1
---- !u!114 &6296118507598586525
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3994296446683491716}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 697e45f20e903e54d8d6a1a1715fd8d4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  managementInteract: {fileID: 4638073080283901398}
-  meshObj: {fileID: 6153628542245616315}
-  colliderForMap: {fileID: 7511431953475828164}
-  objectInfo:
-    objectData: {fileID: 11400000, guid: 8ad0808d4174b4d4ba564df956378390, type: 2}
-    amount: 0
 --- !u!114 &9213540675471327006
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -130,6 +111,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6da4b0a33748324d89831832c04d82a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  managementInteract: {fileID: 4638073080283901398}
+  meshObj: {fileID: 6153628542245616315}
+  colliderForMap: {fileID: 7511431953475828164}
+  objectInfo:
+    objectData: {fileID: 11400000, guid: 8ad0808d4174b4d4ba564df956378390, type: 2}
+    amount: 0
 --- !u!1 &6153628542245616315
 GameObject:
   m_ObjectHideFlags: 0

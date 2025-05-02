@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 5315978822684336930}
   - component: {fileID: 7550554597874382453}
   - component: {fileID: 7231171185861847883}
-  - component: {fileID: 6829046377642954759}
   - component: {fileID: 896921186140381739}
   m_Layer: 14
   m_Name: HealPotion
@@ -100,24 +99,6 @@ MonoBehaviour:
   IDText: 23
   typeInteract: 0
   canInteract: 0
---- !u!114 &6829046377642954759
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6912661780190433456}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 697e45f20e903e54d8d6a1a1715fd8d4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  managementInteract: {fileID: 7231171185861847883}
-  meshObj: {fileID: 7427567343145963681}
-  colliderForMap: {fileID: 7550554597874382453}
-  objectInfo:
-    objectData: {fileID: 11400000, guid: 95967879a05ec8146bc4782b8372551c, type: 2}
-    amount: 0
 --- !u!114 &896921186140381739
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -130,6 +111,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29da06015127e974dabe29a01c35640a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  managementInteract: {fileID: 7231171185861847883}
+  meshObj: {fileID: 7427567343145963681}
+  colliderForMap: {fileID: 7550554597874382453}
+  objectInfo:
+    objectData: {fileID: 11400000, guid: 95967879a05ec8146bc4782b8372551c, type: 2}
+    amount: 0
   effect: {fileID: 9145901930122296505, guid: a1aaa2bbca23b5c4bbc377ad746a45e2, type: 3}
 --- !u!1 &7427567343145963681
 GameObject:

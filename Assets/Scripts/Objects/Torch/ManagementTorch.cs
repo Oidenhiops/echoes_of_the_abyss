@@ -1,8 +1,8 @@
 using UnityEngine;
 
-public class ManagementTorch : MonoBehaviour, ManagementObject.IObject
+public class ManagementTorch : ObjectBase
 {
-public void DropObject(Character character, ManagementCharacterObjects.ObjectsInfo objectInfo, ManagementCharacterObjects managementCharacterObjects)
+public override void DropObject(Character character, ManagementCharacterObjects.ObjectsInfo objectInfo, ManagementCharacterObjects managementCharacterObjects)
     {
         if (objectInfo.isUsingItem)
         {
@@ -17,19 +17,19 @@ public void DropObject(Character character, ManagementCharacterObjects.ObjectsIn
         armor.GetComponent<Rigidbody>().isKinematic = false;
         armor.GetComponent<Rigidbody>().AddForce(-directionForce * 100);
         armor.GetComponent<ManagementInteract>().canInteract = true;
-        armor.GetComponent<ManagementObject>().objectInfo.amount = 1;
+        this.objectInfo.amount = 1;
         objectInfo.amount--;
         character.characterInfo.characterScripts.managementCharacterObjects.RefreshObjects();
         character.characterInfo.PlayASound(character.characterInfo.characterScripts.managementCharacterSounds.GetAudioClip(CharacterSoundsSO.TypeSound.PickUp), true);
     }
 
-    public void InitializeObject(Character character, ManagementCharacterObjects.ObjectsInfo objectInfo, ManagementCharacterObjects managementCharacterObjects)
+    public override void InitializeObject(Character character, ManagementCharacterObjects.ObjectsInfo objectInfo, ManagementCharacterObjects managementCharacterObjects)
     {
         InstanceTorch(objectInfo, managementCharacterObjects);
         if (character.characterInfo.isPlayer) character.characterInfo.characterScripts.managementCharacterHud.ToggleActiveObject(objectInfo.id, true);
     }
 
-    public void UseObject(Character character, ManagementCharacterObjects.ObjectsInfo objectInfo, ManagementCharacterObjects managementCharacterObjects)
+    public override void UseObject(Character character, ManagementCharacterObjects.ObjectsInfo objectInfo, ManagementCharacterObjects managementCharacterObjects)
     {
         objectInfo.isUsingItem = !objectInfo.isUsingItem;
         if (objectInfo.objectInstance == null)
@@ -49,10 +49,6 @@ public void DropObject(Character character, ManagementCharacterObjects.ObjectsIn
         }
         if (character.characterInfo.isPlayer) character.characterInfo.characterScripts.managementCharacterHud.ToggleActiveObject(objectInfo.id, objectInfo.isUsingItem);
         character.characterInfo.RefreshCurrentStatistics();
-    }
-    public ManagementCharacterAnimations.TypeAnimation GetTypeObjAnimation()
-    {
-        return ManagementCharacterAnimations.TypeAnimation.None;
     }
     public void InstanceTorch(ManagementCharacterObjects.ObjectsInfo objectInfo, ManagementCharacterObjects managementCharacterObjects)
     {

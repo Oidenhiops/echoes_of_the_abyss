@@ -19,6 +19,8 @@ public class ManagementOptions : MonoBehaviour
 
     void OnEnable()
     {
+        Time.timeScale = 0;
+        GameManager.Instance.isPause = false;
         InitializeLanguageDropdown();
         InitializeResolutionDropdown();
         SetFullScreenButtonsSprite();
@@ -32,6 +34,8 @@ public class ManagementOptions : MonoBehaviour
     void OnDestroy()
     {
         if (GameManager.Instance.principalDevice == GameManager.TypeDevice.PC) GameManager.Instance.OnDeviceChanged -= ChangeMenuButtons;
+        Time.timeScale = 1;
+        GameManager.Instance.isPause = false;
     }
     public void InitializeLanguageDropdown()
     {

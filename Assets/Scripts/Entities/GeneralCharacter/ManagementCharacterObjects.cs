@@ -90,7 +90,7 @@ public class ManagementCharacterObjects : MonoBehaviour
         {
             objectsFinded = objects;
         }
-        ManagementObject objectTaked = objectForTake.GetComponent<ManagementObject>();
+        ObjectBase objectTaked = objectForTake.GetComponent<ObjectBase>();
         foreach (ObjectsInfo objectForValidate in objectsFinded)
         {
             if (objectForValidate.objectData != null && CanStackObject(objectForValidate, objectForTake) && objectTaked.objectInfo.amount > 0)
@@ -175,7 +175,7 @@ public class ManagementCharacterObjects : MonoBehaviour
             objects[i].id = i;
             if (objects[i].objectData != null && objects[i].isUsingItem)
             {
-                objects[i].objectData.objectInstance.GetComponent<ManagementObject>().InitializeObject(character, objects[i], this);
+                objects[i].objectData.objectInstance.GetComponent<ObjectBase>().InitializeObject(character, objects[i], this);
             }
         }
     }
@@ -183,14 +183,14 @@ public class ManagementCharacterObjects : MonoBehaviour
     {
         if (objects[objectSelectedPosition].objectData != null)
         {
-            objects[objectSelectedPosition].objectData.objectInstance.GetComponent<ManagementObject>().UseObject(character, objects[objectSelectedPosition], this);
+            objects[objectSelectedPosition].objectData.objectInstance.GetComponent<ObjectBase>().UseObject(character, objects[objectSelectedPosition], this);
         }
     }
     public void DropObject()
     {
         if (objects[objectSelectedPosition].objectData != null)
         {
-            objects[objectSelectedPosition].objectData.objectInstance.GetComponent<ManagementObject>().DropObject(character, objects[objectSelectedPosition], this);
+            objects[objectSelectedPosition].objectData.objectInstance.GetComponent<ObjectBase>().DropObject(character, objects[objectSelectedPosition], this);
         }
     }
     public void InstanceObjectInHand(GameObject objectInHand, bool isLeftHand)
@@ -245,7 +245,7 @@ public class ManagementCharacterObjects : MonoBehaviour
         objectSelectedPosition = position;
         character.characterInfo.characterScripts.managementCharacterHud.ChangeObject(objectSelectedPosition);
     }
-    int ValidateAmountObjectToAdd(ObjectsInfo objectForIncreaseAmount, ManagementObject objectForDiscountAmount)
+    int ValidateAmountObjectToAdd(ObjectsInfo objectForIncreaseAmount, ObjectBase objectForDiscountAmount)
     {
         for (int i = 1; i <= objectForDiscountAmount.objectInfo.amount; i++)
         {
@@ -262,7 +262,7 @@ public class ManagementCharacterObjects : MonoBehaviour
         List<ObjectsInfo> objectsFinded = new List<ObjectsInfo>();
         foreach (ObjectsInfo objectInfo in objects)
         {
-            if (objectInfo.objectData == objectToFind.GetComponent<ManagementObject>().objectInfo.objectData)
+            if (objectInfo.objectData == objectToFind.GetComponent<ObjectBase>().objectInfo.objectData)
             {
                 objectsFinded.Add(objectInfo);
             }
@@ -271,7 +271,7 @@ public class ManagementCharacterObjects : MonoBehaviour
     }
     bool CanStackObject(ObjectsInfo objectForValidate, GameObject objectForTake)
     {
-        if (objectForValidate.objectData == objectForTake.GetComponent<ManagementObject>().objectInfo.objectData && objectForValidate.amount < objectForValidate.objectData.maxStack)
+        if (objectForValidate.objectData == objectForTake.GetComponent<ObjectBase>().objectInfo.objectData && objectForValidate.amount < objectForValidate.objectData.maxStack)
         {
             return true;
         }

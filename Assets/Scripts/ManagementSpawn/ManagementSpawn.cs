@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ManagementSpawn : MonoBehaviour
 {
-    public ManagementChunks managementChunks;
+    public ChunksGenerator managementChunks;
     [SerializeField] AStarPathFinding aStarPathFinding;
     public List<ManagementSpawnPosition> spawnPositions;
     public int amountSpawns = 5;

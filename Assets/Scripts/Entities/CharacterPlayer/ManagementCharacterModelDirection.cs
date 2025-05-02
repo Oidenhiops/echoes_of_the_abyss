@@ -11,48 +11,32 @@ public class ManagementCharacterModelDirection : MonoBehaviour, ManagementCharac
     public Vector2 movementDirectionAnimation = new Vector2();
     public Vector2 movementCharacter = new Vector2();
     public GameObject directionPlayer;
-    public Vector3 targetViewportPos;
-    public Vector3 selfViewportPos;
     void Start()
     {
         rayDistanceTarget = character.characterInfo.isPlayer ? 10 : character.characterInfo.characterScripts.characterAttack.GetDistLostTarget();
     }
     public void ChangeModelDirection()
     {
-        if (characterTarget != null)
+        if (character.characterInfo.isPlayer && character.characterInputs != null)
         {
-            LookToTarget();
-        }
-        else
-        {
-            if (character.characterInfo.isPlayer && character.characterInputs != null)
+            movementCharacter = character.characterInputs.characterActionsInfo.movement;
+            if (characterTarget != null)
             {
-                movementCharacter = character.characterInputs.characterActionsInfo.movement;
+                LookToTarget();
+            }
+            else
+            {
                 if (character.characterInputs.characterActions.CharacterInputs.LookEnemy.triggered)
                 {
                     ValidateLookToTarget();
                 }
-                if (GameManager.Instance.currentDevice != GameManager.TypeDevice.PC)
+                if (character.characterInputs.characterActionsInfo.moveCamera == Vector2.zero)
                 {
-                    if (character.characterInputs.characterActionsInfo.moveCamera == Vector2.zero)
-                    {
-                        MoveWhitOutCamera();
-                    }
-                    else
-                    {
-                        MoveWhitJoystick();
-                    }
+                    MoveWhitOutCamera();
                 }
                 else
                 {
-                    if (character.characterInputs.characterActionsInfo.moveCamera == Vector2.zero)
-                    {
-                        MoveWhitOutCamera();
-                    }
-                    else
-                    {
-                        MoveWhitCameraPc();
-                    }
+                    MoveWhitCamera();
                 }
             }
         }
@@ -68,27 +52,16 @@ public class ManagementCharacterModelDirection : MonoBehaviour, ManagementCharac
 
     private void LookToTarget()
     {
-        targetViewportPos = Camera.main.WorldToViewportPoint(characterTarget.transform.position);
-        selfViewportPos = Camera.main.WorldToViewportPoint(transform.position);
-        if (targetViewportPos.x > selfViewportPos.x)
-        {
-            movementDirectionAnimation.x = -1;
+        movementDirectionAnimation = Camera.main.WorldToViewportPoint(characterTarget.transform.position) - Camera.main.WorldToViewportPoint(transform.position);        
+        if (movementDirectionAnimation.x > 0)
+        {            
             character.characterInfo.characterScripts.characterAnimations.GetCharacterSprite().transform.localRotation = Quaternion.Euler(0, -180, 0);
         }
         else
-        {
-            movementDirectionAnimation.x = 1;
+        {            
             character.characterInfo.characterScripts.characterAnimations.GetCharacterSprite().transform.localRotation = Quaternion.Euler(0, 0, 0);
         }
 
-        if (targetViewportPos.z < selfViewportPos.z)
-        {
-            movementDirectionAnimation.y = -1;
-        }
-        else
-        {
-            movementDirectionAnimation.y = 1;
-        }
         directionPlayer.transform.LookAt(new Vector3(characterTarget.transform.position.x, directionPlayer.transform.position.y, characterTarget.transform.position.z));
 
         if (!characterTarget.characterInfo.isActive || 
@@ -103,14 +76,7 @@ public class ManagementCharacterModelDirection : MonoBehaviour, ManagementCharac
     {
         if (character.characterInputs.characterActionsInfo.movement != Vector2.zero)
         {
-            if (character.characterInputs.characterActionsInfo.movement.x != 0)
-            {
-                movementDirectionAnimation.x = character.characterInputs.characterActionsInfo.movement.x;
-            }
-            if (character.characterInputs.characterActionsInfo.movement.y != 0)
-            {
-                movementDirectionAnimation.y = character.characterInputs.characterActionsInfo.movement.y;
-            }
+            movementDirectionAnimation = character.characterInputs.characterActionsInfo.movement;
             if (movementDirectionAnimation.x > 0)
             {
                 character.characterInfo.characterScripts.characterAnimations.GetCharacterSprite().transform.localRotation = Quaternion.Euler(0, -180, 0);
@@ -119,56 +85,24 @@ public class ManagementCharacterModelDirection : MonoBehaviour, ManagementCharac
             {
                 character.characterInfo.characterScripts.characterAnimations.GetCharacterSprite().transform.localRotation = Quaternion.Euler(0, 0, 0);
             }
-            float angle = Mathf.Atan2(character.characterInputs.characterActionsInfo.movement.x, character.characterInputs.characterActionsInfo.movement.y) * Mathf.Rad2Deg;
-            directionPlayer.transform.rotation = Quaternion.Euler(0, angle, 0f);
+            float angle = Mathf.Atan2(movementDirectionAnimation.x, movementDirectionAnimation.y) * Mathf.Rad2Deg;
+            directionPlayer.transform.rotation = Quaternion.Lerp(directionPlayer.transform.rotation, Quaternion.Euler(0, angle, 0f), 0.25f);
         }
     }
-    void MoveWhitCameraPc()
-    {
-        if (Camera.main.WorldToViewportPoint(character.characterInputs.mousePos.transform.position).x > 0.5f)
-        {
-            movementDirectionAnimation.x = 1;
-            character.characterInfo.characterScripts.characterAnimations.GetCharacterSprite().transform.localRotation = Quaternion.Euler(0, -180, 0);
-        }
-        else
-        {
-            movementDirectionAnimation.x = -1;
-            character.characterInfo.characterScripts.characterAnimations.GetCharacterSprite().transform.localRotation = Quaternion.Euler(0, 0, 0);
-        }
-        if (Camera.main.WorldToViewportPoint(character.characterInputs.mousePos.transform.position).y > 0.5f)
-        {
-            movementDirectionAnimation.y = 1;
-        }
-        else
-        {
-            movementDirectionAnimation.y = -1;
-        }
-        float angle = Mathf.Atan2(character.characterInputs.characterActionsInfo.moveCamera.x, character.characterInputs.characterActionsInfo.moveCamera.y) * Mathf.Rad2Deg;
-        directionPlayer.transform.rotation = Quaternion.Lerp(directionPlayer.transform.rotation, Quaternion.Euler(0, angle, 0f), 0.25f);
-    }
-    void MoveWhitJoystick()
+    void MoveWhitCamera()
     {
         if (character.characterInputs.characterActionsInfo.moveCamera != Vector2.zero)
         {
-            if (character.characterInputs.characterActionsInfo.moveCamera.x > 0)
+            movementDirectionAnimation = character.characterInputs.characterActionsInfo.moveCamera;
+            if (movementDirectionAnimation.x > 0)
             {
-                movementDirectionAnimation.x = 1;
                 character.characterInfo.characterScripts.characterAnimations.GetCharacterSprite().transform.localRotation = Quaternion.Euler(0, -180, 0);
             }
             else
             {
-                movementDirectionAnimation.x = -1;
                 character.characterInfo.characterScripts.characterAnimations.GetCharacterSprite().transform.localRotation = Quaternion.Euler(0, 0, 0);
             }
-            if (character.characterInputs.characterActionsInfo.moveCamera.y > 0)
-            {
-                movementDirectionAnimation.y = 1;
-            }
-            else
-            {
-                movementDirectionAnimation.y = -1;
-            }
-            float angle = Mathf.Atan2(character.characterInputs.characterActionsInfo.moveCamera.x, character.characterInputs.characterActionsInfo.moveCamera.y) * Mathf.Rad2Deg;
+            float angle = Mathf.Atan2(movementDirectionAnimation.x, movementDirectionAnimation.y) * Mathf.Rad2Deg;
             directionPlayer.transform.rotation = Quaternion.Lerp(directionPlayer.transform.rotation, Quaternion.Euler(0, angle, 0f), 0.25f);
         }
     }

@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class GenerateMapMenu : MonoBehaviour
 {
-    public ManagementMapBlock[] blocks;
+    public MapBlock[] blocks;
     void Start()
     {
         foreach(var block in blocks)

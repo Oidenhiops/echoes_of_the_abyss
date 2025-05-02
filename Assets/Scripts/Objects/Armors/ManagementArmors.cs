@@ -1,8 +1,8 @@
 using UnityEngine;
 
-public class ManagementArmors : MonoBehaviour, ManagementObject.IObject
+public class ManagementArmors : ObjectBase
 {
-    public void DropObject(Character character, ManagementCharacterObjects.ObjectsInfo objectInfo, ManagementCharacterObjects managementCharacterObjects)
+    public override void DropObject(Character character, ManagementCharacterObjects.ObjectsInfo objectInfo, ManagementCharacterObjects managementCharacterObjects)
     {
         if (objectInfo.isUsingItem)
         {
@@ -26,13 +26,13 @@ public class ManagementArmors : MonoBehaviour, ManagementObject.IObject
         armor.GetComponent<Rigidbody>().isKinematic = false;
         armor.GetComponent<Rigidbody>().AddForce(-directionForce * 100);
         armor.GetComponent<ManagementInteract>().canInteract = true;
-        armor.GetComponent<ManagementObject>().objectInfo.amount = 1;
+        this.objectInfo.amount = 1;
         objectInfo.amount--;
         character.characterInfo.characterScripts.managementCharacterObjects.RefreshObjects();
         character.characterInfo.PlayASound(character.characterInfo.characterScripts.managementCharacterSounds.GetAudioClip(CharacterSoundsSO.TypeSound.PickUp), true);
     }
 
-    public void InitializeObject(Character character, ManagementCharacterObjects.ObjectsInfo objectInfo, ManagementCharacterObjects managementCharacterObjects)
+    public override void InitializeObject(Character character, ManagementCharacterObjects.ObjectsInfo objectInfo, ManagementCharacterObjects managementCharacterObjects)
     {
         foreach (Character.Statistics armorStats in objectInfo.objectData.statistics)
         {
@@ -47,7 +47,7 @@ public class ManagementArmors : MonoBehaviour, ManagementObject.IObject
             }
     }
 
-    public void UseObject(Character character, ManagementCharacterObjects.ObjectsInfo objectInfo, ManagementCharacterObjects managementCharacterObjects)
+    public override void UseObject(Character character, ManagementCharacterObjects.ObjectsInfo objectInfo, ManagementCharacterObjects managementCharacterObjects)
     {
         objectInfo.isUsingItem = !objectInfo.isUsingItem;
         if (objectInfo.isUsingItem)
@@ -74,9 +74,5 @@ public class ManagementArmors : MonoBehaviour, ManagementObject.IObject
             character.characterInfo.characterScripts.managementCharacterHud.RefreshCurrentStatistics();
             character.characterInfo.characterScripts.managementCharacterHud.ToggleActiveObject(objectInfo.id, objectInfo.isUsingItem);
         }
-    }
-    public ManagementCharacterAnimations.TypeAnimation GetTypeObjAnimation()
-    {
-        return ManagementCharacterAnimations.TypeAnimation.None;
     }
 }

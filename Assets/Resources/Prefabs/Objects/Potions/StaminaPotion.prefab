@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: -2061554959796776094}
   - component: {fileID: -4798912632294536567}
   - component: {fileID: -5962151603123875600}
-  - component: {fileID: 7320510569930760431}
   - component: {fileID: 190250686305082690}
   m_Layer: 14
   m_Name: StaminaPotion
@@ -100,24 +99,6 @@ MonoBehaviour:
   IDText: 25
   typeInteract: 0
   canInteract: 0
---- !u!114 &7320510569930760431
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1994631135401092037}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 697e45f20e903e54d8d6a1a1715fd8d4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  managementInteract: {fileID: -5962151603123875600}
-  meshObj: {fileID: 6090238503391484055}
-  colliderForMap: {fileID: -4798912632294536567}
-  objectInfo:
-    objectData: {fileID: 11400000, guid: d9835861ae8bd2045994383e986603f1, type: 2}
-    amount: 0
 --- !u!114 &190250686305082690
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -130,6 +111,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29da06015127e974dabe29a01c35640a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  managementInteract: {fileID: -5962151603123875600}
+  meshObj: {fileID: 6090238503391484055}
+  colliderForMap: {fileID: -4798912632294536567}
+  objectInfo:
+    objectData: {fileID: 11400000, guid: d9835861ae8bd2045994383e986603f1, type: 2}
+    amount: 0
   effect: {fileID: 9145901930122296505, guid: 63afec3caf25acf418ac89d7d5a064cb, type: 3}
 --- !u!1 &6090238503391484055
 GameObject:

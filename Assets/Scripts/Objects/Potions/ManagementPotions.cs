@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.TextCore.Text;
 
-public class ManagementPotions : MonoBehaviour, ManagementObject.IObject
+public class ManagementPotions : ObjectBase
 {
     public GameObject effect;
-    public void DropObject(Character character ,ManagementCharacterObjects.ObjectsInfo objectInfo, ManagementCharacterObjects managementCharacterObjects)
+    public override void DropObject(Character character ,ManagementCharacterObjects.ObjectsInfo objectInfo, ManagementCharacterObjects managementCharacterObjects)
     {
         Vector3 positionsSpawn = character.transform.position + new Vector3(character.characterInfo.characterScripts.managementCharacterModelDirection.movementDirectionAnimation.x, 0.5f, character.characterInfo.characterScripts.managementCharacterModelDirection.movementDirectionAnimation.y);
         GameObject potion = Instantiate(objectInfo.objectData.objectInstance, positionsSpawn, Quaternion.identity);
@@ -14,17 +14,12 @@ public class ManagementPotions : MonoBehaviour, ManagementObject.IObject
         potion.GetComponent<Rigidbody>().isKinematic = false;
         potion.GetComponent<Rigidbody>().AddForce(-directionForce * 100);
         potion.GetComponent<ManagementInteract>().canInteract = true;
-        potion.GetComponent<ManagementObject>().objectInfo.amount = 1;
+        this.objectInfo.amount = 1;
         objectInfo.amount--;
         character.characterInfo.characterScripts.managementCharacterObjects.RefreshObjects();
         character.characterInfo.PlayASound(character.characterInfo.characterScripts.managementCharacterSounds.GetAudioClip(CharacterSoundsSO.TypeSound.PickUp), true);
     }
-    public void InitializeObject(Character character, ManagementCharacterObjects.ObjectsInfo objectInfo, ManagementCharacterObjects managementCharacterObjects){}
-    public ManagementCharacterAnimations.TypeAnimation GetTypeObjAnimation()
-    {
-        return ManagementCharacterAnimations.TypeAnimation.None;
-    }
-    public void UseObject(Character character, ManagementCharacterObjects.ObjectsInfo objectInfo, ManagementCharacterObjects managementCharacterObjects)
+    public override void UseObject(Character character, ManagementCharacterObjects.ObjectsInfo objectInfo, ManagementCharacterObjects managementCharacterObjects)
     {
         foreach(Character.Statistics potion in objectInfo.objectData.statistics)
         {

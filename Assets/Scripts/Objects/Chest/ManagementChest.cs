@@ -38,9 +38,9 @@ public class ManagementChest : MonoBehaviour, ManagementInteract.IObjectInteract
         {
             GameObject obj = Instantiate(objectsSelected[i], transform.position, Quaternion.identity);
             obj.GetComponent<Rigidbody>().isKinematic = true;
-            obj.GetComponent<ManagementObject>().meshObj.SetActive(false);
+            obj.GetComponent<ObjectBase>().meshObj.SetActive(false);
             obj.GetComponent<ManagementInteract>().canInteract = true;
-            obj.GetComponent<ManagementObject>().objectInfo.amount = 1;
+            obj.GetComponent<ObjectBase>().objectInfo.amount = 1;
         }
     }
     public int ValidateAmountItems()
