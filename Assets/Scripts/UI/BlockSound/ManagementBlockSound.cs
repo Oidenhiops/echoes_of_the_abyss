@@ -4,13 +4,6 @@ using UnityEngine;
 public class ManagementBlockSound : MonoBehaviour
 {
     public AudioSource audioSource;
-    public void PlaySound(AudioClip clip, bool randomPitch)
-    {
-        audioSource.clip = clip;
-        audioSource.pitch = randomPitch ? Random.Range(0.5f, 1.5f) : Random.Range(0.9f, 1.1f);
-        audioSource.Play();
-        StartCoroutine(DestroyBlock(clip));
-    }
     public void PlaySound(AudioClip clip, float initialPitch, bool randomPitch)
     {
         audioSource.clip = clip;

@@ -17,7 +17,9 @@ MonoBehaviour:
     currentSpritePerTime: 0.1
     currentSpriteIndex: 0
     animations:
-    - typeAnimation: 1
+    - typeAnimation: 0
+      animationName: Idle
+      linkAnimation: 
       spritesInfoDown:
       - generalSprite: {fileID: -616018919, guid: 2b7da0f423343264e833d19084099d62,
           type: 3}
@@ -131,48 +133,509 @@ MonoBehaviour:
       animationsEffects: 
       needAnimationEnd: 0
       loop: 1
+      needInstance: 0
       frameToInstance: 0
       speedSpritesPerTimeMultplier: 1
       instanceObj: {fileID: 0}
       instance: {fileID: 0}
-    - typeAnimation: 2
-      spritesInfoDown: []
-      spritesInfoUp: []
+    - typeAnimation: 0
+      animationName: Walk
+      linkAnimation: 
+      spritesInfoDown:
+      - generalSprite: {fileID: -1776154799, guid: 2b7da0f423343264e833d19084099d62,
+          type: 3}
+        handSprite: {fileID: 0}
+        leftHandPosDL: {x: 0, y: 0, z: 0}
+        leftHandPosDR: {x: 0, y: 0, z: 0}
+        leftHandRotation: {x: 0, y: 0, z: 0, w: 0}
+        rightHandPosDL: {x: 0, y: 0, z: 0}
+        rightHandPosDR: {x: 0, y: 0, z: 0}
+        rightHandRotation: {x: 0, y: 0, z: 0, w: 0}
+      - generalSprite: {fileID: 1719309783, guid: 2b7da0f423343264e833d19084099d62,
+          type: 3}
+        handSprite: {fileID: 0}
+        leftHandPosDL: {x: 0, y: 0, z: 0}
+        leftHandPosDR: {x: 0, y: 0, z: 0}
+        leftHandRotation: {x: 0, y: 0, z: 0, w: 0}
+        rightHandPosDL: {x: 0, y: 0, z: 0}
+        rightHandPosDR: {x: 0, y: 0, z: 0}
+        rightHandRotation: {x: 0, y: 0, z: 0, w: 0}
+      - generalSprite: {fileID: 1140817507, guid: 2b7da0f423343264e833d19084099d62,
+          type: 3}
+        handSprite: {fileID: 0}
+        leftHandPosDL: {x: 0, y: 0, z: 0}
+        leftHandPosDR: {x: 0, y: 0, z: 0}
+        leftHandRotation: {x: 0, y: 0, z: 0, w: 0}
+        rightHandPosDL: {x: 0, y: 0, z: 0}
+        rightHandPosDR: {x: 0, y: 0, z: 0}
+        rightHandRotation: {x: 0, y: 0, z: 0, w: 0}
+      - generalSprite: {fileID: -1991302060, guid: 2b7da0f423343264e833d19084099d62,
+          type: 3}
+        handSprite: {fileID: 0}
+        leftHandPosDL: {x: 0, y: 0, z: 0}
+        leftHandPosDR: {x: 0, y: 0, z: 0}
+        leftHandRotation: {x: 0, y: 0, z: 0, w: 0}
+        rightHandPosDL: {x: 0, y: 0, z: 0}
+        rightHandPosDR: {x: 0, y: 0, z: 0}
+        rightHandRotation: {x: 0, y: 0, z: 0, w: 0}
+      - generalSprite: {fileID: 1004537730, guid: 2b7da0f423343264e833d19084099d62,
+          type: 3}
+        handSprite: {fileID: 0}
+        leftHandPosDL: {x: 0, y: 0, z: 0}
+        leftHandPosDR: {x: 0, y: 0, z: 0}
+        leftHandRotation: {x: 0, y: 0, z: 0, w: 0}
+        rightHandPosDL: {x: 0, y: 0, z: 0}
+        rightHandPosDR: {x: 0, y: 0, z: 0}
+        rightHandRotation: {x: 0, y: 0, z: 0, w: 0}
+      - generalSprite: {fileID: 205381238, guid: 2b7da0f423343264e833d19084099d62,
+          type: 3}
+        handSprite: {fileID: 0}
+        leftHandPosDL: {x: 0, y: 0, z: 0}
+        leftHandPosDR: {x: 0, y: 0, z: 0}
+        leftHandRotation: {x: 0, y: 0, z: 0, w: 0}
+        rightHandPosDL: {x: 0, y: 0, z: 0}
+        rightHandPosDR: {x: 0, y: 0, z: 0}
+        rightHandRotation: {x: 0, y: 0, z: 0, w: 0}
+      spritesInfoUp:
+      - generalSprite: {fileID: 428337817, guid: 2b7da0f423343264e833d19084099d62,
+          type: 3}
+        handSprite: {fileID: 0}
+        leftHandPosDL: {x: 0, y: 0, z: 0}
+        leftHandPosDR: {x: 0, y: 0, z: 0}
+        leftHandRotation: {x: 0, y: 0, z: 0, w: 0}
+        rightHandPosDL: {x: 0, y: 0, z: 0}
+        rightHandPosDR: {x: 0, y: 0, z: 0}
+        rightHandRotation: {x: 0, y: 0, z: 0, w: 0}
+      - generalSprite: {fileID: 774976373, guid: 2b7da0f423343264e833d19084099d62,
+          type: 3}
+        handSprite: {fileID: 0}
+        leftHandPosDL: {x: 0, y: 0, z: 0}
+        leftHandPosDR: {x: 0, y: 0, z: 0}
+        leftHandRotation: {x: 0, y: 0, z: 0, w: 0}
+        rightHandPosDL: {x: 0, y: 0, z: 0}
+        rightHandPosDR: {x: 0, y: 0, z: 0}
+        rightHandRotation: {x: 0, y: 0, z: 0, w: 0}
+      - generalSprite: {fileID: -1173765122, guid: 2b7da0f423343264e833d19084099d62,
+          type: 3}
+        handSprite: {fileID: 0}
+        leftHandPosDL: {x: 0, y: 0, z: 0}
+        leftHandPosDR: {x: 0, y: 0, z: 0}
+        leftHandRotation: {x: 0, y: 0, z: 0, w: 0}
+        rightHandPosDL: {x: 0, y: 0, z: 0}
+        rightHandPosDR: {x: 0, y: 0, z: 0}
+        rightHandRotation: {x: 0, y: 0, z: 0, w: 0}
+      - generalSprite: {fileID: 658773556, guid: 2b7da0f423343264e833d19084099d62,
+          type: 3}
+        handSprite: {fileID: 0}
+        leftHandPosDL: {x: 0, y: 0, z: 0}
+        leftHandPosDR: {x: 0, y: 0, z: 0}
+        leftHandRotation: {x: 0, y: 0, z: 0, w: 0}
+        rightHandPosDL: {x: 0, y: 0, z: 0}
+        rightHandPosDR: {x: 0, y: 0, z: 0}
+        rightHandRotation: {x: 0, y: 0, z: 0, w: 0}
+      - generalSprite: {fileID: -761675881, guid: 2b7da0f423343264e833d19084099d62,
+          type: 3}
+        handSprite: {fileID: 0}
+        leftHandPosDL: {x: 0, y: 0, z: 0}
+        leftHandPosDR: {x: 0, y: 0, z: 0}
+        leftHandRotation: {x: 0, y: 0, z: 0, w: 0}
+        rightHandPosDL: {x: 0, y: 0, z: 0}
+        rightHandPosDR: {x: 0, y: 0, z: 0}
+        rightHandRotation: {x: 0, y: 0, z: 0, w: 0}
+      - generalSprite: {fileID: 1516005561, guid: 2b7da0f423343264e833d19084099d62,
+          type: 3}
+        handSprite: {fileID: 0}
+        leftHandPosDL: {x: 0, y: 0, z: 0}
+        leftHandPosDR: {x: 0, y: 0, z: 0}
+        leftHandRotation: {x: 0, y: 0, z: 0, w: 0}
+        rightHandPosDL: {x: 0, y: 0, z: 0}
+        rightHandPosDR: {x: 0, y: 0, z: 0}
+        rightHandRotation: {x: 0, y: 0, z: 0, w: 0}
       animationsEffects: 
       needAnimationEnd: 0
       loop: 1
+      needInstance: 0
       frameToInstance: 0
       speedSpritesPerTimeMultplier: 1
       instanceObj: {fileID: 0}
       instance: {fileID: 0}
-    - typeAnimation: 3
-      spritesInfoDown: []
-      spritesInfoUp: []
+    - typeAnimation: 0
+      animationName: TakeDamage
+      linkAnimation: 
+      spritesInfoDown:
+      - generalSprite: {fileID: -574001031, guid: 2b7da0f423343264e833d19084099d62,
+          type: 3}
+        handSprite: {fileID: 0}
+        leftHandPosDL: {x: 0, y: 0, z: 0}
+        leftHandPosDR: {x: 0, y: 0, z: 0}
+        leftHandRotation: {x: 0, y: 0, z: 0, w: 0}
+        rightHandPosDL: {x: 0, y: 0, z: 0}
+        rightHandPosDR: {x: 0, y: 0, z: 0}
+        rightHandRotation: {x: 0, y: 0, z: 0, w: 0}
+      - generalSprite: {fileID: -574001031, guid: 2b7da0f423343264e833d19084099d62,
+          type: 3}
+        handSprite: {fileID: 0}
+        leftHandPosDL: {x: 0, y: 0, z: 0}
+        leftHandPosDR: {x: 0, y: 0, z: 0}
+        leftHandRotation: {x: 0, y: 0, z: 0, w: 0}
+        rightHandPosDL: {x: 0, y: 0, z: 0}
+        rightHandPosDR: {x: 0, y: 0, z: 0}
+        rightHandRotation: {x: 0, y: 0, z: 0, w: 0}
+      - generalSprite: {fileID: -574001031, guid: 2b7da0f423343264e833d19084099d62,
+          type: 3}
+        handSprite: {fileID: 0}
+        leftHandPosDL: {x: 0, y: 0, z: 0}
+        leftHandPosDR: {x: 0, y: 0, z: 0}
+        leftHandRotation: {x: 0, y: 0, z: 0, w: 0}
+        rightHandPosDL: {x: 0, y: 0, z: 0}
+        rightHandPosDR: {x: 0, y: 0, z: 0}
+        rightHandRotation: {x: 0, y: 0, z: 0, w: 0}
+      - generalSprite: {fileID: -574001031, guid: 2b7da0f423343264e833d19084099d62,
+          type: 3}
+        handSprite: {fileID: 0}
+        leftHandPosDL: {x: 0, y: 0, z: 0}
+        leftHandPosDR: {x: 0, y: 0, z: 0}
+        leftHandRotation: {x: 0, y: 0, z: 0, w: 0}
+        rightHandPosDL: {x: 0, y: 0, z: 0}
+        rightHandPosDR: {x: 0, y: 0, z: 0}
+        rightHandRotation: {x: 0, y: 0, z: 0, w: 0}
+      - generalSprite: {fileID: -574001031, guid: 2b7da0f423343264e833d19084099d62,
+          type: 3}
+        handSprite: {fileID: 0}
+        leftHandPosDL: {x: 0, y: 0, z: 0}
+        leftHandPosDR: {x: 0, y: 0, z: 0}
+        leftHandRotation: {x: 0, y: 0, z: 0, w: 0}
+        rightHandPosDL: {x: 0, y: 0, z: 0}
+        rightHandPosDR: {x: 0, y: 0, z: 0}
+        rightHandRotation: {x: 0, y: 0, z: 0, w: 0}
+      - generalSprite: {fileID: -574001031, guid: 2b7da0f423343264e833d19084099d62,
+          type: 3}
+        handSprite: {fileID: 0}
+        leftHandPosDL: {x: 0, y: 0, z: 0}
+        leftHandPosDR: {x: 0, y: 0, z: 0}
+        leftHandRotation: {x: 0, y: 0, z: 0, w: 0}
+        rightHandPosDL: {x: 0, y: 0, z: 0}
+        rightHandPosDR: {x: 0, y: 0, z: 0}
+        rightHandRotation: {x: 0, y: 0, z: 0, w: 0}
+      spritesInfoUp:
+      - generalSprite: {fileID: -1443033412, guid: 2b7da0f423343264e833d19084099d62,
+          type: 3}
+        handSprite: {fileID: 0}
+        leftHandPosDL: {x: 0, y: 0, z: 0}
+        leftHandPosDR: {x: 0, y: 0, z: 0}
+        leftHandRotation: {x: 0, y: 0, z: 0, w: 0}
+        rightHandPosDL: {x: 0, y: 0, z: 0}
+        rightHandPosDR: {x: 0, y: 0, z: 0}
+        rightHandRotation: {x: 0, y: 0, z: 0, w: 0}
+      - generalSprite: {fileID: -1443033412, guid: 2b7da0f423343264e833d19084099d62,
+          type: 3}
+        handSprite: {fileID: 0}
+        leftHandPosDL: {x: 0, y: 0, z: 0}
+        leftHandPosDR: {x: 0, y: 0, z: 0}
+        leftHandRotation: {x: 0, y: 0, z: 0, w: 0}
+        rightHandPosDL: {x: 0, y: 0, z: 0}
+        rightHandPosDR: {x: 0, y: 0, z: 0}
+        rightHandRotation: {x: 0, y: 0, z: 0, w: 0}
+      - generalSprite: {fileID: -1443033412, guid: 2b7da0f423343264e833d19084099d62,
+          type: 3}
+        handSprite: {fileID: 0}
+        leftHandPosDL: {x: 0, y: 0, z: 0}
+        leftHandPosDR: {x: 0, y: 0, z: 0}
+        leftHandRotation: {x: 0, y: 0, z: 0, w: 0}
+        rightHandPosDL: {x: 0, y: 0, z: 0}
+        rightHandPosDR: {x: 0, y: 0, z: 0}
+        rightHandRotation: {x: 0, y: 0, z: 0, w: 0}
+      - generalSprite: {fileID: -1443033412, guid: 2b7da0f423343264e833d19084099d62,
+          type: 3}
+        handSprite: {fileID: 0}
+        leftHandPosDL: {x: 0, y: 0, z: 0}
+        leftHandPosDR: {x: 0, y: 0, z: 0}
+        leftHandRotation: {x: 0, y: 0, z: 0, w: 0}
+        rightHandPosDL: {x: 0, y: 0, z: 0}
+        rightHandPosDR: {x: 0, y: 0, z: 0}
+        rightHandRotation: {x: 0, y: 0, z: 0, w: 0}
+      - generalSprite: {fileID: -1443033412, guid: 2b7da0f423343264e833d19084099d62,
+          type: 3}
+        handSprite: {fileID: 0}
+        leftHandPosDL: {x: 0, y: 0, z: 0}
+        leftHandPosDR: {x: 0, y: 0, z: 0}
+        leftHandRotation: {x: 0, y: 0, z: 0, w: 0}
+        rightHandPosDL: {x: 0, y: 0, z: 0}
+        rightHandPosDR: {x: 0, y: 0, z: 0}
+        rightHandRotation: {x: 0, y: 0, z: 0, w: 0}
+      - generalSprite: {fileID: -1443033412, guid: 2b7da0f423343264e833d19084099d62,
+          type: 3}
+        handSprite: {fileID: 0}
+        leftHandPosDL: {x: 0, y: 0, z: 0}
+        leftHandPosDR: {x: 0, y: 0, z: 0}
+        leftHandRotation: {x: 0, y: 0, z: 0, w: 0}
+        rightHandPosDL: {x: 0, y: 0, z: 0}
+        rightHandPosDR: {x: 0, y: 0, z: 0}
+        rightHandRotation: {x: 0, y: 0, z: 0, w: 0}
       animationsEffects: 0100000002000000
       needAnimationEnd: 1
       loop: 0
+      needInstance: 0
       frameToInstance: 0
       speedSpritesPerTimeMultplier: 1
       instanceObj: {fileID: 0}
       instance: {fileID: 0}
-    - typeAnimation: 4
-      spritesInfoDown: []
-      spritesInfoUp: []
+    - typeAnimation: 1
+      animationName: GeneralAttack
+      linkAnimation: 
+      spritesInfoDown:
+      - generalSprite: {fileID: 1310105170, guid: 2b7da0f423343264e833d19084099d62,
+          type: 3}
+        handSprite: {fileID: 0}
+        leftHandPosDL: {x: 0, y: 0, z: 0}
+        leftHandPosDR: {x: 0, y: 0, z: 0}
+        leftHandRotation: {x: 0, y: 0, z: 0, w: 0}
+        rightHandPosDL: {x: 0, y: 0, z: 0}
+        rightHandPosDR: {x: 0, y: 0, z: 0}
+        rightHandRotation: {x: 0, y: 0, z: 0, w: 0}
+      - generalSprite: {fileID: -40237433, guid: 2b7da0f423343264e833d19084099d62,
+          type: 3}
+        handSprite: {fileID: 0}
+        leftHandPosDL: {x: 0, y: 0, z: 0}
+        leftHandPosDR: {x: 0, y: 0, z: 0}
+        leftHandRotation: {x: 0, y: 0, z: 0, w: 0}
+        rightHandPosDL: {x: 0, y: 0, z: 0}
+        rightHandPosDR: {x: 0, y: 0, z: 0}
+        rightHandRotation: {x: 0, y: 0, z: 0, w: 0}
+      - generalSprite: {fileID: 1228909983, guid: 2b7da0f423343264e833d19084099d62,
+          type: 3}
+        handSprite: {fileID: 0}
+        leftHandPosDL: {x: 0, y: 0, z: 0}
+        leftHandPosDR: {x: 0, y: 0, z: 0}
+        leftHandRotation: {x: 0, y: 0, z: 0, w: 0}
+        rightHandPosDL: {x: 0, y: 0, z: 0}
+        rightHandPosDR: {x: 0, y: 0, z: 0}
+        rightHandRotation: {x: 0, y: 0, z: 0, w: 0}
+      - generalSprite: {fileID: 1662572948, guid: 2b7da0f423343264e833d19084099d62,
+          type: 3}
+        handSprite: {fileID: 0}
+        leftHandPosDL: {x: 0, y: 0, z: 0}
+        leftHandPosDR: {x: 0, y: 0, z: 0}
+        leftHandRotation: {x: 0, y: 0, z: 0, w: 0}
+        rightHandPosDL: {x: 0, y: 0, z: 0}
+        rightHandPosDR: {x: 0, y: 0, z: 0}
+        rightHandRotation: {x: 0, y: 0, z: 0, w: 0}
+      - generalSprite: {fileID: 248137942, guid: 2b7da0f423343264e833d19084099d62,
+          type: 3}
+        handSprite: {fileID: 0}
+        leftHandPosDL: {x: 0, y: 0, z: 0}
+        leftHandPosDR: {x: 0, y: 0, z: 0}
+        leftHandRotation: {x: 0, y: 0, z: 0, w: 0}
+        rightHandPosDL: {x: 0, y: 0, z: 0}
+        rightHandPosDR: {x: 0, y: 0, z: 0}
+        rightHandRotation: {x: 0, y: 0, z: 0, w: 0}
+      - generalSprite: {fileID: -860490735, guid: 2b7da0f423343264e833d19084099d62,
+          type: 3}
+        handSprite: {fileID: 0}
+        leftHandPosDL: {x: 0, y: 0, z: 0}
+        leftHandPosDR: {x: 0, y: 0, z: 0}
+        leftHandRotation: {x: 0, y: 0, z: 0, w: 0}
+        rightHandPosDL: {x: 0, y: 0, z: 0}
+        rightHandPosDR: {x: 0, y: 0, z: 0}
+        rightHandRotation: {x: 0, y: 0, z: 0, w: 0}
+      spritesInfoUp:
+      - generalSprite: {fileID: -1772335058, guid: 2b7da0f423343264e833d19084099d62,
+          type: 3}
+        handSprite: {fileID: 0}
+        leftHandPosDL: {x: 0, y: 0, z: 0}
+        leftHandPosDR: {x: 0, y: 0, z: 0}
+        leftHandRotation: {x: 0, y: 0, z: 0, w: 0}
+        rightHandPosDL: {x: 0, y: 0, z: 0}
+        rightHandPosDR: {x: 0, y: 0, z: 0}
+        rightHandRotation: {x: 0, y: 0, z: 0, w: 0}
+      - generalSprite: {fileID: 1081541137, guid: 2b7da0f423343264e833d19084099d62,
+          type: 3}
+        handSprite: {fileID: 0}
+        leftHandPosDL: {x: 0, y: 0, z: 0}
+        leftHandPosDR: {x: 0, y: 0, z: 0}
+        leftHandRotation: {x: 0, y: 0, z: 0, w: 0}
+        rightHandPosDL: {x: 0, y: 0, z: 0}
+        rightHandPosDR: {x: 0, y: 0, z: 0}
+        rightHandRotation: {x: 0, y: 0, z: 0, w: 0}
+      - generalSprite: {fileID: 1740863349, guid: 2b7da0f423343264e833d19084099d62,
+          type: 3}
+        handSprite: {fileID: 0}
+        leftHandPosDL: {x: 0, y: 0, z: 0}
+        leftHandPosDR: {x: 0, y: 0, z: 0}
+        leftHandRotation: {x: 0, y: 0, z: 0, w: 0}
+        rightHandPosDL: {x: 0, y: 0, z: 0}
+        rightHandPosDR: {x: 0, y: 0, z: 0}
+        rightHandRotation: {x: 0, y: 0, z: 0, w: 0}
+      - generalSprite: {fileID: 860458901, guid: 2b7da0f423343264e833d19084099d62,
+          type: 3}
+        handSprite: {fileID: 0}
+        leftHandPosDL: {x: 0, y: 0, z: 0}
+        leftHandPosDR: {x: 0, y: 0, z: 0}
+        leftHandRotation: {x: 0, y: 0, z: 0, w: 0}
+        rightHandPosDL: {x: 0, y: 0, z: 0}
+        rightHandPosDR: {x: 0, y: 0, z: 0}
+        rightHandRotation: {x: 0, y: 0, z: 0, w: 0}
+      - generalSprite: {fileID: 1309962416, guid: 2b7da0f423343264e833d19084099d62,
+          type: 3}
+        handSprite: {fileID: 0}
+        leftHandPosDL: {x: 0, y: 0, z: 0}
+        leftHandPosDR: {x: 0, y: 0, z: 0}
+        leftHandRotation: {x: 0, y: 0, z: 0, w: 0}
+        rightHandPosDL: {x: 0, y: 0, z: 0}
+        rightHandPosDR: {x: 0, y: 0, z: 0}
+        rightHandRotation: {x: 0, y: 0, z: 0, w: 0}
+      - generalSprite: {fileID: 2013301439, guid: 2b7da0f423343264e833d19084099d62,
+          type: 3}
+        handSprite: {fileID: 0}
+        leftHandPosDL: {x: 0, y: 0, z: 0}
+        leftHandPosDR: {x: 0, y: 0, z: 0}
+        leftHandRotation: {x: 0, y: 0, z: 0, w: 0}
+        rightHandPosDL: {x: 0, y: 0, z: 0}
+        rightHandPosDR: {x: 0, y: 0, z: 0}
+        rightHandRotation: {x: 0, y: 0, z: 0, w: 0}
       animationsEffects: 
       needAnimationEnd: 1
       loop: 0
-      frameToInstance: 3
+      needInstance: 1
+      frameToInstance: 2
       speedSpritesPerTimeMultplier: 1
       instanceObj: {fileID: 8556195570774308549, guid: f98edab0006817e4e9c48bd4f4a3fffd,
         type: 3}
       instance: {fileID: 0}
-    - typeAnimation: 5
-      spritesInfoDown: []
-      spritesInfoUp: []
+    - typeAnimation: 2
+      animationName: DefaultSkillAttack
+      linkAnimation: 
+      spritesInfoDown:
+      - generalSprite: {fileID: 1310105170, guid: 2b7da0f423343264e833d19084099d62,
+          type: 3}
+        handSprite: {fileID: 0}
+        leftHandPosDL: {x: 0, y: 0, z: 0}
+        leftHandPosDR: {x: 0, y: 0, z: 0}
+        leftHandRotation: {x: 0, y: 0, z: 0, w: 0}
+        rightHandPosDL: {x: 0, y: 0, z: 0}
+        rightHandPosDR: {x: 0, y: 0, z: 0}
+        rightHandRotation: {x: 0, y: 0, z: 0, w: 0}
+      - generalSprite: {fileID: -40237433, guid: 2b7da0f423343264e833d19084099d62,
+          type: 3}
+        handSprite: {fileID: 0}
+        leftHandPosDL: {x: 0, y: 0, z: 0}
+        leftHandPosDR: {x: 0, y: 0, z: 0}
+        leftHandRotation: {x: 0, y: 0, z: 0, w: 0}
+        rightHandPosDL: {x: 0, y: 0, z: 0}
+        rightHandPosDR: {x: 0, y: 0, z: 0}
+        rightHandRotation: {x: 0, y: 0, z: 0, w: 0}
+      - generalSprite: {fileID: 1228909983, guid: 2b7da0f423343264e833d19084099d62,
+          type: 3}
+        handSprite: {fileID: 0}
+        leftHandPosDL: {x: 0, y: 0, z: 0}
+        leftHandPosDR: {x: 0, y: 0, z: 0}
+        leftHandRotation: {x: 0, y: 0, z: 0, w: 0}
+        rightHandPosDL: {x: 0, y: 0, z: 0}
+        rightHandPosDR: {x: 0, y: 0, z: 0}
+        rightHandRotation: {x: 0, y: 0, z: 0, w: 0}
+      - generalSprite: {fileID: 1662572948, guid: 2b7da0f423343264e833d19084099d62,
+          type: 3}
+        handSprite: {fileID: 0}
+        leftHandPosDL: {x: 0, y: 0, z: 0}
+        leftHandPosDR: {x: 0, y: 0, z: 0}
+        leftHandRotation: {x: 0, y: 0, z: 0, w: 0}
+        rightHandPosDL: {x: 0, y: 0, z: 0}
+        rightHandPosDR: {x: 0, y: 0, z: 0}
+        rightHandRotation: {x: 0, y: 0, z: 0, w: 0}
+      - generalSprite: {fileID: 248137942, guid: 2b7da0f423343264e833d19084099d62,
+          type: 3}
+        handSprite: {fileID: 0}
+        leftHandPosDL: {x: 0, y: 0, z: 0}
+        leftHandPosDR: {x: 0, y: 0, z: 0}
+        leftHandRotation: {x: 0, y: 0, z: 0, w: 0}
+        rightHandPosDL: {x: 0, y: 0, z: 0}
+        rightHandPosDR: {x: 0, y: 0, z: 0}
+        rightHandRotation: {x: 0, y: 0, z: 0, w: 0}
+      - generalSprite: {fileID: -860490735, guid: 2b7da0f423343264e833d19084099d62,
+          type: 3}
+        handSprite: {fileID: 0}
+        leftHandPosDL: {x: 0, y: 0, z: 0}
+        leftHandPosDR: {x: 0, y: 0, z: 0}
+        leftHandRotation: {x: 0, y: 0, z: 0, w: 0}
+        rightHandPosDL: {x: 0, y: 0, z: 0}
+        rightHandPosDR: {x: 0, y: 0, z: 0}
+        rightHandRotation: {x: 0, y: 0, z: 0, w: 0}
+      spritesInfoUp:
+      - generalSprite: {fileID: -1772335058, guid: 2b7da0f423343264e833d19084099d62,
+          type: 3}
+        handSprite: {fileID: 0}
+        leftHandPosDL: {x: 0, y: 0, z: 0}
+        leftHandPosDR: {x: 0, y: 0, z: 0}
+        leftHandRotation: {x: 0, y: 0, z: 0, w: 0}
+        rightHandPosDL: {x: 0, y: 0, z: 0}
+        rightHandPosDR: {x: 0, y: 0, z: 0}
+        rightHandRotation: {x: 0, y: 0, z: 0, w: 0}
+      - generalSprite: {fileID: 1081541137, guid: 2b7da0f423343264e833d19084099d62,
+          type: 3}
+        handSprite: {fileID: 0}
+        leftHandPosDL: {x: 0, y: 0, z: 0}
+        leftHandPosDR: {x: 0, y: 0, z: 0}
+        leftHandRotation: {x: 0, y: 0, z: 0, w: 0}
+        rightHandPosDL: {x: 0, y: 0, z: 0}
+        rightHandPosDR: {x: 0, y: 0, z: 0}
+        rightHandRotation: {x: 0, y: 0, z: 0, w: 0}
+      - generalSprite: {fileID: 1740863349, guid: 2b7da0f423343264e833d19084099d62,
+          type: 3}
+        handSprite: {fileID: 0}
+        leftHandPosDL: {x: 0, y: 0, z: 0}
+        leftHandPosDR: {x: 0, y: 0, z: 0}
+        leftHandRotation: {x: 0, y: 0, z: 0, w: 0}
+        rightHandPosDL: {x: 0, y: 0, z: 0}
+        rightHandPosDR: {x: 0, y: 0, z: 0}
+        rightHandRotation: {x: 0, y: 0, z: 0, w: 0}
+      - generalSprite: {fileID: 860458901, guid: 2b7da0f423343264e833d19084099d62,
+          type: 3}
+        handSprite: {fileID: 0}
+        leftHandPosDL: {x: 0, y: 0, z: 0}
+        leftHandPosDR: {x: 0, y: 0, z: 0}
+        leftHandRotation: {x: 0, y: 0, z: 0, w: 0}
+        rightHandPosDL: {x: 0, y: 0, z: 0}
+        rightHandPosDR: {x: 0, y: 0, z: 0}
+        rightHandRotation: {x: 0, y: 0, z: 0, w: 0}
+      - generalSprite: {fileID: 1309962416, guid: 2b7da0f423343264e833d19084099d62,
+          type: 3}
+        handSprite: {fileID: 0}
+        leftHandPosDL: {x: 0, y: 0, z: 0}
+        leftHandPosDR: {x: 0, y: 0, z: 0}
+        leftHandRotation: {x: 0, y: 0, z: 0, w: 0}
+        rightHandPosDL: {x: 0, y: 0, z: 0}
+        rightHandPosDR: {x: 0, y: 0, z: 0}
+        rightHandRotation: {x: 0, y: 0, z: 0, w: 0}
+      - generalSprite: {fileID: 2013301439, guid: 2b7da0f423343264e833d19084099d62,
+          type: 3}
+        handSprite: {fileID: 0}
+        leftHandPosDL: {x: 0, y: 0, z: 0}
+        leftHandPosDR: {x: 0, y: 0, z: 0}
+        leftHandRotation: {x: 0, y: 0, z: 0, w: 0}
+        rightHandPosDL: {x: 0, y: 0, z: 0}
+        rightHandPosDR: {x: 0, y: 0, z: 0}
+        rightHandRotation: {x: 0, y: 0, z: 0, w: 0}
       animationsEffects: 
       needAnimationEnd: 1
       loop: 0
-      frameToInstance: 3
+      needInstance: 1
+      frameToInstance: 2
       speedSpritesPerTimeMultplier: 1
       instanceObj: {fileID: 0}
       instance: {fileID: 0}
+  newAnimationInfo:
+    typeAnimation: 0
+    animationName: 
+    linkAnimation: 
+    spriteDown: []
+    handSpriteDown: {fileID: 0}
+    spriteUp: []
+    handSpriteUp: {fileID: 0}
+    animationsEffects: 
+    needAnimationEnd: 0
+    loop: 0
+    needInstance: 0
+    frameToInstance: 0
+    speedSpritesPerTimeMultplier: 1
+    instanceObj: {fileID: 0}
+    instance: {fileID: 0}

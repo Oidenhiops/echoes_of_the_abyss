@@ -110,6 +110,15 @@ public partial class @CharacterActions: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": true
                 },
                 {
+                    ""name"": ""MousePos"",
+                    ""type"": ""Value"",
+                    ""id"": ""b4bfae70-c59c-4f43-a050-634a7d8e64ab"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
                     ""name"": ""PrincipalAttack"",
                     ""type"": ""Button"",
                     ""id"": ""817295e4-4167-41b8-80c2-448ae4755ee1"",
@@ -173,64 +182,19 @@ public partial class @CharacterActions: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": true
                 },
                 {
-                    ""name"": ""ChangeObject1"",
+                    ""name"": ""ChangeObjectPos"",
                     ""type"": ""Button"",
-                    ""id"": ""82c0470a-c114-4f00-8d20-98702758c47f"",
+                    ""id"": ""6eabff1a-3cf3-495c-8fd1-6f655cceb110"",
                     ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""ChangeObject2"",
-                    ""type"": ""Button"",
-                    ""id"": ""74b49586-5dd0-46fd-9e7e-6f4030002c3b"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""ChangeObject3"",
-                    ""type"": ""Button"",
-                    ""id"": ""87b29e86-6b1d-4eae-8daf-7381563cb7bb"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""ChangeObject4"",
-                    ""type"": ""Button"",
-                    ""id"": ""767b56a1-5939-4916-9d92-de7ef8deda9c"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""ChangeObject5"",
-                    ""type"": ""Button"",
-                    ""id"": ""2e39d5f3-3ed3-4424-8606-0c6007e4c556"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""ChangeObject6"",
-                    ""type"": ""Button"",
-                    ""id"": ""605c5579-bc19-40de-ba6a-18259226ab80"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
+                    ""initialStateCheck"": true
                 },
                 {
                     ""name"": ""UseSkill"",
                     ""type"": ""Button"",
                     ""id"": ""bfc1cc80-0473-4013-9910-021b3647e148"",
-                    ""expectedControlType"": ""Button"",
+                    ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
@@ -261,15 +225,6 @@ public partial class @CharacterActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""MousePos"",
-                    ""type"": ""Value"",
-                    ""id"": ""b4bfae70-c59c-4f43-a050-634a7d8e64ab"",
-                    ""expectedControlType"": ""Vector2"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": true
                 },
                 {
                     ""name"": ""Pause"",
@@ -522,72 +477,6 @@ public partial class @CharacterActions: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""4736bce7-d4a1-460d-8871-09f3c45ef88a"",
-                    ""path"": ""<Keyboard>/1"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""ChangeObject1"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""8d78eba4-3795-46cc-82f7-886c25421037"",
-                    ""path"": ""<Keyboard>/2"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""ChangeObject2"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""8b3b73dc-39d3-48a6-85a0-a23df9cf5cec"",
-                    ""path"": ""<Keyboard>/3"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""ChangeObject3"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""c11259c4-4a55-4652-bfe5-52b86ff13285"",
-                    ""path"": ""<Keyboard>/4"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""ChangeObject4"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""798d9385-c50c-4f25-ba7c-28e7c13aaedb"",
-                    ""path"": ""<Keyboard>/5"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""ChangeObject5"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""ba2fa0be-22d3-4917-af75-e6f4d4dc3669"",
-                    ""path"": ""<Keyboard>/6"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""ChangeObject6"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""98f14e8e-cded-4e0b-8269-0495c96dbfa9"",
                     ""path"": ""<Keyboard>/r"",
                     ""interactions"": """",
@@ -827,6 +716,72 @@ public partial class @CharacterActions: IInputActionCollection2, IDisposable
                     ""action"": ""ChangeObject"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""7e58a9c4-87fa-42dd-9913-b1197bcb0552"",
+                    ""path"": ""<Keyboard>/1"",
+                    ""interactions"": """",
+                    ""processors"": ""Scale(factor=0)"",
+                    ""groups"": """",
+                    ""action"": ""ChangeObjectPos"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d4e410ff-3fb1-4912-9f6f-e8fd4bfb0e57"",
+                    ""path"": ""<Keyboard>/2"",
+                    ""interactions"": """",
+                    ""processors"": ""Scale"",
+                    ""groups"": """",
+                    ""action"": ""ChangeObjectPos"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b198f617-9d3f-41e0-bc4b-432c61a862b7"",
+                    ""path"": ""<Keyboard>/3"",
+                    ""interactions"": """",
+                    ""processors"": ""Scale(factor=2)"",
+                    ""groups"": """",
+                    ""action"": ""ChangeObjectPos"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""23be1a7a-8171-416a-8c7b-b6b0e17a5477"",
+                    ""path"": ""<Keyboard>/4"",
+                    ""interactions"": """",
+                    ""processors"": ""Scale(factor=3)"",
+                    ""groups"": """",
+                    ""action"": ""ChangeObjectPos"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f14c3bec-c461-4525-895e-fb607ad226d4"",
+                    ""path"": ""<Keyboard>/5"",
+                    ""interactions"": """",
+                    ""processors"": ""Scale(factor=4)"",
+                    ""groups"": """",
+                    ""action"": ""ChangeObjectPos"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ccbe979f-e241-488b-b365-21ce1f24b9a3"",
+                    ""path"": ""<Keyboard>/6"",
+                    ""interactions"": """",
+                    ""processors"": ""Scale(factor=5)"",
+                    ""groups"": """",
+                    ""action"": ""ChangeObjectPos"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -837,6 +792,7 @@ public partial class @CharacterActions: IInputActionCollection2, IDisposable
         m_CharacterInputs = asset.FindActionMap("CharacterInputs", throwIfNotFound: true);
         m_CharacterInputs_Movement = m_CharacterInputs.FindAction("Movement", throwIfNotFound: true);
         m_CharacterInputs_MoveCamera = m_CharacterInputs.FindAction("MoveCamera", throwIfNotFound: true);
+        m_CharacterInputs_MousePos = m_CharacterInputs.FindAction("MousePos", throwIfNotFound: true);
         m_CharacterInputs_PrincipalAttack = m_CharacterInputs.FindAction("PrincipalAttack", throwIfNotFound: true);
         m_CharacterInputs_Interact = m_CharacterInputs.FindAction("Interact", throwIfNotFound: true);
         m_CharacterInputs_EnableSecondaryAction = m_CharacterInputs.FindAction("EnableSecondaryAction", throwIfNotFound: true);
@@ -844,17 +800,11 @@ public partial class @CharacterActions: IInputActionCollection2, IDisposable
         m_CharacterInputs_ChangeSkill = m_CharacterInputs.FindAction("ChangeSkill", throwIfNotFound: true);
         m_CharacterInputs_ChangeObjectForTake = m_CharacterInputs.FindAction("ChangeObjectForTake", throwIfNotFound: true);
         m_CharacterInputs_ChangeObject = m_CharacterInputs.FindAction("ChangeObject", throwIfNotFound: true);
-        m_CharacterInputs_ChangeObject1 = m_CharacterInputs.FindAction("ChangeObject1", throwIfNotFound: true);
-        m_CharacterInputs_ChangeObject2 = m_CharacterInputs.FindAction("ChangeObject2", throwIfNotFound: true);
-        m_CharacterInputs_ChangeObject3 = m_CharacterInputs.FindAction("ChangeObject3", throwIfNotFound: true);
-        m_CharacterInputs_ChangeObject4 = m_CharacterInputs.FindAction("ChangeObject4", throwIfNotFound: true);
-        m_CharacterInputs_ChangeObject5 = m_CharacterInputs.FindAction("ChangeObject5", throwIfNotFound: true);
-        m_CharacterInputs_ChangeObject6 = m_CharacterInputs.FindAction("ChangeObject6", throwIfNotFound: true);
+        m_CharacterInputs_ChangeObjectPos = m_CharacterInputs.FindAction("ChangeObjectPos", throwIfNotFound: true);
         m_CharacterInputs_UseSkill = m_CharacterInputs.FindAction("UseSkill", throwIfNotFound: true);
         m_CharacterInputs_UseObject = m_CharacterInputs.FindAction("UseObject", throwIfNotFound: true);
         m_CharacterInputs_OpenInventory = m_CharacterInputs.FindAction("OpenInventory", throwIfNotFound: true);
         m_CharacterInputs_LookEnemy = m_CharacterInputs.FindAction("LookEnemy", throwIfNotFound: true);
-        m_CharacterInputs_MousePos = m_CharacterInputs.FindAction("MousePos", throwIfNotFound: true);
         m_CharacterInputs_Pause = m_CharacterInputs.FindAction("Pause", throwIfNotFound: true);
         m_CharacterInputs_UnlockCamera = m_CharacterInputs.FindAction("UnlockCamera", throwIfNotFound: true);
         m_CharacterInputs_ShowStats = m_CharacterInputs.FindAction("ShowStats", throwIfNotFound: true);
@@ -940,6 +890,7 @@ public partial class @CharacterActions: IInputActionCollection2, IDisposable
     private List<ICharacterInputsActions> m_CharacterInputsActionsCallbackInterfaces = new List<ICharacterInputsActions>();
     private readonly InputAction m_CharacterInputs_Movement;
     private readonly InputAction m_CharacterInputs_MoveCamera;
+    private readonly InputAction m_CharacterInputs_MousePos;
     private readonly InputAction m_CharacterInputs_PrincipalAttack;
     private readonly InputAction m_CharacterInputs_Interact;
     private readonly InputAction m_CharacterInputs_EnableSecondaryAction;
@@ -947,17 +898,11 @@ public partial class @CharacterActions: IInputActionCollection2, IDisposable
     private readonly InputAction m_CharacterInputs_ChangeSkill;
     private readonly InputAction m_CharacterInputs_ChangeObjectForTake;
     private readonly InputAction m_CharacterInputs_ChangeObject;
-    private readonly InputAction m_CharacterInputs_ChangeObject1;
-    private readonly InputAction m_CharacterInputs_ChangeObject2;
-    private readonly InputAction m_CharacterInputs_ChangeObject3;
-    private readonly InputAction m_CharacterInputs_ChangeObject4;
-    private readonly InputAction m_CharacterInputs_ChangeObject5;
-    private readonly InputAction m_CharacterInputs_ChangeObject6;
+    private readonly InputAction m_CharacterInputs_ChangeObjectPos;
     private readonly InputAction m_CharacterInputs_UseSkill;
     private readonly InputAction m_CharacterInputs_UseObject;
     private readonly InputAction m_CharacterInputs_OpenInventory;
     private readonly InputAction m_CharacterInputs_LookEnemy;
-    private readonly InputAction m_CharacterInputs_MousePos;
     private readonly InputAction m_CharacterInputs_Pause;
     private readonly InputAction m_CharacterInputs_UnlockCamera;
     private readonly InputAction m_CharacterInputs_ShowStats;
@@ -980,6 +925,10 @@ public partial class @CharacterActions: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "CharacterInputs/MoveCamera".
         /// </summary>
         public InputAction @MoveCamera => m_Wrapper.m_CharacterInputs_MoveCamera;
+        /// <summary>
+        /// Provides access to the underlying input action "CharacterInputs/MousePos".
+        /// </summary>
+        public InputAction @MousePos => m_Wrapper.m_CharacterInputs_MousePos;
         /// <summary>
         /// Provides access to the underlying input action "CharacterInputs/PrincipalAttack".
         /// </summary>
@@ -1009,29 +958,9 @@ public partial class @CharacterActions: IInputActionCollection2, IDisposable
         /// </summary>
         public InputAction @ChangeObject => m_Wrapper.m_CharacterInputs_ChangeObject;
         /// <summary>
-        /// Provides access to the underlying input action "CharacterInputs/ChangeObject1".
+        /// Provides access to the underlying input action "CharacterInputs/ChangeObjectPos".
         /// </summary>
-        public InputAction @ChangeObject1 => m_Wrapper.m_CharacterInputs_ChangeObject1;
-        /// <summary>
-        /// Provides access to the underlying input action "CharacterInputs/ChangeObject2".
-        /// </summary>
-        public InputAction @ChangeObject2 => m_Wrapper.m_CharacterInputs_ChangeObject2;
-        /// <summary>
-        /// Provides access to the underlying input action "CharacterInputs/ChangeObject3".
-        /// </summary>
-        public InputAction @ChangeObject3 => m_Wrapper.m_CharacterInputs_ChangeObject3;
-        /// <summary>
-        /// Provides access to the underlying input action "CharacterInputs/ChangeObject4".
-        /// </summary>
-        public InputAction @ChangeObject4 => m_Wrapper.m_CharacterInputs_ChangeObject4;
-        /// <summary>
-        /// Provides access to the underlying input action "CharacterInputs/ChangeObject5".
-        /// </summary>
-        public InputAction @ChangeObject5 => m_Wrapper.m_CharacterInputs_ChangeObject5;
-        /// <summary>
-        /// Provides access to the underlying input action "CharacterInputs/ChangeObject6".
-        /// </summary>
-        public InputAction @ChangeObject6 => m_Wrapper.m_CharacterInputs_ChangeObject6;
+        public InputAction @ChangeObjectPos => m_Wrapper.m_CharacterInputs_ChangeObjectPos;
         /// <summary>
         /// Provides access to the underlying input action "CharacterInputs/UseSkill".
         /// </summary>
@@ -1048,10 +977,6 @@ public partial class @CharacterActions: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "CharacterInputs/LookEnemy".
         /// </summary>
         public InputAction @LookEnemy => m_Wrapper.m_CharacterInputs_LookEnemy;
-        /// <summary>
-        /// Provides access to the underlying input action "CharacterInputs/MousePos".
-        /// </summary>
-        public InputAction @MousePos => m_Wrapper.m_CharacterInputs_MousePos;
         /// <summary>
         /// Provides access to the underlying input action "CharacterInputs/Pause".
         /// </summary>
@@ -1096,6 +1021,9 @@ public partial class @CharacterActions: IInputActionCollection2, IDisposable
             @MoveCamera.started += instance.OnMoveCamera;
             @MoveCamera.performed += instance.OnMoveCamera;
             @MoveCamera.canceled += instance.OnMoveCamera;
+            @MousePos.started += instance.OnMousePos;
+            @MousePos.performed += instance.OnMousePos;
+            @MousePos.canceled += instance.OnMousePos;
             @PrincipalAttack.started += instance.OnPrincipalAttack;
             @PrincipalAttack.performed += instance.OnPrincipalAttack;
             @PrincipalAttack.canceled += instance.OnPrincipalAttack;
@@ -1117,24 +1045,9 @@ public partial class @CharacterActions: IInputActionCollection2, IDisposable
             @ChangeObject.started += instance.OnChangeObject;
             @ChangeObject.performed += instance.OnChangeObject;
             @ChangeObject.canceled += instance.OnChangeObject;
-            @ChangeObject1.started += instance.OnChangeObject1;
-            @ChangeObject1.performed += instance.OnChangeObject1;
-            @ChangeObject1.canceled += instance.OnChangeObject1;
-            @ChangeObject2.started += instance.OnChangeObject2;
-            @ChangeObject2.performed += instance.OnChangeObject2;
-            @ChangeObject2.canceled += instance.OnChangeObject2;
-            @ChangeObject3.started += instance.OnChangeObject3;
-            @ChangeObject3.performed += instance.OnChangeObject3;
-            @ChangeObject3.canceled += instance.OnChangeObject3;
-            @ChangeObject4.started += instance.OnChangeObject4;
-            @ChangeObject4.performed += instance.OnChangeObject4;
-            @ChangeObject4.canceled += instance.OnChangeObject4;
-            @ChangeObject5.started += instance.OnChangeObject5;
-            @ChangeObject5.performed += instance.OnChangeObject5;
-            @ChangeObject5.canceled += instance.OnChangeObject5;
-            @ChangeObject6.started += instance.OnChangeObject6;
-            @ChangeObject6.performed += instance.OnChangeObject6;
-            @ChangeObject6.canceled += instance.OnChangeObject6;
+            @ChangeObjectPos.started += instance.OnChangeObjectPos;
+            @ChangeObjectPos.performed += instance.OnChangeObjectPos;
+            @ChangeObjectPos.canceled += instance.OnChangeObjectPos;
             @UseSkill.started += instance.OnUseSkill;
             @UseSkill.performed += instance.OnUseSkill;
             @UseSkill.canceled += instance.OnUseSkill;
@@ -1147,9 +1060,6 @@ public partial class @CharacterActions: IInputActionCollection2, IDisposable
             @LookEnemy.started += instance.OnLookEnemy;
             @LookEnemy.performed += instance.OnLookEnemy;
             @LookEnemy.canceled += instance.OnLookEnemy;
-            @MousePos.started += instance.OnMousePos;
-            @MousePos.performed += instance.OnMousePos;
-            @MousePos.canceled += instance.OnMousePos;
             @Pause.started += instance.OnPause;
             @Pause.performed += instance.OnPause;
             @Pause.canceled += instance.OnPause;
@@ -1176,6 +1086,9 @@ public partial class @CharacterActions: IInputActionCollection2, IDisposable
             @MoveCamera.started -= instance.OnMoveCamera;
             @MoveCamera.performed -= instance.OnMoveCamera;
             @MoveCamera.canceled -= instance.OnMoveCamera;
+            @MousePos.started -= instance.OnMousePos;
+            @MousePos.performed -= instance.OnMousePos;
+            @MousePos.canceled -= instance.OnMousePos;
             @PrincipalAttack.started -= instance.OnPrincipalAttack;
             @PrincipalAttack.performed -= instance.OnPrincipalAttack;
             @PrincipalAttack.canceled -= instance.OnPrincipalAttack;
@@ -1197,24 +1110,9 @@ public partial class @CharacterActions: IInputActionCollection2, IDisposable
             @ChangeObject.started -= instance.OnChangeObject;
             @ChangeObject.performed -= instance.OnChangeObject;
             @ChangeObject.canceled -= instance.OnChangeObject;
-            @ChangeObject1.started -= instance.OnChangeObject1;
-            @ChangeObject1.performed -= instance.OnChangeObject1;
-            @ChangeObject1.canceled -= instance.OnChangeObject1;
-            @ChangeObject2.started -= instance.OnChangeObject2;
-            @ChangeObject2.performed -= instance.OnChangeObject2;
-            @ChangeObject2.canceled -= instance.OnChangeObject2;
-            @ChangeObject3.started -= instance.OnChangeObject3;
-            @ChangeObject3.performed -= instance.OnChangeObject3;
-            @ChangeObject3.canceled -= instance.OnChangeObject3;
-            @ChangeObject4.started -= instance.OnChangeObject4;
-            @ChangeObject4.performed -= instance.OnChangeObject4;
-            @ChangeObject4.canceled -= instance.OnChangeObject4;
-            @ChangeObject5.started -= instance.OnChangeObject5;
-            @ChangeObject5.performed -= instance.OnChangeObject5;
-            @ChangeObject5.canceled -= instance.OnChangeObject5;
-            @ChangeObject6.started -= instance.OnChangeObject6;
-            @ChangeObject6.performed -= instance.OnChangeObject6;
-            @ChangeObject6.canceled -= instance.OnChangeObject6;
+            @ChangeObjectPos.started -= instance.OnChangeObjectPos;
+            @ChangeObjectPos.performed -= instance.OnChangeObjectPos;
+            @ChangeObjectPos.canceled -= instance.OnChangeObjectPos;
             @UseSkill.started -= instance.OnUseSkill;
             @UseSkill.performed -= instance.OnUseSkill;
             @UseSkill.canceled -= instance.OnUseSkill;
@@ -1227,9 +1125,6 @@ public partial class @CharacterActions: IInputActionCollection2, IDisposable
             @LookEnemy.started -= instance.OnLookEnemy;
             @LookEnemy.performed -= instance.OnLookEnemy;
             @LookEnemy.canceled -= instance.OnLookEnemy;
-            @MousePos.started -= instance.OnMousePos;
-            @MousePos.performed -= instance.OnMousePos;
-            @MousePos.canceled -= instance.OnMousePos;
             @Pause.started -= instance.OnPause;
             @Pause.performed -= instance.OnPause;
             @Pause.canceled -= instance.OnPause;
@@ -1294,6 +1189,13 @@ public partial class @CharacterActions: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnMoveCamera(InputAction.CallbackContext context);
         /// <summary>
+        /// Method invoked when associated input action "MousePos" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnMousePos(InputAction.CallbackContext context);
+        /// <summary>
         /// Method invoked when associated input action "PrincipalAttack" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>
         /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
@@ -1343,47 +1245,12 @@ public partial class @CharacterActions: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnChangeObject(InputAction.CallbackContext context);
         /// <summary>
-        /// Method invoked when associated input action "ChangeObject1" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// Method invoked when associated input action "ChangeObjectPos" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>
         /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-        void OnChangeObject1(InputAction.CallbackContext context);
-        /// <summary>
-        /// Method invoked when associated input action "ChangeObject2" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
-        /// </summary>
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-        void OnChangeObject2(InputAction.CallbackContext context);
-        /// <summary>
-        /// Method invoked when associated input action "ChangeObject3" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
-        /// </summary>
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-        void OnChangeObject3(InputAction.CallbackContext context);
-        /// <summary>
-        /// Method invoked when associated input action "ChangeObject4" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
-        /// </summary>
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-        void OnChangeObject4(InputAction.CallbackContext context);
-        /// <summary>
-        /// Method invoked when associated input action "ChangeObject5" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
-        /// </summary>
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-        void OnChangeObject5(InputAction.CallbackContext context);
-        /// <summary>
-        /// Method invoked when associated input action "ChangeObject6" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
-        /// </summary>
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-        void OnChangeObject6(InputAction.CallbackContext context);
+        void OnChangeObjectPos(InputAction.CallbackContext context);
         /// <summary>
         /// Method invoked when associated input action "UseSkill" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>
@@ -1412,13 +1279,6 @@ public partial class @CharacterActions: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnLookEnemy(InputAction.CallbackContext context);
-        /// <summary>
-        /// Method invoked when associated input action "MousePos" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
-        /// </summary>
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-        void OnMousePos(InputAction.CallbackContext context);
         /// <summary>
         /// Method invoked when associated input action "Pause" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>

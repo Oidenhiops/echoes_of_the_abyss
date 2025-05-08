@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91ef4e234a16f9e4788bff02d4c3247d, type: 3}
   m_Name: GeneralKey
   m_EditorClassIdentifier: 
-  ID: 1
+  objectId: 1
   typeObject: 1
   statistics: []
   isPorcent: 0

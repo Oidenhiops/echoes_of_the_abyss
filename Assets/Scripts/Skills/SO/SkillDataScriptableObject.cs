@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 [CreateAssetMenu(fileName = "SkillsData", menuName = "ScriptableObjects/SkillsDataScriptableObject", order = 1)]
 public class SkillDataScriptableObject : ScriptableObject

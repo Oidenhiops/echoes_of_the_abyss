@@ -61,10 +61,10 @@ public class ChangeCharacterMenu : MonoBehaviour
         for (int i = 0; i < characterSelected.objects.Length; i++)
         {
             GameData.Instance.saveData.gameInfo.characterInfo.currentObjects[i] = new ManagementCharacterObjects.ObjectsInfo{
+                objectPos = characterSelected.objects[i].objectPos,
                 objectData = characterSelected.objects[i].objectData,
                 amount = characterSelected.objects[i].amount,
                 isUsingItem = characterSelected.objects[i].isUsingItem,
-                id = characterSelected.objects[i].id,                
             };
             GameObject characterObjectInstance = Instantiate(Resources.Load<GameObject>("Prefabs/UI/Menu/ChangeCharacterObjects/ObjectBackground"), containerObjects.transform);
             ManagementChangeCharacterObject characterObject = characterObjectInstance.GetComponent<ManagementChangeCharacterObject>();

@@ -8,6 +8,7 @@ public class AudioManager : MonoBehaviour
 {
     public static AudioManager Instance { get; private set; }
     public AudioMixer audioMixer;
+    public SoundsDBSO soundsDB;
     void Awake()
     {
         if (Instance == null)
@@ -27,13 +28,13 @@ public class AudioManager : MonoBehaviour
         audioBox.Play();
         Destroy(audioBox.gameObject, audioBox.clip.length);
     }
-    public void PlayASound(AudioClip audioClip, float initialRandomPitch)
+    public void PlayASound(AudioClip audioClip, float initialPitch, bool randomPitch)
     {
         AudioSource audioBox = Instantiate(Resources.Load<GameObject>("Prefabs/AudioBox/AudioBox")).GetComponent<AudioSource>();
         audioBox.clip = audioClip;
-        audioBox.pitch = UnityEngine.Random.Range(initialRandomPitch - 0.1f, initialRandomPitch + 0.1f);
+        audioBox.pitch = randomPitch ? UnityEngine.Random.Range(0.5f, 1.5f) : UnityEngine.Random.Range(initialPitch - 0.1f, initialPitch + 0.1f);
         audioBox.Play();
-        Destroy(audioBox.gameObject, audioBox.clip.length);
+        Destroy(audioBox.gameObject, audioClip.length);
     }
     public async Awaitable FadeIn()
     {
@@ -61,6 +62,16 @@ public class AudioManager : MonoBehaviour
         }
         audioMixer.SetFloat(TypeSound.Master.ToString(), targetDecibels);
     }
+
+    public AudioClip GetAudioClip(string typeSound)
+    {
+        if (soundsDB.sounds.TryGetValue(typeSound, out AudioClip[] clips))
+        {
+            return clips[UnityEngine.Random.Range(0, clips.Length - 1)];
+        }
+        return null;
+    }
+
     public async Awaitable FadeOut()
     {
         float currentVolume;

@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class ObjectsDataSO : ScriptableObject
 {
-    public int ID = 0;
+    public int objectId = 0;
     public TypeObject typeObject;
     public Character.Statistics[] statistics;
     public bool isPorcent = false;

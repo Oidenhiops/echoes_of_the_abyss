@@ -53,7 +53,6 @@ public class Character : MonoBehaviour
         }
 
         await characterInfo.InitializeStatistics();
-        await InitializeSounds();
         await InitializeAnimations();
         await InitializeObjects();
         await InitializeSkills();
@@ -66,11 +65,6 @@ public class Character : MonoBehaviour
         }
         characterInfo.rb.isKinematic = false;
         characterInfo.isActive = true;
-    }
-    async Awaitable InitializeSounds()
-    {
-        characterInfo.characterScripts.managementCharacterSounds.soundsInfo = characterInfo.initialData.characterSounds;
-        await Awaitable.NextFrameAsync();
     }
     async Awaitable InitializeAnimations()
     {
@@ -104,22 +98,11 @@ public class Character : MonoBehaviour
     }
     void HandleAttack()
     {
-        if (characterInfo.isPlayer)
-        {
-            if (characterInputs == null) return;
-            if (characterInputs.characterActions.CharacterInputs.PrincipalAttack.triggered)
-            {
-                characterInfo.characterScripts.characterAttack.ValidateAttack();
-            }
-        }
-        else
-        {
-            characterInfo.characterScripts.characterAttack.ValidateAttack();
-        }
+        characterInfo.characterScripts.characterAttack.ValidateAttack();
     }
     public void HandleAttackMobile()
     {
-        characterInfo.characterScripts.characterAttack.ValidateAttack();
+        characterInfo.characterScripts.characterAttack.ValidateAttackMobile();
     }
     void HandleObjects()
     {
@@ -259,8 +242,8 @@ public class Character : MonoBehaviour
                     GetStatisticByType(TypeStatistics.Hp).currentValue = 0;
                     Die();
                 }
-                characterScripts.characterAnimations.MakeAnimation(ManagementCharacterAnimations.TypeAnimation.TakeDamage);
-                PlayASound(CharacterSoundsSO.TypeSound.TakeDamage, true);
+                characterScripts.characterAnimations.MakeAnimation(CharacterAnimationsSO.TypeAnimation.None, "TakeDamage");
+                AudioManager.Instance.PlayASound(AudioManager.Instance.GetAudioClip("TakeDamage"), 1, true);
             }
         }
         float CalculateDamage(float damage, TypeDamage typeDamage)
@@ -275,43 +258,22 @@ public class Character : MonoBehaviour
         }
         void Die()
         {
-            PlayASound(CharacterSoundsSO.TypeSound.Die, true);
+            AudioManager.Instance.PlayASound(AudioManager.Instance.GetAudioClip("Die"), 1, true);
             isActive = false;
             characterScripts.owner.GetComponent<Rigidbody>().linearVelocity = Vector3.zero;
             characterScripts.owner.GetComponent<Rigidbody>().isKinematic = true;
             characterScripts.owner.GetComponent<Collider>().enabled = false;
             if (isPlayer)
             {
-                characterScripts.owner.Invoke("ReloadScene", characterScripts.managementCharacterSounds.GetAudioClip(CharacterSoundsSO.TypeSound.Die).length + 1);
+                characterScripts.owner.Invoke("ReloadScene", AudioManager.Instance.GetAudioClip("Die").length + 1);
             }
-            characterScripts.characterAnimations.GetAnimation(ManagementCharacterAnimations.TypeAnimation.TakeDamage).loop = true;
+            characterScripts.characterAnimations.GetAnimation(CharacterAnimationsSO.TypeAnimation.None, "TakeDamage").loop = true;
             characterScripts.dissolve.DissolveObject();
             GameObject bloodInstance = Instantiate(Resources.Load<GameObject>("Prefabs/Effects/BloodDieEffect/BloodDieEffect"), characterScripts.owner.transform.position, Quaternion.identity);
             bloodInstance.transform.position += Vector3.up / 2;
             var particleSystem = bloodInstance.GetComponent<ParticleSystem>();
             var mainModule = particleSystem.main;
             mainModule.startColor = colorBlood;
-        }
-        public void PlayASound(CharacterSoundsSO.TypeSound typeSound, bool randomPitch)
-        {
-            GameObject blockSound = Instantiate(Resources.Load<GameObject>("Prefabs/Effects/BlockSound/BlockSound"));
-            AudioClip audioClip = characterScripts.managementCharacterSounds.GetAudioClip(typeSound);
-            blockSound.GetComponent<ManagementBlockSound>().PlaySound(audioClip, randomPitch);
-            Destroy(blockSound, audioClip.length);
-        }
-        public void PlayASound(AudioClip sound, bool randomPitch)
-        {
-            GameObject blockSound = Instantiate(Resources.Load<GameObject>("Prefabs/Effects/BlockSound/BlockSound"));
-            AudioClip audioClip = sound;
-            blockSound.GetComponent<ManagementBlockSound>().PlaySound(audioClip, randomPitch);
-            Destroy(blockSound, audioClip.length);
-        }
-        public void PlayASound(AudioClip sound, float initialPitch, bool randomPitch)
-        {
-            GameObject blockSound = Instantiate(Resources.Load<GameObject>("Prefabs/Effects/BlockSound/BlockSound"));
-            AudioClip audioClip = sound;
-            blockSound.GetComponent<ManagementBlockSound>().PlaySound(audioClip, initialPitch, randomPitch);
-            Destroy(blockSound, audioClip.length);
         }
         protected bool SetGrounded()
         {            
@@ -390,7 +352,6 @@ public class Character : MonoBehaviour
     {
         public ManagementCharacterHud managementCharacterHud;
         public ManagementCharacterModelDirection managementCharacterModelDirection;
-        public ManagementCharacterSounds managementCharacterSounds;
         public ManagementCharacterObjects managementCharacterObjects;
         public ManagementCharacterSkills managementCharacterSkills;
         public ManagementPlayerCamera managementPlayerCamera;

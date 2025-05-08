@@ -19,7 +19,7 @@ public class ManagementLigthsObjects : MonoBehaviour
 
     void Update()
     {
-        time += Time.deltaTime * speed; // Incrementa el tiempo para el efecto
+        time += Time.deltaTime * speed;
         ligth.intensity = Mathf.Lerp(minIntensity, maxIntensity, Mathf.PingPong(time, 1));
     }
 }

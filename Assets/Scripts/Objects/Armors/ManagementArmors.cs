@@ -16,7 +16,7 @@ public class ManagementArmors : ObjectBase
             if (character.characterInfo.isPlayer)
             {
                 character.characterInfo.RefreshCurrentStatistics();
-                character.characterInfo.characterScripts.managementCharacterHud.ToggleActiveObject(objectInfo.id, false);
+                character.characterInfo.characterScripts.managementCharacterHud.ToggleActiveObject(objectInfo.objectPos, false);
             }
         }
 
@@ -29,7 +29,7 @@ public class ManagementArmors : ObjectBase
         this.objectInfo.amount = 1;
         objectInfo.amount--;
         character.characterInfo.characterScripts.managementCharacterObjects.RefreshObjects();
-        character.characterInfo.PlayASound(character.characterInfo.characterScripts.managementCharacterSounds.GetAudioClip(CharacterSoundsSO.TypeSound.PickUp), true);
+        AudioManager.Instance.PlayASound(AudioManager.Instance.GetAudioClip("PickUp"), 1, true);
     }
 
     public override void InitializeObject(Character character, ManagementCharacterObjects.ObjectsInfo objectInfo, ManagementCharacterObjects managementCharacterObjects)
@@ -43,7 +43,7 @@ public class ManagementArmors : ObjectBase
             if (character.characterInfo.isPlayer)
             {
                 character.characterInfo.RefreshCurrentStatistics();
-                character.characterInfo.characterScripts.managementCharacterHud.ToggleActiveObject(objectInfo.id, true);
+                character.characterInfo.characterScripts.managementCharacterHud.ToggleActiveObject(objectInfo.objectPos, true);
             }
     }
 
@@ -57,7 +57,7 @@ public class ManagementArmors : ObjectBase
                 Character.Statistics statistic = character.characterInfo.GetStatisticByType(armorStats.typeStatistics);
                 statistic.objectValue += armorStats.baseValue;
             }
-            character.characterInfo.PlayASound(objectInfo.objectData.effectAudio, 1.1f, false);
+        AudioManager.Instance.PlayASound(AudioManager.Instance.GetAudioClip("PickUp"), 1.1f, true);
         }
         else
         {
@@ -66,13 +66,13 @@ public class ManagementArmors : ObjectBase
                 Character.Statistics statistic = character.characterInfo.GetStatisticByType(armorStats.typeStatistics);
                 statistic.objectValue -= armorStats.baseValue;
             }
-            character.characterInfo.PlayASound(objectInfo.objectData.effectAudio, 0.9f, false);
+            AudioManager.Instance.PlayASound(AudioManager.Instance.GetAudioClip("PickUp"), 0.9f, true);
         }
         character.characterInfo.RefreshCurrentStatistics();
         if (character.characterInfo.isPlayer)
         {
             character.characterInfo.characterScripts.managementCharacterHud.RefreshCurrentStatistics();
-            character.characterInfo.characterScripts.managementCharacterHud.ToggleActiveObject(objectInfo.id, objectInfo.isUsingItem);
+            character.characterInfo.characterScripts.managementCharacterHud.ToggleActiveObject(objectInfo.objectPos, objectInfo.isUsingItem);
         }
     }
 }

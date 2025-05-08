@@ -42,6 +42,7 @@ public class ManagementTripleSlashSkill : MonoBehaviour, ManagementCharacterSkil
         transform.position += characterMakeDamage.characterInfo.characterScripts.characterAttack.GetDirectionAttack().transform.forward;
         transform.rotation = characterMakeDamage.characterInfo.characterScripts.characterAttack.GetDirectionAttack().transform.rotation;
         transform.SetParent(null);
+        AudioManager.Instance.PlayASound(AudioManager.Instance.GetAudioClip("Slash"), 1, true);
         for (int i = 0; i < slashes.Count; i++)
         {
             slashes[i].layer = LayerMask.NameToLayer(character.characterInfo.isPlayer ? "PlayerAttack" : "EnemyAttack");

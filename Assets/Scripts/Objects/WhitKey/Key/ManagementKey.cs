@@ -16,7 +16,7 @@ public class ManagementKey : ObjectBase
         this.objectInfo.amount = 1;
         objectInfo.amount--;
         character.characterInfo.characterScripts.managementCharacterObjects.RefreshObjects();
-        character.characterInfo.PlayASound(character.characterInfo.characterScripts.managementCharacterSounds.GetAudioClip(CharacterSoundsSO.TypeSound.PickUp), true);
+        AudioManager.Instance.PlayASound(AudioManager.Instance.GetAudioClip("PickUp"), 1, true);
     }
     public enum TypeKey
     {

@@ -10,7 +10,6 @@ public class InitialDataSO : ScriptableObject
     public ManagementCharacterSkills.SkillInfo baseSkill;
     public ManagementCharacterObjects.ObjectsInfo[] objects = new ManagementCharacterObjects.ObjectsInfo[0];
     public CharacterAnimationsSO characterAnimations;
-    public CharacterSoundsSO characterSounds;
     public InitialDataSO Clone()
     {
         InitialDataSO clone = ScriptableObject.CreateInstance<InitialDataSO>();
@@ -30,7 +29,6 @@ public class InitialDataSO : ScriptableObject
         }
 
         clone.characterAnimations = Instantiate(this.characterAnimations);
-        clone.characterSounds = Instantiate(this.characterSounds);
 
         return clone;
     }

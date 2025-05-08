@@ -18,10 +18,10 @@ public class ObjectBase : MonoBehaviour
     {
         Debug.LogError("Not implemented InitializeObject");
     }
-    public virtual ManagementCharacterAnimations.TypeAnimation GetTypeObjAnimation()
+    public virtual string GetTypeObjAnimation()
     {
         Debug.LogError("Not implemented GetTypeObjAnimation");
-        return ManagementCharacterAnimations.TypeAnimation.None;
+        return "None";
     }
     [System.Serializable]   public class ObjectInfo
     {

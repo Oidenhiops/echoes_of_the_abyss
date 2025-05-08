@@ -17,14 +17,14 @@ public class ManagementPotions : ObjectBase
         this.objectInfo.amount = 1;
         objectInfo.amount--;
         character.characterInfo.characterScripts.managementCharacterObjects.RefreshObjects();
-        character.characterInfo.PlayASound(character.characterInfo.characterScripts.managementCharacterSounds.GetAudioClip(CharacterSoundsSO.TypeSound.PickUp), true);
+        AudioManager.Instance.PlayASound(AudioManager.Instance.GetAudioClip("PickUp"), 1, true);
     }
     public override void UseObject(Character character, ManagementCharacterObjects.ObjectsInfo objectInfo, ManagementCharacterObjects managementCharacterObjects)
     {
         foreach(Character.Statistics potion in objectInfo.objectData.statistics)
         {
             Character.Statistics statistic = character.characterInfo.GetStatisticByType(potion.typeStatistics);
-            float value = objectInfo.objectData.isPorcent ? Mathf.Ceil((statistic.maxValue * potion.baseValue) / 100) : potion.baseValue;
+            float value = objectInfo.objectData.isPorcent ? Mathf.Ceil(statistic.maxValue * potion.baseValue / 100) : potion.baseValue;
             statistic.currentValue += value;
             GameObject floatingText = Instantiate(Resources.Load<GameObject>("Prefabs/UI/FloatingText/FloatingText"), character.gameObject.transform.position, Quaternion.identity);
             FloatingText floatingTextScript = floatingText.GetComponent<FloatingText>();
@@ -34,7 +34,7 @@ public class ManagementPotions : ObjectBase
                 statistic.currentValue = statistic.maxValue;
             }
         }
-        character.characterInfo.PlayASound(objectInfo.objectData.effectAudio, true);
+        AudioManager.Instance.PlayASound(AudioManager.Instance.GetAudioClip("PotionEffect"), 1, true);
         GameObject potionEffect = Instantiate(effect, character.transform.position + new Vector3(0, 0.05f, 0), Quaternion.identity, character.transform);
         Destroy(potionEffect, 3);
         objectInfo.amount--;

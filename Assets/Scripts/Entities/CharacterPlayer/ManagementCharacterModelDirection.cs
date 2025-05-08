@@ -1,6 +1,4 @@
-using System;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class ManagementCharacterModelDirection : MonoBehaviour, ManagementCharacterModelDirection.ICharacterDirection
 {
@@ -52,18 +50,10 @@ public class ManagementCharacterModelDirection : MonoBehaviour, ManagementCharac
 
     private void LookToTarget()
     {
-        movementDirectionAnimation = Camera.main.WorldToViewportPoint(characterTarget.transform.position) - Camera.main.WorldToViewportPoint(transform.position);        
-        if (movementDirectionAnimation.x > 0)
-        {            
-            character.characterInfo.characterScripts.characterAnimations.GetCharacterSprite().transform.localRotation = Quaternion.Euler(0, -180, 0);
-        }
-        else
-        {            
-            character.characterInfo.characterScripts.characterAnimations.GetCharacterSprite().transform.localRotation = Quaternion.Euler(0, 0, 0);
-        }
-
+        movementDirectionAnimation = Camera.main.WorldToViewportPoint(characterTarget.transform.position) - Camera.main.WorldToViewportPoint(transform.position);
+        character.characterInfo.characterScripts.characterAnimations.GetCharacterSprite().transform.localRotation =
+            Quaternion.Euler(0, movementDirectionAnimation.x > 0 ? -180 : 0, 0);
         directionPlayer.transform.LookAt(new Vector3(characterTarget.transform.position.x, directionPlayer.transform.position.y, characterTarget.transform.position.z));
-
         if (!characterTarget.characterInfo.isActive || 
         Vector3.Distance(characterTarget.transform.position, transform.position) > rayDistanceTarget || 
         character.characterInfo.isPlayer && character.characterInputs.characterActions.CharacterInputs.LookEnemy.triggered)
@@ -76,15 +66,16 @@ public class ManagementCharacterModelDirection : MonoBehaviour, ManagementCharac
     {
         if (character.characterInputs.characterActionsInfo.movement != Vector2.zero)
         {
-            movementDirectionAnimation = character.characterInputs.characterActionsInfo.movement;
-            if (movementDirectionAnimation.x > 0)
+            if (character.characterInputs.characterActionsInfo.movement.x != 0)
             {
-                character.characterInfo.characterScripts.characterAnimations.GetCharacterSprite().transform.localRotation = Quaternion.Euler(0, -180, 0);
+                movementDirectionAnimation.x = character.characterInputs.characterActionsInfo.movement.x;
             }
-            else
+            if (character.characterInputs.characterActionsInfo.movement.y != 0)
             {
-                character.characterInfo.characterScripts.characterAnimations.GetCharacterSprite().transform.localRotation = Quaternion.Euler(0, 0, 0);
+                movementDirectionAnimation.y = character.characterInputs.characterActionsInfo.movement.y;
             }
+            character.characterInfo.characterScripts.characterAnimations.GetCharacterSprite().transform.localRotation = 
+                Quaternion.Euler(0, movementDirectionAnimation.x > 0 ? -180 : 0, 0);
             float angle = Mathf.Atan2(movementDirectionAnimation.x, movementDirectionAnimation.y) * Mathf.Rad2Deg;
             directionPlayer.transform.rotation = Quaternion.Lerp(directionPlayer.transform.rotation, Quaternion.Euler(0, angle, 0f), 0.25f);
         }
@@ -94,14 +85,8 @@ public class ManagementCharacterModelDirection : MonoBehaviour, ManagementCharac
         if (character.characterInputs.characterActionsInfo.moveCamera != Vector2.zero)
         {
             movementDirectionAnimation = character.characterInputs.characterActionsInfo.moveCamera;
-            if (movementDirectionAnimation.x > 0)
-            {
-                character.characterInfo.characterScripts.characterAnimations.GetCharacterSprite().transform.localRotation = Quaternion.Euler(0, -180, 0);
-            }
-            else
-            {
-                character.characterInfo.characterScripts.characterAnimations.GetCharacterSprite().transform.localRotation = Quaternion.Euler(0, 0, 0);
-            }
+            character.characterInfo.characterScripts.characterAnimations.GetCharacterSprite().transform.localRotation = 
+                Quaternion.Euler(0, movementDirectionAnimation.x > 0 ? -180 : 0, 0);
             float angle = Mathf.Atan2(movementDirectionAnimation.x, movementDirectionAnimation.y) * Mathf.Rad2Deg;
             directionPlayer.transform.rotation = Quaternion.Lerp(directionPlayer.transform.rotation, Quaternion.Euler(0, angle, 0f), 0.25f);
         }

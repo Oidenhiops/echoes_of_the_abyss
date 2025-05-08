@@ -11,6 +11,13 @@ public class Barbs : MonoBehaviour
     public float timeHitStop;
     public float timeToRestoreCharacterToHit = 0.1f;
     public List<Character> charactersHited = new List<Character>();
+    void LateUpdate()
+    {
+        if (charactersHited.Count == 0)
+        {
+            animator.SetBool("isActive", false);
+        }
+    }
     public void OnTriggerStay(Collider other)
     {
         if (other.GetComponent<Character>() != null)
@@ -35,16 +42,6 @@ public class Barbs : MonoBehaviour
             if (charactersHited.Count > 0)
             {
                 animator.SetBool("isActive", true);
-            }
-        }
-    }
-    void OnTriggerExit(Collider other)
-    {
-        if (other.TryGetComponent<Character>(out Character character)){
-            charactersHited.Remove(character);
-            if (charactersHited.Count == 0)
-            {
-                animator.SetBool("isActive", false);
             }
         }
     }

@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5259385094486363173}
   - component: {fileID: 7360820303125128145}
   m_Layer: 11
-  m_Name: TorchLigth
+  m_Name: TorchLight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
