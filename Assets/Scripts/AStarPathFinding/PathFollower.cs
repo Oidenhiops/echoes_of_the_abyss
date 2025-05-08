@@ -97,7 +97,7 @@ public class PathFollower : MonoBehaviour, Character.ICharacterMove
     }
     void MoveTowardsPath(Vector3 targetPosition)
     {
-        if (character.characterInfo.characterScripts.characterAnimations.GetCurrentAnimation().typeAnimation != ManagementCharacterAnimations.TypeAnimation.TakeDamage && 
+        if (character.characterInfo.characterScripts.characterAnimations.GetCurrentAnimation().animationName != "TakeDamage" && 
             !character.characterInfo.characterScripts.managementStatusEffect.statusEffects.ContainsKey(StatusEffectSO.TypeStatusEffect.Push))
         {
             Vector2 characterInputs = (new Vector2(targetPosition.x, targetPosition.z) - new Vector2(transform.position.x, transform.position.z)).normalized;

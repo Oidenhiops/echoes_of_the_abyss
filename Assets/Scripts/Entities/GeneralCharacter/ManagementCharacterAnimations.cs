@@ -20,16 +20,16 @@ public class ManagementCharacterAnimations : MonoBehaviour
         {
             if (character.characterInfo.characterScripts.managementCharacterModelDirection.GetDirectionMovementCharacter() != Vector2.zero)
             {
-                if (!GetCurrentAnimation(TypeAnimation.Walk))
+                if (!GetCurrentAnimation("Walk"))
                 {
-                    MakeAnimation(TypeAnimation.Walk);
+                    MakeAnimation(CharacterAnimationsSO.TypeAnimation.None, "Walk");
                 }
             }
             else
             {
-                if (!GetCurrentAnimation(TypeAnimation.Idle))
+                if (!GetCurrentAnimation("Idle"))
                 {
-                    MakeAnimation(TypeAnimation.Idle);
+                    MakeAnimation(CharacterAnimationsSO.TypeAnimation.None, "Idle");
                 }
             }
         }
@@ -41,6 +41,7 @@ public class ManagementCharacterAnimations : MonoBehaviour
     public void SetInitialData(InitialDataSO initialData)
     {
         StopAllCoroutines();
+        characterSprite.transform.parent.transform.localScale = Vector3.one * GetScaleFactor(initialData.characterAnimations.animationsInfo.animations[0].spritesInfoDown[0].generalSprite.rect.width);
         meshRendererCharacter.material.SetTexture("_BaseTexture", initialData.atlas);
         if (meshRendererHand && initialData.atlasHand){
             meshRendererHand.gameObject.SetActive(true);
@@ -58,9 +59,14 @@ public class ManagementCharacterAnimations : MonoBehaviour
             currentSpritePerTime = initialData.characterAnimations.animationsInfo.currentSpritePerTime,
             currentSpriteIndex = 0
         };
-        GetAnimation(TypeAnimation.HandAttack).speedSpritesPerTimeMultplier = character.characterInfo.GetStatisticByType(Character.TypeStatistics.AtkSpd).currentValue;
-        currentAnimation = GetAnimation(TypeAnimation.Idle);
+        GetAnimation(CharacterAnimationsSO.TypeAnimation.None, "GeneralAttack").speedSpritesPerTimeMultplier = character.characterInfo.GetStatisticByType(Character.TypeStatistics.AtkSpd).currentValue;
+        currentAnimation = GetAnimation(CharacterAnimationsSO.TypeAnimation.None, "Idle");
         StartCoroutine(AnimateSprite());
+    }
+    float GetScaleFactor(float size)
+    {
+        float baseScale = 64f;
+        return size / baseScale;
     }
     void MakeAnimationEffect(TypeAnimationsEffects typeAnimationsEffects, float duration)
     {
@@ -100,19 +106,22 @@ public class ManagementCharacterAnimations : MonoBehaviour
         }
         meshRenderer.GetComponent<MeshFilter>().mesh.uv = uvs;
     }
-    bool GetCurrentAnimation(TypeAnimation typeAnimation)
+    bool GetCurrentAnimation(string typeAnimation)
     {
-        return currentAnimation.typeAnimation == typeAnimation;
+        return currentAnimation.animationName == typeAnimation;
     }
-    public bool ValidateAnimationEnd(TypeAnimation typeAnimation)
+    public bool ValidateAnimationEnd(string typeAnimation)
     {
-        return currentAnimation.typeAnimation != typeAnimation;
+        return currentAnimation.animationName != typeAnimation;
     }
-    public void MakeAnimation(TypeAnimation typeAnimation)
+    public void MakeAnimation(CharacterAnimationsSO.TypeAnimation typeAnimation, string animationName)
     {
         StopAllCoroutines();
-        currentAnimation = GetAnimation(typeAnimation);
-        GetAnimation(TypeAnimation.HandAttack).speedSpritesPerTimeMultplier = character.characterInfo.GetStatisticByType(Character.TypeStatistics.AtkSpd).currentValue;
+        currentAnimation = GetAnimation(typeAnimation, animationName);
+        if (typeAnimation == CharacterAnimationsSO.TypeAnimation.Attack)
+        {
+            currentAnimation.speedSpritesPerTimeMultplier = character.characterInfo.GetStatisticByType(Character.TypeStatistics.AtkSpd).currentValue;
+        }
         characterAnimationsInfo.currentSpritePerTime = characterAnimationsInfo.baseSpritePerTime / currentAnimation.speedSpritesPerTimeMultplier;
         characterAnimationsInfo.currentSpriteIndex = 0;
         StartCoroutine(AnimateSprite());
@@ -121,16 +130,46 @@ public class ManagementCharacterAnimations : MonoBehaviour
     {
         return characterSprite;
     }
-    public CharacterAnimationsSO.AnimationsInfo GetAnimation(TypeAnimation typeAnimation)
+    public CharacterAnimationsSO.AnimationsInfo GetAnimation(CharacterAnimationsSO.TypeAnimation typeAnimation, string animationName)
     {
-        foreach (CharacterAnimationsSO.AnimationsInfo animation in characterAnimationsInfo.animations)
+        switch (typeAnimation)
         {
-            if (animation.typeAnimation == typeAnimation)
-            {
-                return animation;
-            }
+            case CharacterAnimationsSO.TypeAnimation.None:
+                foreach (CharacterAnimationsSO.AnimationsInfo animation in characterAnimationsInfo.animations)
+                {
+                    if (animation.animationName == animationName)
+                    {
+                        return animation;
+                    }
+                }
+                break;
+            default:
+                return AnimationExist(typeAnimation, animationName);
         }
         return null;
+    }
+    public CharacterAnimationsSO.AnimationsInfo AnimationExist(CharacterAnimationsSO.TypeAnimation typeAnimation, string animationName)
+    {
+        CharacterAnimationsSO.AnimationsInfo defaultAnimation = new CharacterAnimationsSO.AnimationsInfo();
+        switch (typeAnimation)
+        {
+            case CharacterAnimationsSO.TypeAnimation.Attack:
+
+                foreach (CharacterAnimationsSO.AnimationsInfo animation in characterAnimationsInfo.animations)
+                {
+                    if (animation.animationName == "GeneralAttack") defaultAnimation = animation;                    
+                    if (animation.animationName == animationName) return animation;
+                }
+                break;
+            case CharacterAnimationsSO.TypeAnimation.Skill:
+                foreach (CharacterAnimationsSO.AnimationsInfo animation in characterAnimationsInfo.animations)
+                {
+                    if (animation.animationName == "DefaultSkillAttack") defaultAnimation = animation;
+                    if (animation.animationName == animationName) return animation;
+                }
+                break;
+        }
+        return defaultAnimation;
     }
     public CharacterAnimationsSO.AnimationsInfo GetCurrentAnimation()
     {
@@ -162,7 +201,7 @@ public class ManagementCharacterAnimations : MonoBehaviour
         float tiempoTranscurrido = 0f;
         Material material = characterSprite.GetComponent<MeshRenderer>().material;
         AnimationEffectInfo effectInfo = GetAnimationEffectInfo(TypeAnimationsEffects.Blink);
-        duration = characterAnimationsInfo.currentSpritePerTime * GetAnimation(TypeAnimation.TakeDamage).spritesInfoUp.Length;
+        duration = characterAnimationsInfo.currentSpritePerTime * GetAnimation(CharacterAnimationsSO.TypeAnimation.None, "TakeDamage").spritesInfoUp.Length;
         while (tiempoTranscurrido < duration)
         {
             if (material.color == Color.white)
@@ -206,7 +245,14 @@ public class ManagementCharacterAnimations : MonoBehaviour
                 }
                 else
                 {
-                    MakeAnimation(TypeAnimation.Idle);
+                    if (currentAnimation.linkAnimation != "")
+                    {
+                        MakeAnimation(currentAnimation.typeAnimation, currentAnimation.linkAnimation);
+                    }
+                    else
+                    {
+                        MakeAnimation(CharacterAnimationsSO.TypeAnimation.None, "Idle");
+                    }
                 }
             }
         }
@@ -300,20 +346,6 @@ public class ManagementCharacterAnimations : MonoBehaviour
         None = 0,
         Shake = 1,
         Blink = 2
-    }
-    public enum TypeAnimation
-    {
-        None = 0,
-        Idle = 1,
-        Walk = 2,
-        TakeDamage = 3,
-        HandAttack = 4,
-        SwordAttack = 5,
-        AxeAttack = 6,
-        SpearAttack = 7,
-        BowAttack = 8,
-        CrosierAttack = 9,
-        DefaultSkillAttack = 10
     }
     public interface IAnimationInstance
     {

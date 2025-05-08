@@ -204,4 +204,4 @@ MonoBehaviour:
     objectData: {fileID: 11400000, guid: 649c26d1c0cca62449cc90f4b9fc445f, type: 2}
     amount: 0
   needInstance: 1
-  typeAnimation: 5
+  typeAnimation: SwordAttack

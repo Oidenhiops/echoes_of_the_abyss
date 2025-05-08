@@ -19,20 +19,21 @@ MonoBehaviour:
     typeStatistics: 2
     baseValue: 3
     buffValue: 0
-    maxValue: 0
+    objectValue: 0
     currentValue: 0
+    maxValue: 0
   isPorcent: 0
   isFromBaseValue: 0
   needAnimation: 1
   skillAnimation:
-    typeAnimation: 5
-    spritesDown: []
-    spritesUp: []
+    typeAnimation: 1
+    animationName: SlashSkill
+    linkAnimation: 
+    spritesInfoDown: []
+    spritesInfoUp: []
     animationsEffects: 
     needAnimationEnd: 0
     loop: 0
-    needInstance: 0
-    needFrameToInstance: 0
     frameToInstance: 0
     speedSpritesPerTimeMultplier: 1
     instanceObj: {fileID: 0}

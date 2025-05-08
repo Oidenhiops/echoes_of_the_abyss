@@ -6,7 +6,7 @@ public override void DropObject(Character character, ManagementCharacterObjects.
     {
         if (objectInfo.isUsingItem)
         {
-            if (character.characterInfo.isPlayer) character.characterInfo.characterScripts.managementCharacterHud.ToggleActiveObject(objectInfo.id, false);
+            if (character.characterInfo.isPlayer) character.characterInfo.characterScripts.managementCharacterHud.ToggleActiveObject(objectInfo.objectPos, false);
             objectInfo.isUsingItem = false;
             Destroy(objectInfo.objectInstance);
         }
@@ -20,13 +20,13 @@ public override void DropObject(Character character, ManagementCharacterObjects.
         this.objectInfo.amount = 1;
         objectInfo.amount--;
         character.characterInfo.characterScripts.managementCharacterObjects.RefreshObjects();
-        character.characterInfo.PlayASound(character.characterInfo.characterScripts.managementCharacterSounds.GetAudioClip(CharacterSoundsSO.TypeSound.PickUp), true);
+        AudioManager.Instance.PlayASound(AudioManager.Instance.GetAudioClip("PickUp"), 1, true);
     }
 
     public override void InitializeObject(Character character, ManagementCharacterObjects.ObjectsInfo objectInfo, ManagementCharacterObjects managementCharacterObjects)
     {
         InstanceTorch(objectInfo, managementCharacterObjects);
-        if (character.characterInfo.isPlayer) character.characterInfo.characterScripts.managementCharacterHud.ToggleActiveObject(objectInfo.id, true);
+        if (character.characterInfo.isPlayer) character.characterInfo.characterScripts.managementCharacterHud.ToggleActiveObject(objectInfo.objectPos, true);
     }
 
     public override void UseObject(Character character, ManagementCharacterObjects.ObjectsInfo objectInfo, ManagementCharacterObjects managementCharacterObjects)
@@ -40,14 +40,14 @@ public override void DropObject(Character character, ManagementCharacterObjects.
         if (objectInfo.isUsingItem)
         {
             objectInfo.objectInstance.SetActive(true);
-            character.characterInfo.PlayASound(objectInfo.objectData.effectAudio, 1.1f, false);
+            AudioManager.Instance.PlayASound(AudioManager.Instance.GetAudioClip("PickUp"), 1.1f, true);
         }
         else
         {
             objectInfo.objectInstance.SetActive(false);
-            character.characterInfo.PlayASound(objectInfo.objectData.effectAudio, 0.9f, false);
+            AudioManager.Instance.PlayASound(AudioManager.Instance.GetAudioClip("PickUp"), 0.9f, true);
         }
-        if (character.characterInfo.isPlayer) character.characterInfo.characterScripts.managementCharacterHud.ToggleActiveObject(objectInfo.id, objectInfo.isUsingItem);
+        if (character.characterInfo.isPlayer) character.characterInfo.characterScripts.managementCharacterHud.ToggleActiveObject(objectInfo.objectPos, objectInfo.isUsingItem);
         character.characterInfo.RefreshCurrentStatistics();
     }
     public void InstanceTorch(ManagementCharacterObjects.ObjectsInfo objectInfo, ManagementCharacterObjects managementCharacterObjects)

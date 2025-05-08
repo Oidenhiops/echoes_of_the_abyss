@@ -46,6 +46,7 @@ public class ManagementSlashSkill : MonoBehaviour, ManagementCharacterSkills.ISk
         transform.rotation = characterMakeDamage.characterInfo.characterScripts.characterAttack.GetDirectionAttack().transform.rotation;
         transform.SetParent(null);
         rb.AddForce(characterMakeDamage.characterInfo.characterScripts.characterAttack.GetDirectionAttack().transform.forward * speed);
+        AudioManager.Instance.PlayASound(AudioManager.Instance.GetAudioClip("Slash"), 1, true);
         if (TryGetComponent<ManagementInstanceAttack>(out ManagementInstanceAttack managementInstanceAttack))
         {
             managementInstanceAttack.instanceAttackInfo.characterMakeDamage = character;

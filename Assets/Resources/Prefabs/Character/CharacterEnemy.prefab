@@ -332,7 +332,6 @@ GameObject:
   - component: {fileID: 4116982597303857081}
   - component: {fileID: 3267473307002927260}
   - component: {fileID: 8441756717079699773}
-  - component: {fileID: 8022874114501886702}
   - component: {fileID: 8081175514523905544}
   - component: {fileID: 2731720836664213740}
   - component: {fileID: 7985792512032563270}
@@ -435,7 +434,6 @@ MonoBehaviour:
     characterScripts:
       managementCharacterHud: {fileID: 8441756717079699773}
       managementCharacterModelDirection: {fileID: 8081175514523905544}
-      managementCharacterSounds: {fileID: 8022874114501886702}
       managementCharacterObjects: {fileID: 7985792512032563270}
       managementCharacterSkills: {fileID: 2849091386784508898}
       managementPlayerCamera: {fileID: 0}
@@ -652,18 +650,6 @@ MonoBehaviour:
     informationMessageUi:
       containerInformationMessage: {fileID: 0}
     mobileHud: []
---- !u!114 &8022874114501886702
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2374517195415127662}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bae8228f36a03964e8c3f51a2e9fb911, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &8081175514523905544
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -685,8 +671,6 @@ MonoBehaviour:
   movementDirectionAnimation: {x: -1, y: -1}
   movementCharacter: {x: 0, y: 0}
   directionPlayer: {fileID: 2649676387408830777}
-  targetViewportPos: {x: 0, y: 0, z: 0}
-  selfViewportPos: {x: 0, y: 0, z: 0}
 --- !u!114 &2731720836664213740
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -712,11 +696,14 @@ MonoBehaviour:
     animations: []
   currentAnimation:
     typeAnimation: 0
+    animationName: 
+    linkAnimation: 
     spritesInfoDown: []
     spritesInfoUp: []
     animationsEffects: 
     needAnimationEnd: 0
     loop: 0
+    needInstance: 0
     frameToInstance: 0
     speedSpritesPerTimeMultplier: 1
     instanceObj: {fileID: 0}
@@ -749,35 +736,35 @@ MonoBehaviour:
   character: {fileID: 3267473307002927260}
   rightHandPos: {fileID: 0}
   objects:
-  - objectData: {fileID: 0}
+  - objectId: 0
+    objectData: {fileID: 0}
     amount: 0
     isUsingItem: 0
-    id: 0
     objectInstance: {fileID: 0}
-  - objectData: {fileID: 0}
+  - objectId: 0
+    objectData: {fileID: 0}
     amount: 1
     isUsingItem: 0
-    id: 0
     objectInstance: {fileID: 0}
-  - objectData: {fileID: 0}
+  - objectId: 0
+    objectData: {fileID: 0}
     amount: 1
     isUsingItem: 0
-    id: 0
     objectInstance: {fileID: 0}
-  - objectData: {fileID: 0}
+  - objectId: 0
+    objectData: {fileID: 0}
     amount: 0
     isUsingItem: 0
-    id: 0
     objectInstance: {fileID: 0}
-  - objectData: {fileID: 0}
+  - objectId: 0
+    objectData: {fileID: 0}
     amount: 0
     isUsingItem: 0
-    id: 0
     objectInstance: {fileID: 0}
-  - objectData: {fileID: 0}
+  - objectId: 0
+    objectData: {fileID: 0}
     amount: 0
     isUsingItem: 0
-    id: 0
     objectInstance: {fileID: 0}
   objectsPositionsInfo:
   - typeObjectPosition: 2
@@ -1021,7 +1008,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children:
-  - {fileID: 1275233881175816060}
+  - {fileID: 7759010270491664684}
   m_Father: {fileID: 1679518945740273167}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &5382763006156271482
@@ -1112,6 +1099,38 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!1 &5548431758567127014
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7759010270491664684}
+  m_Layer: 12
+  m_Name: CharacterModelScale
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7759010270491664684
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5548431758567127014}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.45, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1275233881175816060}
+  m_Father: {fileID: 3503400365575747902}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6322115659643782004
 GameObject:
   m_ObjectHideFlags: 0
@@ -1518,7 +1537,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 3503400365575747902}
+    m_TransformParent: {fileID: 7759010270491664684}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 4385848d124d476478957ebbe044aec6,
         type: 3}
@@ -1543,7 +1562,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 4385848d124d476478957ebbe044aec6,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.46
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4385848d124d476478957ebbe044aec6,
         type: 3}
@@ -1558,17 +1577,17 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 4385848d124d476478957ebbe044aec6,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4385848d124d476478957ebbe044aec6,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4385848d124d476478957ebbe044aec6,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4385848d124d476478957ebbe044aec6,
         type: 3}

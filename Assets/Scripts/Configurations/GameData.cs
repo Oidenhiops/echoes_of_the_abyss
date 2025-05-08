@@ -7,6 +7,7 @@ public class GameData : MonoBehaviour
 {
     public static GameData Instance { get; private set; }
     string nameSaveData = "SaveData.json";
+    public ObjectsDBSO objectsDB;
     public SaveData saveData = new SaveData();
     public List<string[]> csvData = new List<string[]>();
     void Awake()
@@ -29,6 +30,7 @@ public class GameData : MonoBehaviour
         saveData.gameInfo.characterInfo.characterSelected = Resources.Load<InitialDataSO>($"SciptablesObjects/Character/InitialData/{saveData.gameInfo.characterInfo.characterSelectedName}");
         LoadCSV();
         InitializeResolutionData();
+        InitializeObjects();
         Application.targetFrameRate = saveData.configurationsInfo.FpsLimit;
         await InitializeAudioMixerData();
         GameManager.Instance.StartCoroutine(AudioManager.Instance.FadeIn());
@@ -63,6 +65,13 @@ public class GameData : MonoBehaviour
     {
         saveData.configurationsInfo.currentLanguage = language;
         SaveGameData();
+    }
+    void InitializeObjects()
+    {
+        foreach(ManagementCharacterObjects.ObjectsInfo objectsDataSO in saveData.gameInfo.characterInfo.currentObjects)
+        {
+            objectsDataSO.objectData = objectsDB.GetObject(objectsDataSO.objectId);
+        }
     }
     void InitializeResolutionData()
     {

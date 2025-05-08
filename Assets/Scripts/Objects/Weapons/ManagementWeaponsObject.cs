@@ -3,7 +3,7 @@ using UnityEngine;
 public class ManagementWeaponsObject : ObjectBase
 {
     public bool needInstance = false;
-    public ManagementCharacterAnimations.TypeAnimation typeAnimation;
+    public string typeAnimation;
     public override void UseObject(Character character, ManagementCharacterObjects.ObjectsInfo objectInfo, ManagementCharacterObjects managementCharacterObjects)
     {
         objectInfo.isUsingItem = !objectInfo.isUsingItem;
@@ -14,7 +14,7 @@ public class ManagementWeaponsObject : ObjectBase
                 Character.Statistics statistic = character.characterInfo.GetStatisticByType(armorStats.typeStatistics);
                 statistic.objectValue += armorStats.baseValue;
             }
-            character.characterInfo.PlayASound(objectInfo.objectData.effectAudio, 1.1f, false);
+            AudioManager.Instance.PlayASound(AudioManager.Instance.GetAudioClip("PickUp"), 1.1f, true);
             if (needInstance && character.characterInfo.initialData.isHuman) character.characterInfo.characterScripts.managementCharacterObjects.InstanceObjectInHand(objectInfo.objectData.objectInstance, false);
         }
         else
@@ -24,14 +24,14 @@ public class ManagementWeaponsObject : ObjectBase
                 Character.Statistics statistic = character.characterInfo.GetStatisticByType(armorStats.typeStatistics);
                 statistic.objectValue -= armorStats.baseValue;
             }
-            character.characterInfo.PlayASound(objectInfo.objectData.effectAudio, 0.9f, false);
+            AudioManager.Instance.PlayASound(AudioManager.Instance.GetAudioClip("PickUp"), 0.9f, true);
             character.characterInfo.characterScripts.managementCharacterObjects.DestroyObjectInHand(false);
         }
         character.characterInfo.RefreshCurrentStatistics();
         if (character.characterInfo.isPlayer)
         {
             character.characterInfo.characterScripts.managementCharacterHud.RefreshCurrentStatistics();
-            character.characterInfo.characterScripts.managementCharacterHud.ToggleActiveObject(objectInfo.id, objectInfo.isUsingItem);
+            character.characterInfo.characterScripts.managementCharacterHud.ToggleActiveObject(objectInfo.objectPos, objectInfo.isUsingItem);
         }
     }
     public override void DropObject(Character character, ManagementCharacterObjects.ObjectsInfo objectInfo, ManagementCharacterObjects managementCharacterObjects)
@@ -43,7 +43,7 @@ public class ManagementWeaponsObject : ObjectBase
                 Character.Statistics statistic = character.characterInfo.GetStatisticByType(armorStats.typeStatistics);
                 statistic.objectValue -= armorStats.baseValue;
             }
-            if (character.characterInfo.isPlayer) character.characterInfo.characterScripts.managementCharacterHud.ToggleActiveObject(objectInfo.id, false);
+            if (character.characterInfo.isPlayer) character.characterInfo.characterScripts.managementCharacterHud.ToggleActiveObject(objectInfo.objectPos, false);
             objectInfo.isUsingItem = false;
             character.characterInfo.RefreshCurrentStatistics();
             if (character.characterInfo.isPlayer)
@@ -63,7 +63,7 @@ public class ManagementWeaponsObject : ObjectBase
         this.objectInfo.amount = 1;
         objectInfo.amount--;
         character.characterInfo.characterScripts.managementCharacterObjects.RefreshObjects();
-        character.characterInfo.PlayASound(character.characterInfo.characterScripts.managementCharacterSounds.GetAudioClip(CharacterSoundsSO.TypeSound.PickUp), true);
+        AudioManager.Instance.PlayASound(AudioManager.Instance.GetAudioClip("PickUp"), 1, true);
     }
 
     public override void InitializeObject(Character character, ManagementCharacterObjects.ObjectsInfo objectInfo, ManagementCharacterObjects managementCharacterObjects)
@@ -77,11 +77,11 @@ public class ManagementWeaponsObject : ObjectBase
         if (character.characterInfo.isPlayer)
         {
             character.characterInfo.characterScripts.managementCharacterHud.RefreshCurrentStatistics();
-            character.characterInfo.characterScripts.managementCharacterHud.ToggleActiveObject(objectInfo.id, true);
+            character.characterInfo.characterScripts.managementCharacterHud.ToggleActiveObject(objectInfo.objectPos, true);
         }
         if (needInstance && character.characterInfo.initialData.isHuman) character.characterInfo.characterScripts.managementCharacterObjects.InstanceObjectInHand(objectInfo.objectData.objectInstance, false);
     }
-    public override ManagementCharacterAnimations.TypeAnimation GetTypeObjAnimation()
+    public override string GetTypeObjAnimation()
     {
         return typeAnimation;
     }

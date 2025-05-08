@@ -17,7 +17,9 @@ MonoBehaviour:
     currentSpritePerTime: 0.1
     currentSpriteIndex: 0
     animations:
-    - typeAnimation: 1
+    - typeAnimation: 0
+      animationName: Idle
+      linkAnimation: 
       spritesInfoDown:
       - generalSprite: {fileID: 1111749632, guid: f9b4a6675f07119489ecf11c733a09a5,
           type: 3}
@@ -131,11 +133,14 @@ MonoBehaviour:
       animationsEffects: 
       needAnimationEnd: 0
       loop: 1
+      needInstance: 0
       frameToInstance: 0
       speedSpritesPerTimeMultplier: 1
       instanceObj: {fileID: 0}
       instance: {fileID: 0}
-    - typeAnimation: 2
+    - typeAnimation: 0
+      animationName: Walk
+      linkAnimation: 
       spritesInfoDown:
       - generalSprite: {fileID: -1731553578, guid: f9b4a6675f07119489ecf11c733a09a5,
           type: 3}
@@ -249,11 +254,14 @@ MonoBehaviour:
       animationsEffects: 
       needAnimationEnd: 0
       loop: 1
+      needInstance: 0
       frameToInstance: 0
       speedSpritesPerTimeMultplier: 1
       instanceObj: {fileID: 0}
       instance: {fileID: 0}
-    - typeAnimation: 3
+    - typeAnimation: 0
+      animationName: TakeDamage
+      linkAnimation: 
       spritesInfoDown:
       - generalSprite: {fileID: -2047733763, guid: f9b4a6675f07119489ecf11c733a09a5,
           type: 3}
@@ -367,11 +375,14 @@ MonoBehaviour:
       animationsEffects: 0100000002000000
       needAnimationEnd: 1
       loop: 0
+      needInstance: 0
       frameToInstance: 0
       speedSpritesPerTimeMultplier: 1
       instanceObj: {fileID: 0}
       instance: {fileID: 0}
-    - typeAnimation: 4
+    - typeAnimation: 1
+      animationName: GeneralAttack
+      linkAnimation: 
       spritesInfoDown:
       - generalSprite: {fileID: -1305280099, guid: f9b4a6675f07119489ecf11c733a09a5,
           type: 3}
@@ -467,12 +478,15 @@ MonoBehaviour:
       animationsEffects: 
       needAnimationEnd: 1
       loop: 0
+      needInstance: 1
       frameToInstance: 2
       speedSpritesPerTimeMultplier: 1
       instanceObj: {fileID: 8556195570774308549, guid: f98edab0006817e4e9c48bd4f4a3fffd,
         type: 3}
       instance: {fileID: 0}
-    - typeAnimation: 10
+    - typeAnimation: 2
+      animationName: DefaultSkillAttack
+      linkAnimation: 
       spritesInfoDown:
       - generalSprite: {fileID: -1305280099, guid: f9b4a6675f07119489ecf11c733a09a5,
           type: 3}
@@ -568,7 +582,24 @@ MonoBehaviour:
       animationsEffects: 
       needAnimationEnd: 1
       loop: 0
+      needInstance: 1
       frameToInstance: 2
       speedSpritesPerTimeMultplier: 1
       instanceObj: {fileID: 0}
       instance: {fileID: 0}
+  newAnimationInfo:
+    typeAnimation: 0
+    animationName: 
+    linkAnimation: 
+    spriteDown: []
+    handSpriteDown: {fileID: 0}
+    spriteUp: []
+    handSpriteUp: {fileID: 0}
+    animationsEffects: 
+    needAnimationEnd: 0
+    loop: 0
+    needInstance: 0
+    frameToInstance: 0
+    speedSpritesPerTimeMultplier: 1
+    instanceObj: {fileID: 0}
+    instance: {fileID: 0}

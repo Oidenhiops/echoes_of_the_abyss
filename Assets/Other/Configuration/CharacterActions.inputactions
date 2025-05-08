@@ -24,6 +24,15 @@
                     "initialStateCheck": true
                 },
                 {
+                    "name": "MousePos",
+                    "type": "Value",
+                    "id": "b4bfae70-c59c-4f43-a050-634a7d8e64ab",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
                     "name": "PrincipalAttack",
                     "type": "Button",
                     "id": "817295e4-4167-41b8-80c2-448ae4755ee1",
@@ -87,64 +96,19 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "ChangeObject1",
+                    "name": "ChangeObjectPos",
                     "type": "Button",
-                    "id": "82c0470a-c114-4f00-8d20-98702758c47f",
+                    "id": "6eabff1a-3cf3-495c-8fd1-6f655cceb110",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "ChangeObject2",
-                    "type": "Button",
-                    "id": "74b49586-5dd0-46fd-9e7e-6f4030002c3b",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "ChangeObject3",
-                    "type": "Button",
-                    "id": "87b29e86-6b1d-4eae-8daf-7381563cb7bb",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "ChangeObject4",
-                    "type": "Button",
-                    "id": "767b56a1-5939-4916-9d92-de7ef8deda9c",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "ChangeObject5",
-                    "type": "Button",
-                    "id": "2e39d5f3-3ed3-4424-8606-0c6007e4c556",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "ChangeObject6",
-                    "type": "Button",
-                    "id": "605c5579-bc19-40de-ba6a-18259226ab80",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
+                    "initialStateCheck": true
                 },
                 {
                     "name": "UseSkill",
                     "type": "Button",
                     "id": "bfc1cc80-0473-4013-9910-021b3647e148",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
@@ -175,15 +139,6 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
-                },
-                {
-                    "name": "MousePos",
-                    "type": "Value",
-                    "id": "b4bfae70-c59c-4f43-a050-634a7d8e64ab",
-                    "expectedControlType": "Vector2",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": true
                 },
                 {
                     "name": "Pause",
@@ -436,72 +391,6 @@
                 },
                 {
                     "name": "",
-                    "id": "4736bce7-d4a1-460d-8871-09f3c45ef88a",
-                    "path": "<Keyboard>/1",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "ChangeObject1",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "8d78eba4-3795-46cc-82f7-886c25421037",
-                    "path": "<Keyboard>/2",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "ChangeObject2",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "8b3b73dc-39d3-48a6-85a0-a23df9cf5cec",
-                    "path": "<Keyboard>/3",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "ChangeObject3",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "c11259c4-4a55-4652-bfe5-52b86ff13285",
-                    "path": "<Keyboard>/4",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "ChangeObject4",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "798d9385-c50c-4f25-ba7c-28e7c13aaedb",
-                    "path": "<Keyboard>/5",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "ChangeObject5",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "ba2fa0be-22d3-4917-af75-e6f4d4dc3669",
-                    "path": "<Keyboard>/6",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "ChangeObject6",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "98f14e8e-cded-4e0b-8269-0495c96dbfa9",
                     "path": "<Keyboard>/r",
                     "interactions": "",
@@ -741,6 +630,72 @@
                     "action": "ChangeObject",
                     "isComposite": false,
                     "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "7e58a9c4-87fa-42dd-9913-b1197bcb0552",
+                    "path": "<Keyboard>/1",
+                    "interactions": "",
+                    "processors": "Scale(factor=0)",
+                    "groups": "",
+                    "action": "ChangeObjectPos",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d4e410ff-3fb1-4912-9f6f-e8fd4bfb0e57",
+                    "path": "<Keyboard>/2",
+                    "interactions": "",
+                    "processors": "Scale",
+                    "groups": "",
+                    "action": "ChangeObjectPos",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b198f617-9d3f-41e0-bc4b-432c61a862b7",
+                    "path": "<Keyboard>/3",
+                    "interactions": "",
+                    "processors": "Scale(factor=2)",
+                    "groups": "",
+                    "action": "ChangeObjectPos",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "23be1a7a-8171-416a-8c7b-b6b0e17a5477",
+                    "path": "<Keyboard>/4",
+                    "interactions": "",
+                    "processors": "Scale(factor=3)",
+                    "groups": "",
+                    "action": "ChangeObjectPos",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "f14c3bec-c461-4525-895e-fb607ad226d4",
+                    "path": "<Keyboard>/5",
+                    "interactions": "",
+                    "processors": "Scale(factor=4)",
+                    "groups": "",
+                    "action": "ChangeObjectPos",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ccbe979f-e241-488b-b365-21ce1f24b9a3",
+                    "path": "<Keyboard>/6",
+                    "interactions": "",
+                    "processors": "Scale(factor=5)",
+                    "groups": "",
+                    "action": "ChangeObjectPos",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         }

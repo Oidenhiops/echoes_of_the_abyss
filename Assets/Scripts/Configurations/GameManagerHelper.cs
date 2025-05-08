@@ -18,11 +18,11 @@ public class GameManagerHelper : MonoBehaviour
     }
     public void PlayASound(AudioClip audioClip, float initialRandomPitch)
     {
-        AudioManager.Instance.PlayASound(audioClip, initialRandomPitch);
+        AudioManager.Instance.PlayASound(audioClip, initialRandomPitch, false);
     }
     public void PlayASoundButton(AudioClip audioClip)
     {
-        AudioManager.Instance.PlayASound(audioClip, 1);
+        AudioManager.Instance.PlayASound(audioClip, 1, false);
     }
     public void SetAudioMixerData()
     {

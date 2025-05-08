@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -10,14 +11,9 @@ public class ManagementCharacterObjects : MonoBehaviour
     public int objectSelectedPosition = 0;
     public void InitializeObjectsEvents()
     {
-        character.characterInputs.characterActions.CharacterInputs.ChangeObject.performed += OnChangeObject;
-        character.characterInputs.characterActions.CharacterInputs.ChangeObject1.performed += OnChangeObject1;
-        character.characterInputs.characterActions.CharacterInputs.ChangeObject2.performed += OnChangeObject2;
-        character.characterInputs.characterActions.CharacterInputs.ChangeObject3.performed += OnChangeObject3;
-        character.characterInputs.characterActions.CharacterInputs.ChangeObject4.performed += OnChangeObject4;
-        character.characterInputs.characterActions.CharacterInputs.ChangeObject5.performed += OnChangeObject5;
-        character.characterInputs.characterActions.CharacterInputs.ChangeObject6.performed += OnChangeObject6;
-        character.characterInputs.characterActions.CharacterInputs.UseObject.performed += OnUseObject;
+        character.characterInputs.characterActions.CharacterInputs.ChangeObject.started += OnChangeObject;
+        character.characterInputs.characterActions.CharacterInputs.ChangeObjectPos.started += OnChangeObjectPos;
+        character.characterInputs.characterActions.CharacterInputs.UseObject.started += OnUseObject;
     }
     public void HandleObjects()
     {
@@ -33,51 +29,16 @@ public class ManagementCharacterObjects : MonoBehaviour
             ChangeCurrentObject(context.ReadValue<float>() > 0);
         }
     }
-    public void OnChangeObject1(InputAction.CallbackContext context)
+    public void OnChangeObjectPos(InputAction.CallbackContext context)
     {
-        if (character.characterInfo.isActive && context.action.triggered)
+        if (character.characterInfo.isActive)
         {
-            ChangeCurrentObject(0);
-        }
-    }
-    public void OnChangeObject2(InputAction.CallbackContext context)
-    {
-        if (character.characterInfo.isActive && context.action.triggered)
-        {
-            ChangeCurrentObject(1);
-        }
-    }
-    public void OnChangeObject3(InputAction.CallbackContext context)
-    {
-        if (character.characterInfo.isActive && context.action.triggered)
-        {
-            ChangeCurrentObject(2);
-        }
-    }
-    public void OnChangeObject4(InputAction.CallbackContext context)
-    {
-        if (character.characterInfo.isActive && context.action.triggered)
-        {
-            ChangeCurrentObject(3);
-        }
-    }
-    public void OnChangeObject5(InputAction.CallbackContext context)
-    {
-        if (character.characterInfo.isActive && context.action.triggered)
-        {
-            ChangeCurrentObject(4);
-        }
-    }
-    public void OnChangeObject6(InputAction.CallbackContext context)
-    {
-        if (character.characterInfo.isActive && context.action.triggered)
-        {
-            ChangeCurrentObject(5);
+            ChangeCurrentObject((int)context.ReadValue<float>());
         }
     }
     public void OnUseObject(InputAction.CallbackContext context)
     {
-        if (character.characterInfo.isActive && context.action.triggered)
+        if (character.characterInfo.isActive)
         {
             ValidateUseItem();
         }
@@ -137,11 +98,11 @@ public class ManagementCharacterObjects : MonoBehaviour
         }
         if (pickUpItem)
         {
-            character.characterInfo.PlayASound(CharacterSoundsSO.TypeSound.PickUp, false);
+            AudioManager.Instance.PlayASound(AudioManager.Instance.GetAudioClip("PickUp"), 1, true);
         }
         else
         {
-            character.characterInfo.PlayASound(CharacterSoundsSO.TypeSound.NotPickup, false);
+            AudioManager.Instance.PlayASound(AudioManager.Instance.GetAudioClip("NotPickup"), 1, true);
         }
         RefreshObjects();
     }
@@ -172,7 +133,7 @@ public class ManagementCharacterObjects : MonoBehaviour
         if (character.characterInfo.isPlayer) character.characterInfo.characterScripts.managementCharacterHud.RefreshObjects(objects);
         for (int i = 0; i < objects.Length; i++)
         {
-            objects[i].id = i;
+            objects[i].objectPos = i;
             if (objects[i].objectData != null && objects[i].isUsingItem)
             {
                 objects[i].objectData.objectInstance.GetComponent<ObjectBase>().InitializeObject(character, objects[i], this);
@@ -302,15 +263,16 @@ public class ManagementCharacterObjects : MonoBehaviour
         }
         return null;
     }
-    [System.Serializable] public class ObjectsInfo
+    [Serializable] public class ObjectsInfo
     {
+        [NonSerialized] public int objectPos;
+        public int objectId;
         public ObjectsDataSO objectData;
         public int amount;
         public bool isUsingItem = false;
-        public int id;
         public GameObject objectInstance;
     }
-    [System.Serializable] public class ObjectsPositionsInfo{
+    [Serializable] public class ObjectsPositionsInfo{
         public TypeObjectPosition typeObjectPosition = TypeObjectPosition.None;
         public GameObject objectPosition;
     }
