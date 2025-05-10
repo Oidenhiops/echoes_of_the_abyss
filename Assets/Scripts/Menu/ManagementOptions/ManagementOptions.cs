@@ -1,7 +1,11 @@
 using System;
+using System.Collections.Generic;
 using TMPro;
+using UnityEditor.PackageManager;
 using UnityEngine;
 using UnityEngine.Audio;
+using UnityEngine.EventSystems;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -12,11 +16,14 @@ public class ManagementOptions : MonoBehaviour
     public SoundInfo[] soundInfo;
     public WindowModeButtonsInfo windowModeButtonsInfo;
     public FpsButtonsInfo fpsButtonsInfo;
+    public ButtonsBackInfo[] buttonsBackInfos;
+    public ButtonBackInfo buttonBackInfo;
     public GameObject homeButton;
     public GameObject muteCheck;
     public GameObject resolutionButtons;
+    public Button buttonBack;
     public ControlsInfo[] controlsInfo;
-
+    public InputAction backButton;
     void OnEnable()
     {
         Time.timeScale = 0;
@@ -26,13 +33,27 @@ public class ManagementOptions : MonoBehaviour
         SetFullScreenButtonsSprite();
         SetFpsLimitButtonsSprite();
         SetVolumeSliders();
+        buttonsBackInfos[0].buttonToBack.Select();
         GameManager.Instance.OnDeviceChanged += ChangeMenuButtons;
+        backButton.started += BackHandle;
+        backButton.Enable();
         ChangeMenuButtons(GameManager.Instance.currentDevice);
         muteCheck.SetActive(GameData.Instance.saveData.configurationsInfo.soundConfiguration.isMute);
         if (SceneManager.GetSceneByName("HomeScene").isLoaded) homeButton.SetActive(false);
     }
     void OnDestroy()
     {
+        backButton.started -= BackHandle;
+        Scene scene = SceneManager.GetSceneByName("HomeScene");
+
+        if (scene.IsValid() && scene.isLoaded)
+        {
+            MenuHelper menuHelper = FindAnyObjectByType<MenuHelper>();
+            if (menuHelper != null)
+            {
+                menuHelper.SelectButton();
+            }
+        }
         if (GameManager.Instance.principalDevice == GameManager.TypeDevice.PC) GameManager.Instance.OnDeviceChanged -= ChangeMenuButtons;
         Time.timeScale = 1;
         GameManager.Instance.isPause = false;
@@ -53,6 +74,49 @@ public class ManagementOptions : MonoBehaviour
             if (dropdownLanguage.options[i].text == GameData.Instance.saveData.configurationsInfo.currentLanguage.ToString())
             {
                 dropdownLanguage.value = i;
+                break;
+            }
+        }
+    }
+    public void BackHandle(InputAction.CallbackContext context)
+    {
+        if (buttonBackInfo.button)
+        {
+            buttonBackInfo.button.Select();
+            buttonBackInfo.menu.SetActive(false);
+            buttonBackInfo = new ButtonBackInfo();
+            AudioManager.Instance.PlayASound(AudioManager.Instance.GetAudioClip("TouchButtonBack"), 1, true);
+        }
+        else
+        {
+            GetComponent<GameManagerHelper>().PlayASoundButton(AudioManager.Instance.GetAudioClip("TouchButtonAdvance"));
+            GetComponent<GameManagerHelper>().UnloadScene();
+        }
+    }
+    public void SetSelectedButtonToBack(int buttonId)
+    {
+        foreach (var buttonsBack in buttonsBackInfos)
+        {
+            if (buttonsBack.id == buttonId)
+            {
+                buttonBackInfo.button = buttonsBack.buttonToBack;
+                buttonBackInfo.menu = buttonsBack.menu;
+                if (buttonsBack.buttonsToSelect.Length > 0)
+                {
+                    if (buttonId == 0)
+                    {
+                        EventSystem.current.SetSelectedGameObject
+                        (
+                            resolutionButtons.activeSelf ? 
+                            buttonsBackInfos[0].buttonsToSelect[0] :
+                            buttonsBackInfos[0].buttonsToSelect[1]
+                        );
+                    }
+                }
+                else
+                {
+                    EventSystem.current.SetSelectedGameObject(null);
+                }
                 break;
             }
         }
@@ -234,10 +298,28 @@ public class ManagementOptions : MonoBehaviour
         if (typeDevice != GameManager.TypeDevice.MOBILE)
         {
             resolutionButtons.SetActive(true);
+            buttonsBackInfos[2].buttonToBack.gameObject.SetActive(true);
         }
         else
         {
             resolutionButtons.SetActive(false);
+            buttonsBackInfos[2].buttonToBack.gameObject.SetActive(false);
+        }
+        ChangeNavigationButtons();
+    }
+    public void ChangeNavigationButtons()
+    {
+        var navVolume = buttonsBackInfos[1].buttonToBack.navigation;
+        navVolume.selectOnDown = buttonsBackInfos[2].buttonToBack.gameObject.activeSelf ? buttonsBackInfos[2].buttonToBack : buttonsBackInfos[3].buttonToBack;
+        buttonsBackInfos[1].buttonToBack.navigation = navVolume;
+
+        var navBack = buttonsBackInfos[3].buttonToBack.navigation;
+        navBack.selectOnUp = buttonsBackInfos[2].buttonToBack.gameObject.activeSelf ? buttonsBackInfos[2].buttonToBack : buttonsBackInfos[1].buttonToBack;
+        buttonsBackInfos[3].buttonToBack.navigation = navBack;
+
+        if (!buttonsBackInfos[2].buttonToBack.gameObject.activeSelf && EventSystem.current.currentSelectedGameObject == buttonsBackInfos[2].buttonToBack.gameObject)
+        {
+            buttonsBackInfos[1].buttonToBack.Select();
         }
     }
     [Serializable] public class SoundInfo
@@ -266,5 +348,17 @@ public class ManagementOptions : MonoBehaviour
     {
         public GameManager.TypeDevice typeDevice;
         public GameObject container;
+    }
+    [Serializable] public class ButtonsBackInfo
+    {
+        public Button buttonToBack;
+        public GameObject[] buttonsToSelect;
+        public GameObject menu;
+        public int id;        
+    }
+    [Serializable] public class ButtonBackInfo
+    {
+        public Button button;
+        public GameObject menu;
     }
 }

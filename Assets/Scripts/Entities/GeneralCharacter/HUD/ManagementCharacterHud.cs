@@ -31,10 +31,10 @@ public class ManagementCharacterHud : MonoBehaviour
     }
     void EnabledMobileHUD(GameManager.TypeDevice typeDevice)
     {
-        bool isActie = typeDevice == GameManager.TypeDevice.MOBILE;
+        bool isActive = typeDevice == GameManager.TypeDevice.MOBILE;
         foreach (GameObject hud in characterUi.mobileHud)
         {
-            hud.SetActive(isActie);
+            hud.SetActive(isActive);
         }
     }
     void ToggleSecondaryAction(bool value)

@@ -11,9 +11,9 @@ public class ManagementCharacterObjects : MonoBehaviour
     public int objectSelectedPosition = 0;
     public void InitializeObjectsEvents()
     {
-        character.characterInputs.characterActions.CharacterInputs.ChangeObject.started += OnChangeObject;
-        character.characterInputs.characterActions.CharacterInputs.ChangeObjectPos.started += OnChangeObjectPos;
-        character.characterInputs.characterActions.CharacterInputs.UseObject.started += OnUseObject;
+        character.characterInputs.characterActions.CharacterInputs.ChangeItem.performed += OnChangeObject;
+        character.characterInputs.characterActions.CharacterInputs.ChangeItemPos.performed += OnChangeObjectPos;
+        character.characterInputs.characterActions.CharacterInputs.UseItem.performed += OnUseObject;
     }
     public void HandleObjects()
     {
@@ -102,7 +102,7 @@ public class ManagementCharacterObjects : MonoBehaviour
         }
         else
         {
-            AudioManager.Instance.PlayASound(AudioManager.Instance.GetAudioClip("NotPickup"), 1, true);
+            AudioManager.Instance.PlayASound(AudioManager.Instance.GetAudioClip("NotPickUp"), 1, true);
         }
         RefreshObjects();
     }

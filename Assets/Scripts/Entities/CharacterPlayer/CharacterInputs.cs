@@ -37,7 +37,7 @@ public class CharacterInputs : MonoBehaviour
         characterActions.CharacterInputs.Movement.performed += OnMovementInput;
         characterActions.CharacterInputs.Movement.canceled += OnMovementInput;
         characterActions.CharacterInputs.Pause.performed += OnPauseInput;
-        characterActions.CharacterInputs.EnableSecondaryAction.started += OnEnableSecondaryAction;
+        characterActions.CharacterInputs.SecondaryAction.started += OnEnableSecondaryAction;
     }
     void OnMovementInput(InputAction.CallbackContext context)
     {
@@ -112,7 +112,7 @@ public class CharacterInputs : MonoBehaviour
         {
             return Vector2.zero;
         }
-        if (characterActions.CharacterInputs.MoveCamera.ReadValue<Vector2>() != Vector2.zero || restoreMovementMouse > 0 && characterActions.CharacterInputs.PrincipalAttack.triggered || restoreMovementMouse > 0 && characterActions.CharacterInputs.UseSkill.triggered)
+        if (characterActions.CharacterInputs.MoveCamera.ReadValue<Vector2>() != Vector2.zero || restoreMovementMouse > 0 && characterActions.CharacterInputs.BasicAttack.triggered || restoreMovementMouse > 0 && characterActions.CharacterInputs.UseSkill.triggered)
         {
             restoreMovementMouse = timeRestoreMovementMouse;
         }
@@ -150,7 +150,7 @@ public class CharacterInputs : MonoBehaviour
         {
             return characterActions.CharacterInputs.MoveCamera.ReadValue<Vector2>();
         }
-        if (GameManager.Instance.currentDevice == GameManager.TypeDevice.MOBILE && characterActions.CharacterInputs.PrincipalAttack.IsPressed())
+        if (GameManager.Instance.currentDevice == GameManager.TypeDevice.MOBILE && characterActions.CharacterInputs.BasicAttack.IsPressed())
         {
             return characterActions.CharacterInputs.MoveCamera.ReadValue<Vector2>();
         }
@@ -158,9 +158,8 @@ public class CharacterInputs : MonoBehaviour
     }
     void ValidateShowMouse(bool showAttackDiection)
     {
-        if (GameManager.Instance.currentDevice == GameManager.TypeDevice.GAMEPAD || GameManager.Instance.currentDevice == GameManager.TypeDevice.MOBILE)
-        {
-            Cursor.visible = false;
+        if (GameManager.Instance.currentDevice != GameManager.TypeDevice.PC)
+        {            
             if (showAttackDiection)
             {
                 attackDirection.SetActive(true);
@@ -170,18 +169,18 @@ public class CharacterInputs : MonoBehaviour
                 attackDirection.SetActive(false);
             }
         }
-        else
-        {
-            if (showAttackDiection)
-            {
-                Cursor.visible = true;
-            }
-            else
-            {
-                Cursor.visible = false;
-            }
-            attackDirection.SetActive(false);
-        }
+        // else
+        // {
+        //     if (showAttackDiection)
+        //     {
+        //         Cursor.visible = true;
+        //     }
+        //     else
+        //     {
+        //         Cursor.visible = false;
+        //     }
+        //     attackDirection.SetActive(false);
+        // }
     }
     [Serializable] public class CharacterActionsInfo
     {

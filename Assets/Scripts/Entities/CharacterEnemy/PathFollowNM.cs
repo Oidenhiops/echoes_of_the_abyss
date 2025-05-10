@@ -40,4 +40,9 @@ public class PathFollowNM : MonoBehaviour, Character.ICharacterMove
     {
         target = targetPos;        
     }
+
+    public Vector3 GetDirectionMove()
+    {
+        throw new System.NotImplementedException();
+    }
 }

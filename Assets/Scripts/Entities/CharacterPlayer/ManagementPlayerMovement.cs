@@ -4,8 +4,6 @@ using UnityEngine;
 public class ManagementPlayerMovement : MonoBehaviour, Character.ICharacterMove
 {
     public Character character;
-    Vector3 camForward;
-    Vector3 camRight;
     Vector3 movementDirection;
     float jumpForce = 3;
     public void Move()
@@ -15,9 +13,13 @@ public class ManagementPlayerMovement : MonoBehaviour, Character.ICharacterMove
             character.characterInputs.characterActionsInfo.movement.x,
             0,
             character.characterInputs.characterActionsInfo.movement.y
+        ).normalized;        
+        Vector3 camDirection = 
+        (
+            inputs.x * character.characterInfo.characterScripts.managementPlayerCamera.camRight + 
+            inputs.z * character.characterInfo.characterScripts.managementPlayerCamera.camForward
         ).normalized;
-        CamDirection();
-        Vector3 camDirection = (inputs.x * camRight + inputs.z * camForward).normalized;
+        
         movementDirection = new Vector3
         (
             camDirection.x,
@@ -38,17 +40,6 @@ public class ManagementPlayerMovement : MonoBehaviour, Character.ICharacterMove
             character.characterInfo.rb.linearVelocity += movementDirection / 10;
         }
     }
-    void CamDirection()
-    {
-        Vector3 camForwardDirection = Camera.main.transform.forward;
-        Vector3 camRightDirection = Camera.main.transform.right;
-
-        camForwardDirection.y = 0;
-        camRightDirection.y = 0;
-
-        camForward = camForwardDirection.normalized;
-        camRight = camRightDirection.normalized;
-    }
     void Jump()
     {
         if (character.characterInfo.isGrounded && character.characterInputs.characterActions.CharacterInputs.Jump.triggered)
@@ -64,4 +55,9 @@ public class ManagementPlayerMovement : MonoBehaviour, Character.ICharacterMove
     public void SetCanMoveState(bool state){}
 
     public void SetTarget(Transform targetPos){}
+
+    public Vector3 GetDirectionMove()
+    {
+        return movementDirection;
+    }
 }
