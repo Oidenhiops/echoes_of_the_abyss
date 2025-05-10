@@ -33,13 +33,13 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "PrincipalAttack",
-                    "type": "Button",
-                    "id": "817295e4-4167-41b8-80c2-448ae4755ee1",
-                    "expectedControlType": "Button",
+                    "name": "ChangeInteractable",
+                    "type": "Value",
+                    "id": "45fa18f5-81e6-456c-a43a-66d1885de12c",
+                    "expectedControlType": "Vector2",
                     "processors": "",
                     "interactions": "",
-                    "initialStateCheck": false
+                    "initialStateCheck": true
                 },
                 {
                     "name": "Interact",
@@ -51,10 +51,10 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "EnableSecondaryAction",
+                    "name": "SecondaryAction",
                     "type": "Button",
                     "id": "e64bb2ca-faa6-4dc7-bd1f-86ab18dc6153",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
@@ -78,33 +78,6 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "ChangeObjectForTake",
-                    "type": "Value",
-                    "id": "45fa18f5-81e6-456c-a43a-66d1885de12c",
-                    "expectedControlType": "Vector2",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": true
-                },
-                {
-                    "name": "ChangeObject",
-                    "type": "Value",
-                    "id": "bdc9890b-e11e-4017-bf8e-839a0e9fcd7d",
-                    "expectedControlType": "Axis",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": true
-                },
-                {
-                    "name": "ChangeObjectPos",
-                    "type": "Button",
-                    "id": "6eabff1a-3cf3-495c-8fd1-6f655cceb110",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": true
-                },
-                {
                     "name": "UseSkill",
                     "type": "Button",
                     "id": "bfc1cc80-0473-4013-9910-021b3647e148",
@@ -114,28 +87,46 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "UseObject",
+                    "name": "ChangeItem",
+                    "type": "Value",
+                    "id": "bdc9890b-e11e-4017-bf8e-839a0e9fcd7d",
+                    "expectedControlType": "Axis",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "ChangeItemPos",
+                    "type": "Button",
+                    "id": "6eabff1a-3cf3-495c-8fd1-6f655cceb110",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "UseItem",
                     "type": "Button",
                     "id": "d1c17128-89e8-47cb-805e-8dc7f1011a33",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
                 },
                 {
-                    "name": "OpenInventory",
-                    "type": "Button",
-                    "id": "9ca8eb10-75a3-4490-8ef9-dd17d9ac7f7e",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "LookEnemy",
+                    "name": "Target",
                     "type": "Button",
                     "id": "c8901698-1874-4450-87c4-9c2a5d211cae",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "ShowStats",
+                    "type": "Button",
+                    "id": "2e7b1584-d201-4fbc-bea5-309a74e45faf",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
@@ -159,9 +150,9 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "ShowStats",
+                    "name": "BasicAttack",
                     "type": "Button",
-                    "id": "2e7b1584-d201-4fbc-bea5-309a74e45faf",
+                    "id": "817295e4-4167-41b8-80c2-448ae4755ee1",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -286,7 +277,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "EnableSecondaryAction",
+                    "action": "SecondaryAction",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -297,7 +288,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "EnableSecondaryAction",
+                    "action": "SecondaryAction",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -308,7 +299,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "PrincipalAttack",
+                    "action": "BasicAttack",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -319,7 +310,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "PrincipalAttack",
+                    "action": "BasicAttack",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -418,7 +409,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "UseObject",
+                    "action": "UseItem",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -429,29 +420,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "UseObject",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "0b047809-3cc9-4c20-913c-b7dc0217599f",
-                    "path": "<Keyboard>/i",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "OpenInventory",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "b385ecb7-b4e2-43a1-8cf1-ac269177756d",
-                    "path": "<Gamepad>/buttonNorth",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "OpenInventory",
+                    "action": "UseItem",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -462,7 +431,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "LookEnemy",
+                    "action": "Target",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -473,7 +442,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "LookEnemy",
+                    "action": "Target",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -484,7 +453,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "ChangeObjectForTake",
+                    "action": "ChangeInteractable",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -495,7 +464,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "ChangeObjectForTake",
+                    "action": "ChangeInteractable",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -605,7 +574,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "ChangeObject",
+                    "action": "ChangeItem",
                     "isComposite": true,
                     "isPartOfComposite": false
                 },
@@ -616,7 +585,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "ChangeObject",
+                    "action": "ChangeItem",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -627,7 +596,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "ChangeObject",
+                    "action": "ChangeItem",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -638,7 +607,7 @@
                     "interactions": "",
                     "processors": "Scale(factor=0)",
                     "groups": "",
-                    "action": "ChangeObjectPos",
+                    "action": "ChangeItemPos",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -649,7 +618,7 @@
                     "interactions": "",
                     "processors": "Scale",
                     "groups": "",
-                    "action": "ChangeObjectPos",
+                    "action": "ChangeItemPos",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -660,7 +629,7 @@
                     "interactions": "",
                     "processors": "Scale(factor=2)",
                     "groups": "",
-                    "action": "ChangeObjectPos",
+                    "action": "ChangeItemPos",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -671,7 +640,7 @@
                     "interactions": "",
                     "processors": "Scale(factor=3)",
                     "groups": "",
-                    "action": "ChangeObjectPos",
+                    "action": "ChangeItemPos",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -682,7 +651,7 @@
                     "interactions": "",
                     "processors": "Scale(factor=4)",
                     "groups": "",
-                    "action": "ChangeObjectPos",
+                    "action": "ChangeItemPos",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -693,7 +662,7 @@
                     "interactions": "",
                     "processors": "Scale(factor=5)",
                     "groups": "",
-                    "action": "ChangeObjectPos",
+                    "action": "ChangeItemPos",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class ManagementOpenCloseScene : MonoBehaviour
@@ -61,21 +62,46 @@ public class ManagementOpenCloseScene : MonoBehaviour
     }
     public async Awaitable FinishLoad()
     {
-        await Task.Delay(TimeSpan.FromSeconds(0.1));
-        while (openCloseSceneAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime < 1f)
+        try
         {
-            await Task.Delay(TimeSpan.FromSeconds(0.05));
+            await Task.Delay(TimeSpan.FromSeconds(0.1));
+            while (openCloseSceneAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime < 1f)
+            {
+                await Task.Delay(TimeSpan.FromSeconds(0.05));
+            }
+            GameManager.Instance.startGame = true;
+            loaderImage.fillAmount = 0;
+            Scene scene = SceneManager.GetSceneByName("HomeScene");
+            if (scene.IsValid() && scene.isLoaded)
+            {
+                MenuHelper menuHelper = FindAnyObjectByType<MenuHelper>();
+                if (menuHelper != null)
+                {
+                    menuHelper.SelectButton();
+                }
+            }
         }
-        GameManager.Instance.startGame = true;
-        loaderImage.fillAmount = 0;
+        catch (Exception e)
+        {
+            Debug.LogError(e);
+            return;
+        }
     }
     public async Awaitable WaitFinishCloseAnimation()
     {
-        while (openCloseSceneAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime < 1f)
+        try
         {
-            await Task.Delay(TimeSpan.FromSeconds(0.05));
+            while (openCloseSceneAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime < 1f)
+            {
+                await Task.Delay(TimeSpan.FromSeconds(0.05));
+            }
+            ResetValues();
         }
-        ResetValues();
+        catch (Exception e)
+        {
+            Debug.LogError(e);
+            return;
+        }
     }
     public void ResetValues()
     {

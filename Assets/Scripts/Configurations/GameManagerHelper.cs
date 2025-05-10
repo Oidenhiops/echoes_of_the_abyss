@@ -46,19 +46,34 @@ public class GameManagerHelper : MonoBehaviour
     }
     public async Awaitable UnloadSceneOptions(string sceneForUnload)
     {
-        _unloadAnimator.SetBool("exit", true);
-        await Task.Delay(TimeSpan.FromSeconds(0.25f));
-        while (_unloadAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime < 1f)
+        try
         {
-            await Task.Delay(TimeSpan.FromSeconds(0.05));
+            _unloadAnimator.SetBool("exit", true);
+            await Task.Delay(TimeSpan.FromSeconds(0.25f));
+            while (_unloadAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime < 1f)
+            {
+                await Task.Delay(TimeSpan.FromSeconds(0.05));
+            }
+            Scene scene = SceneManager.GetSceneByName("HomeScene");
+            if (scene.IsValid() && scene.isLoaded)
+            {
+                MenuHelper menuHelper = FindAnyObjectByType<MenuHelper>();
+                if (menuHelper != null)
+                {
+                    menuHelper.SelectButton();
+                }
+            }
+            if (sceneForUnload == "OptionsScene")
+            {
+                Time.timeScale = 1;
+                GameManager.Instance.isPause = false;
+            }
+            _ = SceneManager.UnloadSceneAsync(sceneForUnload);
         }
-
-        if (sceneForUnload == "OptionsScene")
+        catch (Exception e)
         {
-            Time.timeScale = 1;
-            GameManager.Instance.isPause = false;
+            Debug.LogError(e);
+            return;
         }
-
-        _ = SceneManager.UnloadSceneAsync(sceneForUnload);
     }
 }

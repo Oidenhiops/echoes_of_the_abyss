@@ -24,7 +24,7 @@ public class ManagementCharacterModelDirection : MonoBehaviour, ManagementCharac
             }
             else
             {
-                if (character.characterInputs.characterActions.CharacterInputs.LookEnemy.triggered)
+                if (character.characterInputs.characterActions.CharacterInputs.Target.triggered)
                 {
                     ValidateLookToTarget();
                 }
@@ -56,7 +56,7 @@ public class ManagementCharacterModelDirection : MonoBehaviour, ManagementCharac
         directionPlayer.transform.LookAt(new Vector3(characterTarget.transform.position.x, directionPlayer.transform.position.y, characterTarget.transform.position.z));
         if (!characterTarget.characterInfo.isActive || 
         Vector3.Distance(characterTarget.transform.position, transform.position) > rayDistanceTarget || 
-        character.characterInfo.isPlayer && character.characterInputs.characterActions.CharacterInputs.LookEnemy.triggered)
+        character.characterInfo.isPlayer && character.characterInputs.characterActions.CharacterInputs.Target.triggered)
         {
             characterTarget = null;
         }
@@ -64,20 +64,20 @@ public class ManagementCharacterModelDirection : MonoBehaviour, ManagementCharac
 
     void MoveWhitOutCamera()
     {
-        if (character.characterInputs.characterActionsInfo.movement != Vector2.zero)
+        if (character.characterInfo.characterScripts.characterMove.GetDirectionMove() != Vector3.zero)
         {
-            if (character.characterInputs.characterActionsInfo.movement.x != 0)
+            if (character.characterInfo.characterScripts.characterMove.GetDirectionMove().x != 0)
             {
-                movementDirectionAnimation.x = character.characterInputs.characterActionsInfo.movement.x;
+                movementDirectionAnimation.x = character.characterInfo.characterScripts.characterMove.GetDirectionMove().x;
             }
-            if (character.characterInputs.characterActionsInfo.movement.y != 0)
+            if (character.characterInfo.characterScripts.characterMove.GetDirectionMove().z != 0)
             {
-                movementDirectionAnimation.y = character.characterInputs.characterActionsInfo.movement.y;
+                movementDirectionAnimation.y = character.characterInfo.characterScripts.characterMove.GetDirectionMove().z;
             }
             character.characterInfo.characterScripts.characterAnimations.GetCharacterSprite().transform.localRotation = 
                 Quaternion.Euler(0, movementDirectionAnimation.x > 0 ? -180 : 0, 0);
             float angle = Mathf.Atan2(movementDirectionAnimation.x, movementDirectionAnimation.y) * Mathf.Rad2Deg;
-            directionPlayer.transform.rotation = Quaternion.Lerp(directionPlayer.transform.rotation, Quaternion.Euler(0, angle, 0f), 0.25f);
+            directionPlayer.transform.rotation = Quaternion.Lerp(directionPlayer.transform.rotation, Quaternion.Euler(0, angle, 0f), 0.3f);
         }
     }
     void MoveWhitCamera()
@@ -88,7 +88,7 @@ public class ManagementCharacterModelDirection : MonoBehaviour, ManagementCharac
             character.characterInfo.characterScripts.characterAnimations.GetCharacterSprite().transform.localRotation = 
                 Quaternion.Euler(0, movementDirectionAnimation.x > 0 ? -180 : 0, 0);
             float angle = Mathf.Atan2(movementDirectionAnimation.x, movementDirectionAnimation.y) * Mathf.Rad2Deg;
-            directionPlayer.transform.rotation = Quaternion.Lerp(directionPlayer.transform.rotation, Quaternion.Euler(0, angle, 0f), 0.25f);
+            directionPlayer.transform.rotation = Quaternion.Lerp(directionPlayer.transform.rotation, Quaternion.Euler(0, angle, 0f), 0.3f);
         }
     }
     void OnDrawGizmos()

@@ -1,6 +1,5 @@
 using System;
 using System.Threading.Tasks;
-using AYellowpaper.SerializedCollections;
 using UnityEngine;
 using UnityEngine.Audio;
 
@@ -38,31 +37,70 @@ public class AudioManager : MonoBehaviour
     }
     public async Awaitable FadeIn()
     {
-        float targetDecibels = 20 * Mathf.Log10(GameData.Instance.saveData.configurationsInfo.soundConfiguration.MASTERValue / 100);
-        float currentVolume;
-
-        if (!audioMixer.GetFloat(TypeSound.Master.ToString(), out currentVolume))
+        if (!GameData.Instance.saveData.configurationsInfo.soundConfiguration.isMute)
         {
-            currentVolume = -80f;
-        }
-        float duration = 1f;
-        float elapsed = 0f;
-        float updateRate = 1f / 60f;
-        while (elapsed < duration)
-        {
-            if (GameData.Instance.saveData.configurationsInfo.soundConfiguration.isMute)
-                break;
+            try
+            {
+                float targetDecibels = 20 * Mathf.Log10(GameData.Instance.saveData.configurationsInfo.soundConfiguration.MASTERValue / 100);
+                float currentVolume;
 
-            elapsed += updateRate;
-            float t = Mathf.Clamp01(elapsed / duration);
-            float newVolume = Mathf.Lerp(currentVolume, targetDecibels, t);
-            audioMixer.SetFloat(TypeSound.Master.ToString(), newVolume);
-
-            await Task.Delay(TimeSpan.FromSeconds(updateRate));
+                if (!audioMixer.GetFloat(TypeSound.Master.ToString(), out currentVolume))
+                {
+                    currentVolume = -80f;
+                }
+                float duration = 1f;
+                float elapsed = 0f;
+                float updateRate = 1f / 60f;
+                while (elapsed < duration)
+                {
+                    elapsed += updateRate;
+                    float t = Mathf.Clamp01(elapsed / duration);
+                    float newVolume = Mathf.Lerp(currentVolume, targetDecibels, t);
+                    audioMixer.SetFloat(TypeSound.Master.ToString(), newVolume);
+                    await Task.Delay(TimeSpan.FromSeconds(updateRate));
+                }
+                audioMixer.SetFloat(TypeSound.Master.ToString(), targetDecibels);
+            }
+            catch (Exception e)
+            {
+                Debug.LogError(e);
+                return;
+            }
         }
-        audioMixer.SetFloat(TypeSound.Master.ToString(), targetDecibels);
+        await Awaitable.NextFrameAsync();
     }
-
+    public async Awaitable FadeOut()
+    {
+        if (GameData.Instance.saveData.configurationsInfo.soundConfiguration.isMute)
+        {
+            try
+            {
+                float currentVolume;
+                if (!audioMixer.GetFloat(TypeSound.Master.ToString(), out currentVolume))
+                {
+                    currentVolume = 20 * Mathf.Log10(GameData.Instance.saveData.configurationsInfo.soundConfiguration.MASTERValue / 100);
+                }
+                float targetVolume = -80f;
+                float duration = 1f;
+                float elapsed = 0f;
+                float updateRate = 1f / 60f;
+                while (elapsed < duration)
+                {
+                    elapsed += updateRate;
+                    float t = Mathf.Clamp01(elapsed / duration);
+                    float newVolume = Mathf.Lerp(currentVolume, targetVolume, t);
+                    audioMixer.SetFloat(TypeSound.Master.ToString(), newVolume);
+                    await Task.Delay(TimeSpan.FromSeconds(updateRate));
+                }
+                audioMixer.SetFloat(TypeSound.Master.ToString(), targetVolume);
+            }
+            catch (Exception e)
+            {
+                Debug.LogError(e);
+            }
+        }
+        await Awaitable.NextFrameAsync();
+    }
     public AudioClip GetAudioClip(string typeSound)
     {
         if (soundsDB.sounds.TryGetValue(typeSound, out AudioClip[] clips))
@@ -71,33 +109,6 @@ public class AudioManager : MonoBehaviour
         }
         return null;
     }
-
-    public async Awaitable FadeOut()
-    {
-        float currentVolume;
-        if (!audioMixer.GetFloat(TypeSound.Master.ToString(), out currentVolume))
-        {
-            currentVolume = 20 * Mathf.Log10(GameData.Instance.saveData.configurationsInfo.soundConfiguration.MASTERValue / 100);
-        }
-        float targetVolume = -80f;
-        float duration = 1f;
-        float elapsed = 0f;
-        float updateRate = 1f / 60f;
-        while (elapsed < duration)
-        {
-            if (GameData.Instance.saveData.configurationsInfo.soundConfiguration.isMute)
-                break;
-
-            elapsed += updateRate;
-            float t = Mathf.Clamp01(elapsed / duration);
-            float newVolume = Mathf.Lerp(currentVolume, targetVolume, t);
-            audioMixer.SetFloat(TypeSound.Master.ToString(), newVolume);
-
-            await Task.Delay(TimeSpan.FromSeconds(updateRate));
-        }
-        audioMixer.SetFloat(TypeSound.Master.ToString(), targetVolume);
-    }
-
     public void SetAudioMixerData()
     {
         float decibelsMaster = 20 * Mathf.Log10(GameData.Instance.saveData.configurationsInfo.soundConfiguration.MASTERValue / 100);

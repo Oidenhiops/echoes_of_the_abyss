@@ -119,13 +119,13 @@ public partial class @CharacterActions: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": true
                 },
                 {
-                    ""name"": ""PrincipalAttack"",
-                    ""type"": ""Button"",
-                    ""id"": ""817295e4-4167-41b8-80c2-448ae4755ee1"",
-                    ""expectedControlType"": ""Button"",
+                    ""name"": ""ChangeInteractable"",
+                    ""type"": ""Value"",
+                    ""id"": ""45fa18f5-81e6-456c-a43a-66d1885de12c"",
+                    ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
                     ""interactions"": """",
-                    ""initialStateCheck"": false
+                    ""initialStateCheck"": true
                 },
                 {
                     ""name"": ""Interact"",
@@ -137,10 +137,10 @@ public partial class @CharacterActions: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""EnableSecondaryAction"",
+                    ""name"": ""SecondaryAction"",
                     ""type"": ""Button"",
                     ""id"": ""e64bb2ca-faa6-4dc7-bd1f-86ab18dc6153"",
-                    ""expectedControlType"": ""Button"",
+                    ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
@@ -164,33 +164,6 @@ public partial class @CharacterActions: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": true
                 },
                 {
-                    ""name"": ""ChangeObjectForTake"",
-                    ""type"": ""Value"",
-                    ""id"": ""45fa18f5-81e6-456c-a43a-66d1885de12c"",
-                    ""expectedControlType"": ""Vector2"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": true
-                },
-                {
-                    ""name"": ""ChangeObject"",
-                    ""type"": ""Value"",
-                    ""id"": ""bdc9890b-e11e-4017-bf8e-839a0e9fcd7d"",
-                    ""expectedControlType"": ""Axis"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": true
-                },
-                {
-                    ""name"": ""ChangeObjectPos"",
-                    ""type"": ""Button"",
-                    ""id"": ""6eabff1a-3cf3-495c-8fd1-6f655cceb110"",
-                    ""expectedControlType"": """",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": true
-                },
-                {
                     ""name"": ""UseSkill"",
                     ""type"": ""Button"",
                     ""id"": ""bfc1cc80-0473-4013-9910-021b3647e148"",
@@ -200,28 +173,46 @@ public partial class @CharacterActions: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""UseObject"",
+                    ""name"": ""ChangeItem"",
+                    ""type"": ""Value"",
+                    ""id"": ""bdc9890b-e11e-4017-bf8e-839a0e9fcd7d"",
+                    ""expectedControlType"": ""Axis"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""ChangeItemPos"",
+                    ""type"": ""Button"",
+                    ""id"": ""6eabff1a-3cf3-495c-8fd1-6f655cceb110"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""UseItem"",
                     ""type"": ""Button"",
                     ""id"": ""d1c17128-89e8-47cb-805e-8dc7f1011a33"",
-                    ""expectedControlType"": ""Button"",
+                    ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""OpenInventory"",
-                    ""type"": ""Button"",
-                    ""id"": ""9ca8eb10-75a3-4490-8ef9-dd17d9ac7f7e"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""LookEnemy"",
+                    ""name"": ""Target"",
                     ""type"": ""Button"",
                     ""id"": ""c8901698-1874-4450-87c4-9c2a5d211cae"",
-                    ""expectedControlType"": ""Button"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ShowStats"",
+                    ""type"": ""Button"",
+                    ""id"": ""2e7b1584-d201-4fbc-bea5-309a74e45faf"",
+                    ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
@@ -245,9 +236,9 @@ public partial class @CharacterActions: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""ShowStats"",
+                    ""name"": ""BasicAttack"",
                     ""type"": ""Button"",
-                    ""id"": ""2e7b1584-d201-4fbc-bea5-309a74e45faf"",
+                    ""id"": ""817295e4-4167-41b8-80c2-448ae4755ee1"",
                     ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """",
@@ -372,7 +363,7 @@ public partial class @CharacterActions: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""EnableSecondaryAction"",
+                    ""action"": ""SecondaryAction"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -383,7 +374,7 @@ public partial class @CharacterActions: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""EnableSecondaryAction"",
+                    ""action"": ""SecondaryAction"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -394,7 +385,7 @@ public partial class @CharacterActions: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""PrincipalAttack"",
+                    ""action"": ""BasicAttack"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -405,7 +396,7 @@ public partial class @CharacterActions: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""PrincipalAttack"",
+                    ""action"": ""BasicAttack"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -504,7 +495,7 @@ public partial class @CharacterActions: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""UseObject"",
+                    ""action"": ""UseItem"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -515,29 +506,7 @@ public partial class @CharacterActions: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""UseObject"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""0b047809-3cc9-4c20-913c-b7dc0217599f"",
-                    ""path"": ""<Keyboard>/i"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""OpenInventory"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""b385ecb7-b4e2-43a1-8cf1-ac269177756d"",
-                    ""path"": ""<Gamepad>/buttonNorth"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""OpenInventory"",
+                    ""action"": ""UseItem"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -548,7 +517,7 @@ public partial class @CharacterActions: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""LookEnemy"",
+                    ""action"": ""Target"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -559,7 +528,7 @@ public partial class @CharacterActions: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""LookEnemy"",
+                    ""action"": ""Target"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -570,7 +539,7 @@ public partial class @CharacterActions: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""ChangeObjectForTake"",
+                    ""action"": ""ChangeInteractable"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -581,7 +550,7 @@ public partial class @CharacterActions: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""ChangeObjectForTake"",
+                    ""action"": ""ChangeInteractable"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -691,7 +660,7 @@ public partial class @CharacterActions: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""ChangeObject"",
+                    ""action"": ""ChangeItem"",
                     ""isComposite"": true,
                     ""isPartOfComposite"": false
                 },
@@ -702,7 +671,7 @@ public partial class @CharacterActions: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""ChangeObject"",
+                    ""action"": ""ChangeItem"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -713,7 +682,7 @@ public partial class @CharacterActions: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""ChangeObject"",
+                    ""action"": ""ChangeItem"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -724,7 +693,7 @@ public partial class @CharacterActions: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": ""Scale(factor=0)"",
                     ""groups"": """",
-                    ""action"": ""ChangeObjectPos"",
+                    ""action"": ""ChangeItemPos"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -735,7 +704,7 @@ public partial class @CharacterActions: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": ""Scale"",
                     ""groups"": """",
-                    ""action"": ""ChangeObjectPos"",
+                    ""action"": ""ChangeItemPos"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -746,7 +715,7 @@ public partial class @CharacterActions: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": ""Scale(factor=2)"",
                     ""groups"": """",
-                    ""action"": ""ChangeObjectPos"",
+                    ""action"": ""ChangeItemPos"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -757,7 +726,7 @@ public partial class @CharacterActions: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": ""Scale(factor=3)"",
                     ""groups"": """",
-                    ""action"": ""ChangeObjectPos"",
+                    ""action"": ""ChangeItemPos"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -768,7 +737,7 @@ public partial class @CharacterActions: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": ""Scale(factor=4)"",
                     ""groups"": """",
-                    ""action"": ""ChangeObjectPos"",
+                    ""action"": ""ChangeItemPos"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -779,7 +748,7 @@ public partial class @CharacterActions: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": ""Scale(factor=5)"",
                     ""groups"": """",
-                    ""action"": ""ChangeObjectPos"",
+                    ""action"": ""ChangeItemPos"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -793,21 +762,20 @@ public partial class @CharacterActions: IInputActionCollection2, IDisposable
         m_CharacterInputs_Movement = m_CharacterInputs.FindAction("Movement", throwIfNotFound: true);
         m_CharacterInputs_MoveCamera = m_CharacterInputs.FindAction("MoveCamera", throwIfNotFound: true);
         m_CharacterInputs_MousePos = m_CharacterInputs.FindAction("MousePos", throwIfNotFound: true);
-        m_CharacterInputs_PrincipalAttack = m_CharacterInputs.FindAction("PrincipalAttack", throwIfNotFound: true);
+        m_CharacterInputs_ChangeInteractable = m_CharacterInputs.FindAction("ChangeInteractable", throwIfNotFound: true);
         m_CharacterInputs_Interact = m_CharacterInputs.FindAction("Interact", throwIfNotFound: true);
-        m_CharacterInputs_EnableSecondaryAction = m_CharacterInputs.FindAction("EnableSecondaryAction", throwIfNotFound: true);
+        m_CharacterInputs_SecondaryAction = m_CharacterInputs.FindAction("SecondaryAction", throwIfNotFound: true);
         m_CharacterInputs_Jump = m_CharacterInputs.FindAction("Jump", throwIfNotFound: true);
         m_CharacterInputs_ChangeSkill = m_CharacterInputs.FindAction("ChangeSkill", throwIfNotFound: true);
-        m_CharacterInputs_ChangeObjectForTake = m_CharacterInputs.FindAction("ChangeObjectForTake", throwIfNotFound: true);
-        m_CharacterInputs_ChangeObject = m_CharacterInputs.FindAction("ChangeObject", throwIfNotFound: true);
-        m_CharacterInputs_ChangeObjectPos = m_CharacterInputs.FindAction("ChangeObjectPos", throwIfNotFound: true);
         m_CharacterInputs_UseSkill = m_CharacterInputs.FindAction("UseSkill", throwIfNotFound: true);
-        m_CharacterInputs_UseObject = m_CharacterInputs.FindAction("UseObject", throwIfNotFound: true);
-        m_CharacterInputs_OpenInventory = m_CharacterInputs.FindAction("OpenInventory", throwIfNotFound: true);
-        m_CharacterInputs_LookEnemy = m_CharacterInputs.FindAction("LookEnemy", throwIfNotFound: true);
+        m_CharacterInputs_ChangeItem = m_CharacterInputs.FindAction("ChangeItem", throwIfNotFound: true);
+        m_CharacterInputs_ChangeItemPos = m_CharacterInputs.FindAction("ChangeItemPos", throwIfNotFound: true);
+        m_CharacterInputs_UseItem = m_CharacterInputs.FindAction("UseItem", throwIfNotFound: true);
+        m_CharacterInputs_Target = m_CharacterInputs.FindAction("Target", throwIfNotFound: true);
+        m_CharacterInputs_ShowStats = m_CharacterInputs.FindAction("ShowStats", throwIfNotFound: true);
         m_CharacterInputs_Pause = m_CharacterInputs.FindAction("Pause", throwIfNotFound: true);
         m_CharacterInputs_UnlockCamera = m_CharacterInputs.FindAction("UnlockCamera", throwIfNotFound: true);
-        m_CharacterInputs_ShowStats = m_CharacterInputs.FindAction("ShowStats", throwIfNotFound: true);
+        m_CharacterInputs_BasicAttack = m_CharacterInputs.FindAction("BasicAttack", throwIfNotFound: true);
     }
 
     ~@CharacterActions()
@@ -891,21 +859,20 @@ public partial class @CharacterActions: IInputActionCollection2, IDisposable
     private readonly InputAction m_CharacterInputs_Movement;
     private readonly InputAction m_CharacterInputs_MoveCamera;
     private readonly InputAction m_CharacterInputs_MousePos;
-    private readonly InputAction m_CharacterInputs_PrincipalAttack;
+    private readonly InputAction m_CharacterInputs_ChangeInteractable;
     private readonly InputAction m_CharacterInputs_Interact;
-    private readonly InputAction m_CharacterInputs_EnableSecondaryAction;
+    private readonly InputAction m_CharacterInputs_SecondaryAction;
     private readonly InputAction m_CharacterInputs_Jump;
     private readonly InputAction m_CharacterInputs_ChangeSkill;
-    private readonly InputAction m_CharacterInputs_ChangeObjectForTake;
-    private readonly InputAction m_CharacterInputs_ChangeObject;
-    private readonly InputAction m_CharacterInputs_ChangeObjectPos;
     private readonly InputAction m_CharacterInputs_UseSkill;
-    private readonly InputAction m_CharacterInputs_UseObject;
-    private readonly InputAction m_CharacterInputs_OpenInventory;
-    private readonly InputAction m_CharacterInputs_LookEnemy;
+    private readonly InputAction m_CharacterInputs_ChangeItem;
+    private readonly InputAction m_CharacterInputs_ChangeItemPos;
+    private readonly InputAction m_CharacterInputs_UseItem;
+    private readonly InputAction m_CharacterInputs_Target;
+    private readonly InputAction m_CharacterInputs_ShowStats;
     private readonly InputAction m_CharacterInputs_Pause;
     private readonly InputAction m_CharacterInputs_UnlockCamera;
-    private readonly InputAction m_CharacterInputs_ShowStats;
+    private readonly InputAction m_CharacterInputs_BasicAttack;
     /// <summary>
     /// Provides access to input actions defined in input action map "CharacterInputs".
     /// </summary>
@@ -930,17 +897,17 @@ public partial class @CharacterActions: IInputActionCollection2, IDisposable
         /// </summary>
         public InputAction @MousePos => m_Wrapper.m_CharacterInputs_MousePos;
         /// <summary>
-        /// Provides access to the underlying input action "CharacterInputs/PrincipalAttack".
+        /// Provides access to the underlying input action "CharacterInputs/ChangeInteractable".
         /// </summary>
-        public InputAction @PrincipalAttack => m_Wrapper.m_CharacterInputs_PrincipalAttack;
+        public InputAction @ChangeInteractable => m_Wrapper.m_CharacterInputs_ChangeInteractable;
         /// <summary>
         /// Provides access to the underlying input action "CharacterInputs/Interact".
         /// </summary>
         public InputAction @Interact => m_Wrapper.m_CharacterInputs_Interact;
         /// <summary>
-        /// Provides access to the underlying input action "CharacterInputs/EnableSecondaryAction".
+        /// Provides access to the underlying input action "CharacterInputs/SecondaryAction".
         /// </summary>
-        public InputAction @EnableSecondaryAction => m_Wrapper.m_CharacterInputs_EnableSecondaryAction;
+        public InputAction @SecondaryAction => m_Wrapper.m_CharacterInputs_SecondaryAction;
         /// <summary>
         /// Provides access to the underlying input action "CharacterInputs/Jump".
         /// </summary>
@@ -950,33 +917,29 @@ public partial class @CharacterActions: IInputActionCollection2, IDisposable
         /// </summary>
         public InputAction @ChangeSkill => m_Wrapper.m_CharacterInputs_ChangeSkill;
         /// <summary>
-        /// Provides access to the underlying input action "CharacterInputs/ChangeObjectForTake".
-        /// </summary>
-        public InputAction @ChangeObjectForTake => m_Wrapper.m_CharacterInputs_ChangeObjectForTake;
-        /// <summary>
-        /// Provides access to the underlying input action "CharacterInputs/ChangeObject".
-        /// </summary>
-        public InputAction @ChangeObject => m_Wrapper.m_CharacterInputs_ChangeObject;
-        /// <summary>
-        /// Provides access to the underlying input action "CharacterInputs/ChangeObjectPos".
-        /// </summary>
-        public InputAction @ChangeObjectPos => m_Wrapper.m_CharacterInputs_ChangeObjectPos;
-        /// <summary>
         /// Provides access to the underlying input action "CharacterInputs/UseSkill".
         /// </summary>
         public InputAction @UseSkill => m_Wrapper.m_CharacterInputs_UseSkill;
         /// <summary>
-        /// Provides access to the underlying input action "CharacterInputs/UseObject".
+        /// Provides access to the underlying input action "CharacterInputs/ChangeItem".
         /// </summary>
-        public InputAction @UseObject => m_Wrapper.m_CharacterInputs_UseObject;
+        public InputAction @ChangeItem => m_Wrapper.m_CharacterInputs_ChangeItem;
         /// <summary>
-        /// Provides access to the underlying input action "CharacterInputs/OpenInventory".
+        /// Provides access to the underlying input action "CharacterInputs/ChangeItemPos".
         /// </summary>
-        public InputAction @OpenInventory => m_Wrapper.m_CharacterInputs_OpenInventory;
+        public InputAction @ChangeItemPos => m_Wrapper.m_CharacterInputs_ChangeItemPos;
         /// <summary>
-        /// Provides access to the underlying input action "CharacterInputs/LookEnemy".
+        /// Provides access to the underlying input action "CharacterInputs/UseItem".
         /// </summary>
-        public InputAction @LookEnemy => m_Wrapper.m_CharacterInputs_LookEnemy;
+        public InputAction @UseItem => m_Wrapper.m_CharacterInputs_UseItem;
+        /// <summary>
+        /// Provides access to the underlying input action "CharacterInputs/Target".
+        /// </summary>
+        public InputAction @Target => m_Wrapper.m_CharacterInputs_Target;
+        /// <summary>
+        /// Provides access to the underlying input action "CharacterInputs/ShowStats".
+        /// </summary>
+        public InputAction @ShowStats => m_Wrapper.m_CharacterInputs_ShowStats;
         /// <summary>
         /// Provides access to the underlying input action "CharacterInputs/Pause".
         /// </summary>
@@ -986,9 +949,9 @@ public partial class @CharacterActions: IInputActionCollection2, IDisposable
         /// </summary>
         public InputAction @UnlockCamera => m_Wrapper.m_CharacterInputs_UnlockCamera;
         /// <summary>
-        /// Provides access to the underlying input action "CharacterInputs/ShowStats".
+        /// Provides access to the underlying input action "CharacterInputs/BasicAttack".
         /// </summary>
-        public InputAction @ShowStats => m_Wrapper.m_CharacterInputs_ShowStats;
+        public InputAction @BasicAttack => m_Wrapper.m_CharacterInputs_BasicAttack;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -1024,51 +987,48 @@ public partial class @CharacterActions: IInputActionCollection2, IDisposable
             @MousePos.started += instance.OnMousePos;
             @MousePos.performed += instance.OnMousePos;
             @MousePos.canceled += instance.OnMousePos;
-            @PrincipalAttack.started += instance.OnPrincipalAttack;
-            @PrincipalAttack.performed += instance.OnPrincipalAttack;
-            @PrincipalAttack.canceled += instance.OnPrincipalAttack;
+            @ChangeInteractable.started += instance.OnChangeInteractable;
+            @ChangeInteractable.performed += instance.OnChangeInteractable;
+            @ChangeInteractable.canceled += instance.OnChangeInteractable;
             @Interact.started += instance.OnInteract;
             @Interact.performed += instance.OnInteract;
             @Interact.canceled += instance.OnInteract;
-            @EnableSecondaryAction.started += instance.OnEnableSecondaryAction;
-            @EnableSecondaryAction.performed += instance.OnEnableSecondaryAction;
-            @EnableSecondaryAction.canceled += instance.OnEnableSecondaryAction;
+            @SecondaryAction.started += instance.OnSecondaryAction;
+            @SecondaryAction.performed += instance.OnSecondaryAction;
+            @SecondaryAction.canceled += instance.OnSecondaryAction;
             @Jump.started += instance.OnJump;
             @Jump.performed += instance.OnJump;
             @Jump.canceled += instance.OnJump;
             @ChangeSkill.started += instance.OnChangeSkill;
             @ChangeSkill.performed += instance.OnChangeSkill;
             @ChangeSkill.canceled += instance.OnChangeSkill;
-            @ChangeObjectForTake.started += instance.OnChangeObjectForTake;
-            @ChangeObjectForTake.performed += instance.OnChangeObjectForTake;
-            @ChangeObjectForTake.canceled += instance.OnChangeObjectForTake;
-            @ChangeObject.started += instance.OnChangeObject;
-            @ChangeObject.performed += instance.OnChangeObject;
-            @ChangeObject.canceled += instance.OnChangeObject;
-            @ChangeObjectPos.started += instance.OnChangeObjectPos;
-            @ChangeObjectPos.performed += instance.OnChangeObjectPos;
-            @ChangeObjectPos.canceled += instance.OnChangeObjectPos;
             @UseSkill.started += instance.OnUseSkill;
             @UseSkill.performed += instance.OnUseSkill;
             @UseSkill.canceled += instance.OnUseSkill;
-            @UseObject.started += instance.OnUseObject;
-            @UseObject.performed += instance.OnUseObject;
-            @UseObject.canceled += instance.OnUseObject;
-            @OpenInventory.started += instance.OnOpenInventory;
-            @OpenInventory.performed += instance.OnOpenInventory;
-            @OpenInventory.canceled += instance.OnOpenInventory;
-            @LookEnemy.started += instance.OnLookEnemy;
-            @LookEnemy.performed += instance.OnLookEnemy;
-            @LookEnemy.canceled += instance.OnLookEnemy;
+            @ChangeItem.started += instance.OnChangeItem;
+            @ChangeItem.performed += instance.OnChangeItem;
+            @ChangeItem.canceled += instance.OnChangeItem;
+            @ChangeItemPos.started += instance.OnChangeItemPos;
+            @ChangeItemPos.performed += instance.OnChangeItemPos;
+            @ChangeItemPos.canceled += instance.OnChangeItemPos;
+            @UseItem.started += instance.OnUseItem;
+            @UseItem.performed += instance.OnUseItem;
+            @UseItem.canceled += instance.OnUseItem;
+            @Target.started += instance.OnTarget;
+            @Target.performed += instance.OnTarget;
+            @Target.canceled += instance.OnTarget;
+            @ShowStats.started += instance.OnShowStats;
+            @ShowStats.performed += instance.OnShowStats;
+            @ShowStats.canceled += instance.OnShowStats;
             @Pause.started += instance.OnPause;
             @Pause.performed += instance.OnPause;
             @Pause.canceled += instance.OnPause;
             @UnlockCamera.started += instance.OnUnlockCamera;
             @UnlockCamera.performed += instance.OnUnlockCamera;
             @UnlockCamera.canceled += instance.OnUnlockCamera;
-            @ShowStats.started += instance.OnShowStats;
-            @ShowStats.performed += instance.OnShowStats;
-            @ShowStats.canceled += instance.OnShowStats;
+            @BasicAttack.started += instance.OnBasicAttack;
+            @BasicAttack.performed += instance.OnBasicAttack;
+            @BasicAttack.canceled += instance.OnBasicAttack;
         }
 
         /// <summary>
@@ -1089,51 +1049,48 @@ public partial class @CharacterActions: IInputActionCollection2, IDisposable
             @MousePos.started -= instance.OnMousePos;
             @MousePos.performed -= instance.OnMousePos;
             @MousePos.canceled -= instance.OnMousePos;
-            @PrincipalAttack.started -= instance.OnPrincipalAttack;
-            @PrincipalAttack.performed -= instance.OnPrincipalAttack;
-            @PrincipalAttack.canceled -= instance.OnPrincipalAttack;
+            @ChangeInteractable.started -= instance.OnChangeInteractable;
+            @ChangeInteractable.performed -= instance.OnChangeInteractable;
+            @ChangeInteractable.canceled -= instance.OnChangeInteractable;
             @Interact.started -= instance.OnInteract;
             @Interact.performed -= instance.OnInteract;
             @Interact.canceled -= instance.OnInteract;
-            @EnableSecondaryAction.started -= instance.OnEnableSecondaryAction;
-            @EnableSecondaryAction.performed -= instance.OnEnableSecondaryAction;
-            @EnableSecondaryAction.canceled -= instance.OnEnableSecondaryAction;
+            @SecondaryAction.started -= instance.OnSecondaryAction;
+            @SecondaryAction.performed -= instance.OnSecondaryAction;
+            @SecondaryAction.canceled -= instance.OnSecondaryAction;
             @Jump.started -= instance.OnJump;
             @Jump.performed -= instance.OnJump;
             @Jump.canceled -= instance.OnJump;
             @ChangeSkill.started -= instance.OnChangeSkill;
             @ChangeSkill.performed -= instance.OnChangeSkill;
             @ChangeSkill.canceled -= instance.OnChangeSkill;
-            @ChangeObjectForTake.started -= instance.OnChangeObjectForTake;
-            @ChangeObjectForTake.performed -= instance.OnChangeObjectForTake;
-            @ChangeObjectForTake.canceled -= instance.OnChangeObjectForTake;
-            @ChangeObject.started -= instance.OnChangeObject;
-            @ChangeObject.performed -= instance.OnChangeObject;
-            @ChangeObject.canceled -= instance.OnChangeObject;
-            @ChangeObjectPos.started -= instance.OnChangeObjectPos;
-            @ChangeObjectPos.performed -= instance.OnChangeObjectPos;
-            @ChangeObjectPos.canceled -= instance.OnChangeObjectPos;
             @UseSkill.started -= instance.OnUseSkill;
             @UseSkill.performed -= instance.OnUseSkill;
             @UseSkill.canceled -= instance.OnUseSkill;
-            @UseObject.started -= instance.OnUseObject;
-            @UseObject.performed -= instance.OnUseObject;
-            @UseObject.canceled -= instance.OnUseObject;
-            @OpenInventory.started -= instance.OnOpenInventory;
-            @OpenInventory.performed -= instance.OnOpenInventory;
-            @OpenInventory.canceled -= instance.OnOpenInventory;
-            @LookEnemy.started -= instance.OnLookEnemy;
-            @LookEnemy.performed -= instance.OnLookEnemy;
-            @LookEnemy.canceled -= instance.OnLookEnemy;
+            @ChangeItem.started -= instance.OnChangeItem;
+            @ChangeItem.performed -= instance.OnChangeItem;
+            @ChangeItem.canceled -= instance.OnChangeItem;
+            @ChangeItemPos.started -= instance.OnChangeItemPos;
+            @ChangeItemPos.performed -= instance.OnChangeItemPos;
+            @ChangeItemPos.canceled -= instance.OnChangeItemPos;
+            @UseItem.started -= instance.OnUseItem;
+            @UseItem.performed -= instance.OnUseItem;
+            @UseItem.canceled -= instance.OnUseItem;
+            @Target.started -= instance.OnTarget;
+            @Target.performed -= instance.OnTarget;
+            @Target.canceled -= instance.OnTarget;
+            @ShowStats.started -= instance.OnShowStats;
+            @ShowStats.performed -= instance.OnShowStats;
+            @ShowStats.canceled -= instance.OnShowStats;
             @Pause.started -= instance.OnPause;
             @Pause.performed -= instance.OnPause;
             @Pause.canceled -= instance.OnPause;
             @UnlockCamera.started -= instance.OnUnlockCamera;
             @UnlockCamera.performed -= instance.OnUnlockCamera;
             @UnlockCamera.canceled -= instance.OnUnlockCamera;
-            @ShowStats.started -= instance.OnShowStats;
-            @ShowStats.performed -= instance.OnShowStats;
-            @ShowStats.canceled -= instance.OnShowStats;
+            @BasicAttack.started -= instance.OnBasicAttack;
+            @BasicAttack.performed -= instance.OnBasicAttack;
+            @BasicAttack.canceled -= instance.OnBasicAttack;
         }
 
         /// <summary>
@@ -1196,12 +1153,12 @@ public partial class @CharacterActions: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnMousePos(InputAction.CallbackContext context);
         /// <summary>
-        /// Method invoked when associated input action "PrincipalAttack" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// Method invoked when associated input action "ChangeInteractable" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>
         /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-        void OnPrincipalAttack(InputAction.CallbackContext context);
+        void OnChangeInteractable(InputAction.CallbackContext context);
         /// <summary>
         /// Method invoked when associated input action "Interact" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>
@@ -1210,12 +1167,12 @@ public partial class @CharacterActions: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnInteract(InputAction.CallbackContext context);
         /// <summary>
-        /// Method invoked when associated input action "EnableSecondaryAction" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// Method invoked when associated input action "SecondaryAction" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>
         /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-        void OnEnableSecondaryAction(InputAction.CallbackContext context);
+        void OnSecondaryAction(InputAction.CallbackContext context);
         /// <summary>
         /// Method invoked when associated input action "Jump" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>
@@ -1231,27 +1188,6 @@ public partial class @CharacterActions: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnChangeSkill(InputAction.CallbackContext context);
         /// <summary>
-        /// Method invoked when associated input action "ChangeObjectForTake" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
-        /// </summary>
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-        void OnChangeObjectForTake(InputAction.CallbackContext context);
-        /// <summary>
-        /// Method invoked when associated input action "ChangeObject" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
-        /// </summary>
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-        void OnChangeObject(InputAction.CallbackContext context);
-        /// <summary>
-        /// Method invoked when associated input action "ChangeObjectPos" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
-        /// </summary>
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-        void OnChangeObjectPos(InputAction.CallbackContext context);
-        /// <summary>
         /// Method invoked when associated input action "UseSkill" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>
         /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
@@ -1259,26 +1195,40 @@ public partial class @CharacterActions: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnUseSkill(InputAction.CallbackContext context);
         /// <summary>
-        /// Method invoked when associated input action "UseObject" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// Method invoked when associated input action "ChangeItem" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>
         /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-        void OnUseObject(InputAction.CallbackContext context);
+        void OnChangeItem(InputAction.CallbackContext context);
         /// <summary>
-        /// Method invoked when associated input action "OpenInventory" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// Method invoked when associated input action "ChangeItemPos" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>
         /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-        void OnOpenInventory(InputAction.CallbackContext context);
+        void OnChangeItemPos(InputAction.CallbackContext context);
         /// <summary>
-        /// Method invoked when associated input action "LookEnemy" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// Method invoked when associated input action "UseItem" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>
         /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-        void OnLookEnemy(InputAction.CallbackContext context);
+        void OnUseItem(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Target" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnTarget(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "ShowStats" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnShowStats(InputAction.CallbackContext context);
         /// <summary>
         /// Method invoked when associated input action "Pause" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>
@@ -1294,11 +1244,11 @@ public partial class @CharacterActions: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnUnlockCamera(InputAction.CallbackContext context);
         /// <summary>
-        /// Method invoked when associated input action "ShowStats" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// Method invoked when associated input action "BasicAttack" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>
         /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-        void OnShowStats(InputAction.CallbackContext context);
+        void OnBasicAttack(InputAction.CallbackContext context);
     }
 }

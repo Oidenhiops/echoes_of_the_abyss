@@ -25,15 +25,22 @@ public class GameData : MonoBehaviour
     }
     public async Awaitable LoadData()
     {
-        CheckFileExistance(DataPath());
-        saveData = ReadDataFromJson();
-        saveData.gameInfo.characterInfo.characterSelected = Resources.Load<InitialDataSO>($"SciptablesObjects/Character/InitialData/{saveData.gameInfo.characterInfo.characterSelectedName}");
-        LoadCSV();
-        InitializeResolutionData();
-        InitializeObjects();
-        Application.targetFrameRate = saveData.configurationsInfo.FpsLimit;
-        await InitializeAudioMixerData();
-        GameManager.Instance.StartCoroutine(AudioManager.Instance.FadeIn());
+        try
+        {
+            CheckFileExistance(DataPath());
+            saveData = ReadDataFromJson();
+            saveData.gameInfo.characterInfo.characterSelected = Resources.Load<InitialDataSO>($"SciptablesObjects/Character/InitialData/{saveData.gameInfo.characterInfo.characterSelectedName}");
+            LoadCSV();
+            InitializeResolutionData();
+            InitializeObjects();
+            Application.targetFrameRate = saveData.configurationsInfo.FpsLimit;
+            await InitializeAudioMixerData();
+        }
+        catch (Exception e)
+        {
+            Debug.LogError(e);
+            return;
+        }
     }
     void LoadCSV()
     {
@@ -101,6 +108,14 @@ public class GameData : MonoBehaviour
         if (saveData.configurationsInfo.soundConfiguration.SFXalue == 0) decibelsSFX = -80;
         AudioManager.Instance.audioMixer.SetFloat(AudioManager.TypeSound.BGM.ToString(), decibelsBGM);
         AudioManager.Instance.audioMixer.SetFloat(AudioManager.TypeSound.SFX.ToString(), decibelsSFX);
+        if (saveData.configurationsInfo.soundConfiguration.isMute)
+        {
+            AudioManager.Instance.audioMixer.SetFloat(AudioManager.TypeSound.Master.ToString(), -80f);
+        }
+        else 
+        {
+            GameManager.Instance.StartCoroutine(AudioManager.Instance.FadeIn());
+        }
         await Awaitable.NextFrameAsync();
     }
     public void SetStartingData()

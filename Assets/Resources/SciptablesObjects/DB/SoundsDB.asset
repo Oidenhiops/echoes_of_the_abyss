@@ -38,3 +38,9 @@ MonoBehaviour:
     - Key: Unlock
       Value:
       - {fileID: 8300000, guid: 6d59c9fa98d426d4b9816607c4ee035d, type: 3}
+    - Key: TouchButtonBack
+      Value:
+      - {fileID: 8300000, guid: 01810f75a1b736d4985b35d9221924ab, type: 3}
+    - Key: TouchButtonAdvance
+      Value:
+      - {fileID: 8300000, guid: 3038c2382d604514e94c9ef8b63990c1, type: 3}

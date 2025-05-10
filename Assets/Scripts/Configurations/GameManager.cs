@@ -51,6 +51,8 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
         SetInitialDevice();
+        OnDeviceChanged += ValidateActiveMouse;
+        ValidateActiveMouse(currentDevice);
     }
     void LateUpdate()
     {
@@ -67,7 +69,6 @@ public class GameManager : MonoBehaviour
                 if (!SceneManager.GetSceneByName("CreditsScene").isLoaded) SceneManager.LoadScene("CreditsScene", LoadSceneMode.Additive);
                 break;
             case TypeScene.GameOverScene:
-                Cursor.visible = true;
                 if (!SceneManager.GetSceneByName("GameOverScene").isLoaded) SceneManager.LoadScene("GameOverScene", LoadSceneMode.Additive);
                 break;
             default:
@@ -77,33 +78,37 @@ public class GameManager : MonoBehaviour
     }
     public async Awaitable ChangeScene(TypeScene typeScene)
     {
-        startGame = false;
-        openCloseScene.openCloseSceneAnimator.SetBool("Out", true);
-        await AudioManager.Instance.FadeOut();
-        while (openCloseScene.openCloseSceneAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime < 1f) await Task.Delay(TimeSpan.FromSeconds(0.05)); ;
-        if (typeScene == TypeScene.Reload)
+        try
         {
-            ValidateActiveMouse(SceneManager.GetSceneAt(0).name);
-            SceneManager.LoadScene(SceneManager.GetSceneAt(0).name);
+            startGame = false;
+            openCloseScene.openCloseSceneAnimator.SetBool("Out", true);
+            await AudioManager.Instance.FadeOut();
+            while (openCloseScene.openCloseSceneAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime < 1f) await Task.Delay(TimeSpan.FromSeconds(0.05)); ;
+            if (typeScene == TypeScene.Reload)
+            {
+                SceneManager.LoadScene(SceneManager.GetSceneAt(0).name);
+            }
+            else if (typeScene == TypeScene.Exit)
+            {
+                Application.Quit();
+            }
+            else
+            {
+                SceneManager.LoadScene(typeScene.ToString());
+            }
+            await Task.Delay(TimeSpan.FromSeconds(0.05));
+            _ = openCloseScene.WaitFinishCloseAnimation();
+            _ = AudioManager.Instance.FadeIn();
         }
-        else if (typeScene == TypeScene.Exit)
+        catch (Exception e)
         {
-            Application.Quit();
+            Debug.LogError(e);
+            return;
         }
-        else
-        {
-            ValidateActiveMouse(typeScene.ToString());
-            SceneManager.LoadScene(typeScene.ToString());
-        }
-        await Task.Delay(TimeSpan.FromSeconds(0.05));
-        _ = openCloseScene.WaitFinishCloseAnimation();
-        _ = AudioManager.Instance.FadeIn();
     }
-    public void ValidateActiveMouse(string typeScene)
+    public void ValidateActiveMouse(TypeDevice typeDevice)
     {
-        if (typeScene == TypeScene.HomeScene.ToString() ||
-            typeScene == TypeScene.CreditsScene.ToString() ||
-            typeScene == TypeScene.OptionsScene.ToString())
+        if (typeDevice == TypeDevice.PC)
         {
             Cursor.visible = true;
         }

@@ -166,25 +166,33 @@ public class Character : MonoBehaviour
             return null;
         }
         public async Awaitable InitializeStatistics()
-        {            
-            for (int i = 0; i < characterStatistics.Count; i++)
+        {
+            try
             {
-                TypeStatistics key = characterStatistics.Keys.ElementAt(i);
-                characterStatistics[key] = new Statistics(
-                    initialData.characterInfo.characterStatistics[key].typeStatistics,
-                    initialData.characterInfo.characterStatistics[key].baseValue,
-                    initialData.characterInfo.characterStatistics[key].buffValue,
-                    initialData.characterInfo.characterStatistics[key].objectValue,
-                    initialData.characterInfo.characterStatistics[key].currentValue,
-                    initialData.characterInfo.characterStatistics[key].maxValue
-                );
-                if (characterStatistics[key].maxValue == 0)
+                for (int i = 0; i < characterStatistics.Count; i++)
                 {
-                    characterStatistics[key].maxValue = characterStatistics[key].baseValue;
-                    characterStatistics[key].currentValue = characterStatistics[key].baseValue;
+                    TypeStatistics key = characterStatistics.Keys.ElementAt(i);
+                    characterStatistics[key] = new Statistics(
+                        initialData.characterInfo.characterStatistics[key].typeStatistics,
+                        initialData.characterInfo.characterStatistics[key].baseValue,
+                        initialData.characterInfo.characterStatistics[key].buffValue,
+                        initialData.characterInfo.characterStatistics[key].objectValue,
+                        initialData.characterInfo.characterStatistics[key].currentValue,
+                        initialData.characterInfo.characterStatistics[key].maxValue
+                    );
+                    if (characterStatistics[key].maxValue == 0)
+                    {
+                        characterStatistics[key].maxValue = characterStatistics[key].baseValue;
+                        characterStatistics[key].currentValue = characterStatistics[key].baseValue;
+                    }
                 }
+                await Awaitable.NextFrameAsync();
             }
-            await Awaitable.NextFrameAsync();
+            catch (Exception e)
+            {
+                Debug.LogError(e);
+                return;
+            }
         }
         public void RefreshCurrentStatistics()
         {
@@ -392,5 +400,6 @@ public class Character : MonoBehaviour
         public void SetPositionTarget(Transform position);
         public void SetCanMoveState(bool state);
         public void SetTarget(Transform targetPos);
+        public Vector3 GetDirectionMove();
     }
 }

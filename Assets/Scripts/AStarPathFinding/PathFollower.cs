@@ -201,4 +201,9 @@ public class PathFollower : MonoBehaviour, Character.ICharacterMove
     public void SetPositionTarget(Transform position){}
     public void SetCanMoveState(bool state){}
     public void SetTarget(Transform targetPos){}
+
+    public Vector3 GetDirectionMove()
+    {
+        throw new System.NotImplementedException();
+    }
 }

@@ -2,7 +2,7 @@ public class PlayerAttack : ManagementCharacterAttack
 {
     public override void ValidateAttack()
     {
-        if (character.characterInputs.characterActions.CharacterInputs.PrincipalAttack.triggered)
+        if (character.characterInputs.characterActions.CharacterInputs.BasicAttack.triggered)
         {
             ValidateAttackMobile();
         }

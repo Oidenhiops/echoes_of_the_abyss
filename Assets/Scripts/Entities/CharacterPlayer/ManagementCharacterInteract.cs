@@ -30,7 +30,7 @@ public class ManagementCharacterInteract : MonoBehaviour
     public void InitializeInteractsEvents()
     {
         OnInteractsChanged += HandleInteracts;
-        character.characterInputs.characterActions.CharacterInputs.ChangeObjectForTake.performed += OnChangeObjectForTake;
+        character.characterInputs.characterActions.CharacterInputs.ChangeInteractable.performed += OnChangeObjectForTake;
         character.characterInputs.characterActions.CharacterInputs.Interact.performed += OnInteract;
     }
     public void Interact()

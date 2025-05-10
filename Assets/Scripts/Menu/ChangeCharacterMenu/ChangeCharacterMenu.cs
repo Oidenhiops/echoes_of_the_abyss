@@ -17,6 +17,8 @@ public class ChangeCharacterMenu : MonoBehaviour
     public bool isSkillWindow = false;
     public bool isObjectsWindow = false;
     public GameObject containerObjects;
+    public Button backButton;
+    public Button playButton;
 
     public void OnEnable()
     {        
@@ -32,8 +34,12 @@ public class ChangeCharacterMenu : MonoBehaviour
             }
         }
         SetCharacterData();
+        backButton.Select();
     }
-
+    void OnDisable()
+    {
+        playButton.Select();
+    }
     public void SetCharacterData()
     {
         for (int u = 0; u < staticticsUi.Length; u++)
