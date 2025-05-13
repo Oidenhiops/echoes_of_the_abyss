@@ -20,7 +20,7 @@ public class ManagementArmors : ObjectBase
             }
         }
 
-        Vector3 positionsSpawn = character.transform.position + new Vector3(character.characterInfo.characterScripts.managementCharacterModelDirection.movementDirectionAnimation.x, 0.5f, character.characterInfo.characterScripts.managementCharacterModelDirection.movementDirectionAnimation.y);
+        Vector3 positionsSpawn = character.characterInfo.characterScripts.managementCharacterModelDirection.directionPlayer.transform.GetChild(0).transform.position;
         GameObject armor = Instantiate(objectInfo.objectData.objectInstance, positionsSpawn, Quaternion.identity);
         Vector3 directionForce = (character.transform.position - armor.transform.position).normalized;
         armor.GetComponent<Rigidbody>().isKinematic = false;

@@ -69,6 +69,7 @@ public class ChangeCharacterMenu : MonoBehaviour
             GameData.Instance.saveData.gameInfo.characterInfo.currentObjects[i] = new ManagementCharacterObjects.ObjectsInfo{
                 objectPos = characterSelected.objects[i].objectPos,
                 objectData = characterSelected.objects[i].objectData,
+                objectId = characterSelected.objects[i].objectData.objectId,
                 amount = characterSelected.objects[i].amount,
                 isUsingItem = characterSelected.objects[i].isUsingItem,
             };

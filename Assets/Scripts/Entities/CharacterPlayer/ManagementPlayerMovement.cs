@@ -5,6 +5,8 @@ public class ManagementPlayerMovement : MonoBehaviour, Character.ICharacterMove
 {
     public Character character;
     Vector3 movementDirection;
+    Vector3 camForward;
+    Vector3 camRight;
     float jumpForce = 3;
     public void Move()
     {
@@ -13,19 +15,15 @@ public class ManagementPlayerMovement : MonoBehaviour, Character.ICharacterMove
             character.characterInputs.characterActionsInfo.movement.x,
             0,
             character.characterInputs.characterActionsInfo.movement.y
-        ).normalized;        
-        Vector3 camDirection = 
-        (
-            inputs.x * character.characterInfo.characterScripts.managementPlayerCamera.camRight + 
-            inputs.z * character.characterInfo.characterScripts.managementPlayerCamera.camForward
         ).normalized;
-        
+        CamDirection();
+        Vector3 camDirection = (inputs.x * camRight + inputs.z * camForward).normalized;
         movementDirection = new Vector3
         (
             camDirection.x,
             0,
             camDirection.z
-        );
+        ).normalized;
         if (!character.characterInfo.characterScripts.managementStatusEffect.statusEffects.ContainsKey(StatusEffectSO.TypeStatusEffect.Push))
         {
             Jump();
@@ -40,9 +38,22 @@ public class ManagementPlayerMovement : MonoBehaviour, Character.ICharacterMove
             character.characterInfo.rb.linearVelocity += movementDirection / 10;
         }
     }
+    void CamDirection()
+    {
+        camForward = Camera.main.transform.forward;
+        camRight = Camera.main.transform.right;
+
+        camForward.y = 0;
+        camRight.y = 0;
+
+        camForward = camForward.normalized;
+        camRight = camRight.normalized;
+    }
     void Jump()
     {
-        if (character.characterInfo.isGrounded && character.characterInputs.characterActions.CharacterInputs.Jump.triggered)
+        if (character.characterInfo.isGrounded &&
+            !character.characterInputs.characterActionsInfo.isSkillsActive &&
+            character.characterInputs.characterActions.CharacterInputs.Jump.triggered)
         {
             character.characterInfo.rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
         }
@@ -51,10 +62,10 @@ public class ManagementPlayerMovement : MonoBehaviour, Character.ICharacterMove
     {
         return character.characterInfo.rb;
     }
-    public void SetPositionTarget(Transform position){}
-    public void SetCanMoveState(bool state){}
+    public void SetPositionTarget(Transform position) { }
+    public void SetCanMoveState(bool state) { }
 
-    public void SetTarget(Transform targetPos){}
+    public void SetTarget(Transform targetPos) { }
 
     public Vector3 GetDirectionMove()
     {

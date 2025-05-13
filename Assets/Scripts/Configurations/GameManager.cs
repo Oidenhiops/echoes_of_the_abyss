@@ -99,11 +99,12 @@ public class GameManager : MonoBehaviour
             await Task.Delay(TimeSpan.FromSeconds(0.05));
             _ = openCloseScene.WaitFinishCloseAnimation();
             _ = AudioManager.Instance.FadeIn();
+            await Task.Delay(TimeSpan.FromSeconds(0.05));
         }
         catch (Exception e)
         {
             Debug.LogError(e);
-            return;
+            await Task.Delay(TimeSpan.FromSeconds(0.05));
         }
     }
     public void ValidateActiveMouse(TypeDevice typeDevice)

@@ -13,7 +13,6 @@ public class ManagementCharacterSkills : MonoBehaviour
     bool usingSkill;
     public void InitializeSkillsEvents()
     {
-        character.characterInputs.characterActions.CharacterInputs.ChangeSkill.performed += OnChangeSkillUp;
         character.characterInputs.characterActions.CharacterInputs.UseSkill.performed += OnUseSkill;
     }
     public void HandleSkills()
@@ -37,33 +36,12 @@ public class ManagementCharacterSkills : MonoBehaviour
             }
         }
     }
-    void OnChangeSkillUp(InputAction.CallbackContext context){
-        if (character.characterInfo.isActive){
-            ChangeSkill(context.ReadValue<float>() > 0);
-        }
-    }
     void OnUseSkill(InputAction.CallbackContext context){
-        if (context.action.triggered){
+        if (character.characterInputs.characterActionsInfo.isSkillsActive && context.action.triggered)
+        {
+            currentSkillIndex = (int)context.ReadValue<float>();
             ValidateUseSkill();
         }
-    }
-    void ChangeSkill(bool isUp)
-    {
-        currentSkillIndex += isUp ? 1 : -1;
-        if (currentSkillIndex < 0)
-        {
-            currentSkillIndex = currentSkills.Length - 1;
-        }
-        else if (currentSkillIndex > currentSkills.Length - 1)
-        {
-            currentSkillIndex = 0;
-        }
-        managementCharacterHud.ChangeCurrentSkill(false, currentSkillIndex);
-    }
-    public void ChangeSkill(int pos)
-    {
-        currentSkillIndex = pos;
-        managementCharacterHud.ChangeCurrentSkill(false, currentSkillIndex);
     }
     void ValidateUseSkill()
     {
@@ -145,7 +123,6 @@ public class ManagementCharacterSkills : MonoBehaviour
             }
         }
         managementCharacterHud.RefreshSkillsSprites(currentSkills);
-        managementCharacterHud.ChangeCurrentSkill(false, 0);
     }
     [Serializable] public class SkillInfo
     {

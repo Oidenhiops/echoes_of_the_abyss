@@ -80,11 +80,12 @@ public class ManagementOpenCloseScene : MonoBehaviour
                     menuHelper.SelectButton();
                 }
             }
+            await Task.Delay(TimeSpan.FromSeconds(0.05));
         }
         catch (Exception e)
         {
             Debug.LogError(e);
-            return;
+            await Task.Delay(TimeSpan.FromSeconds(0.05));
         }
     }
     public async Awaitable WaitFinishCloseAnimation()
@@ -96,11 +97,12 @@ public class ManagementOpenCloseScene : MonoBehaviour
                 await Task.Delay(TimeSpan.FromSeconds(0.05));
             }
             ResetValues();
+            await Task.Delay(TimeSpan.FromSeconds(0.05));
         }
         catch (Exception e)
         {
             Debug.LogError(e);
-            return;
+            await Task.Delay(TimeSpan.FromSeconds(0.05));
         }
     }
     public void ResetValues()

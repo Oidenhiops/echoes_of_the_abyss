@@ -36,8 +36,35 @@ public class CharacterInputs : MonoBehaviour
         characterActions.CharacterInputs.MousePos.canceled += OnMouseInput;
         characterActions.CharacterInputs.Movement.performed += OnMovementInput;
         characterActions.CharacterInputs.Movement.canceled += OnMovementInput;
+        characterActions.CharacterInputs.ActiveSkill.performed += OnActiveSkill;
+        characterActions.CharacterInputs.ActiveSkill.canceled += OnActiveSkill;
+        characterActions.CharacterInputs.UnlockCamera.performed += OnUnlockCamera;
+        characterActions.CharacterInputs.UnlockCamera.canceled += OnUnlockCamera;
         characterActions.CharacterInputs.Pause.performed += OnPauseInput;
-        characterActions.CharacterInputs.SecondaryAction.started += OnEnableSecondaryAction;
+        characterActions.CharacterInputs.SecondaryAction.started += OnEnableSecondaryAction;        
+        character.characterInputs.characterActions.CharacterInputs.ShowStats.started += OnShowStats;
+    }
+    void OnActiveSkill(InputAction.CallbackContext context)
+    {
+        if (context.action.IsPressed())
+        {
+            characterActionsInfo.isSkillsActive = true;
+        }
+        else
+        {
+            characterActionsInfo.isSkillsActive = false;
+        }
+    }
+        void OnUnlockCamera(InputAction.CallbackContext context)
+    {
+        if (context.action.IsPressed())
+        {
+            characterActionsInfo.isUnlockCamera = true;
+        }
+        else
+        {
+            characterActionsInfo.isUnlockCamera = false;
+        }
     }
     void OnMovementInput(InputAction.CallbackContext context)
     {
@@ -56,7 +83,16 @@ public class CharacterInputs : MonoBehaviour
     }
     void OnEnableSecondaryAction(InputAction.CallbackContext context)
     {
-        characterActionsInfo.isSecondaryAction = !characterActionsInfo.isSecondaryAction;
+        if (!characterActionsInfo.isSkillsActive)
+        {
+            characterActionsInfo.isSecondaryAction = !characterActionsInfo.isSecondaryAction;
+            character.characterInfo.characterScripts.managementCharacterHud.ToggleSecondaryAction(characterActionsInfo.isSecondaryAction);
+        }
+    }
+    void OnShowStats(InputAction.CallbackContext context)
+    {
+        characterActionsInfo.isShowStats = !characterActionsInfo.isShowStats;
+        character.characterInfo.characterScripts.managementCharacterHud.ToggleShowStatistics(characterActionsInfo.isShowStats);
     }
     void CurrentDevice()
     {
@@ -169,18 +205,6 @@ public class CharacterInputs : MonoBehaviour
                 attackDirection.SetActive(false);
             }
         }
-        // else
-        // {
-        //     if (showAttackDiection)
-        //     {
-        //         Cursor.visible = true;
-        //     }
-        //     else
-        //     {
-        //         Cursor.visible = false;
-        //     }
-        //     attackDirection.SetActive(false);
-        // }
     }
     [Serializable] public class CharacterActionsInfo
     {
@@ -201,5 +225,8 @@ public class CharacterInputs : MonoBehaviour
                 }
             }
         }
+        public bool isSkillsActive = false;
+        public bool isShowStats = false;
+        public bool isUnlockCamera = false;
     }
 }

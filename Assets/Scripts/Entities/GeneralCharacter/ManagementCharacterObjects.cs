@@ -17,10 +17,7 @@ public class ManagementCharacterObjects : MonoBehaviour
     }
     public void HandleObjects()
     {
-        if (character.characterInfo.isActive)
-        {
 
-        }
     }
     public void OnChangeObject(InputAction.CallbackContext context)
     {
@@ -58,7 +55,8 @@ public class ManagementCharacterObjects : MonoBehaviour
             {
                 int amountToAdd = ValidateAmountObjectToAdd(objectForValidate, objectTaked);
                 objectForValidate.amount += amountToAdd;
-                character.characterInfo.characterScripts.managementCharacterHud.SendInformationMessage($"{GameData.Instance.GetDialog(17)} {amountToAdd} {GameData.Instance.GetDialog(objectTaked.managementInteract.IDText)}", Color.green);
+                string[] dialogs = {"39",$"${amountToAdd}", $"{objectTaked.managementInteract.IDText}"};
+                character.characterInfo.characterScripts.managementCharacterHud.SendInformationMessage(dialogs, Color.green);
                 pickUpItem = true;
             }
         }
@@ -71,7 +69,8 @@ public class ManagementCharacterObjects : MonoBehaviour
                     objectForAdd.objectData = objectTaked.objectInfo.objectData;
                     int amountToAdd = ValidateAmountObjectToAdd(objectForAdd, objectTaked);
                     objectForAdd.amount = amountToAdd;
-                    character.characterInfo.characterScripts.managementCharacterHud.SendInformationMessage($"{GameData.Instance.GetDialog(17)} {amountToAdd} {GameData.Instance.GetDialog(objectTaked.managementInteract.IDText)}", Color.green);
+                    string[] dialogs = {"39",$"${amountToAdd}", $"{objectTaked.managementInteract.IDText}"};
+                    character.characterInfo.characterScripts.managementCharacterHud.SendInformationMessage( dialogs, Color.green);
                     pickUpItem = true;
                 }
             }
@@ -89,7 +88,7 @@ public class ManagementCharacterObjects : MonoBehaviour
             }
             if (isFullInventory)
             {
-                character.characterInfo.characterScripts.managementCharacterHud.SendInformationMessage($"{GameData.Instance.GetDialog(18)}", Color.red);
+                character.characterInfo.characterScripts.managementCharacterHud.SendInformationMessage(40, Color.red);
             }
         }
         else

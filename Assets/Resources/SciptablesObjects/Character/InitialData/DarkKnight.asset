@@ -130,13 +130,18 @@ MonoBehaviour:
       currentCD: 0
   objects:
   - objectId: 0
-    objectData: {fileID: 11400000, guid: 95967879a05ec8146bc4782b8372551c, type: 2}
-    amount: 5
+    objectData: {fileID: 11400000, guid: d546527188dda144ca27cc7c010df535, type: 2}
+    amount: 1
     isUsingItem: 0
     objectInstance: {fileID: 0}
   - objectId: 0
     objectData: {fileID: 11400000, guid: 98703881d33348944bb44751e8883784, type: 2}
     amount: 1
+    isUsingItem: 0
+    objectInstance: {fileID: 0}
+  - objectId: 0
+    objectData: {fileID: 11400000, guid: 95967879a05ec8146bc4782b8372551c, type: 2}
+    amount: 5
     isUsingItem: 0
     objectInstance: {fileID: 0}
   characterAnimations: {fileID: 11400000, guid: 1cb6e235cb2cce34f8f2ae85fa7a9e51,

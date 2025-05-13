@@ -1,14 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.TextCore.Text;
 
 public class ManagementPotions : ObjectBase
 {
     public GameObject effect;
     public override void DropObject(Character character ,ManagementCharacterObjects.ObjectsInfo objectInfo, ManagementCharacterObjects managementCharacterObjects)
-    {
-        Vector3 positionsSpawn = character.transform.position + new Vector3(character.characterInfo.characterScripts.managementCharacterModelDirection.movementDirectionAnimation.x, 0.5f, character.characterInfo.characterScripts.managementCharacterModelDirection.movementDirectionAnimation.y);
+    {        
+        Vector3 positionsSpawn = character.characterInfo.characterScripts.managementCharacterModelDirection.directionPlayer.transform.GetChild(0).transform.position;
         GameObject potion = Instantiate(objectInfo.objectData.objectInstance, positionsSpawn, Quaternion.identity);
         Vector3 directionForce = (character.transform.position - potion.transform.position).normalized;
         potion.GetComponent<Rigidbody>().isKinematic = false;

@@ -119,15 +119,6 @@ public partial class @CharacterActions: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": true
                 },
                 {
-                    ""name"": ""ChangeInteractable"",
-                    ""type"": ""Value"",
-                    ""id"": ""45fa18f5-81e6-456c-a43a-66d1885de12c"",
-                    ""expectedControlType"": ""Vector2"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": true
-                },
-                {
                     ""name"": ""Interact"",
                     ""type"": ""Button"",
                     ""id"": ""b2fc08e8-a649-4b83-946f-1df9b26a4903"",
@@ -155,10 +146,10 @@ public partial class @CharacterActions: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""ChangeSkill"",
-                    ""type"": ""Value"",
+                    ""name"": ""ActiveSkill"",
+                    ""type"": ""Button"",
                     ""id"": ""3465deb2-37df-43e6-89e3-934c94e6a28f"",
-                    ""expectedControlType"": ""Axis"",
+                    ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
@@ -392,99 +383,11 @@ public partial class @CharacterActions: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""84b6bb96-5201-4fc3-91c5-3b949eab2827"",
-                    ""path"": ""<Gamepad>/rightShoulder"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""BasicAttack"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": ""Keyboard"",
-                    ""id"": ""512fec8d-27ec-4ad9-b8c6-2baeae6cc20f"",
-                    ""path"": ""1DAxis"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""ChangeSkill"",
-                    ""isComposite"": true,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": ""negative"",
-                    ""id"": ""09f82dc6-fda4-40ce-9e8f-850624dda9b4"",
-                    ""path"": ""<Keyboard>/q"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""ChangeSkill"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""positive"",
-                    ""id"": ""9d49961b-8dc5-408c-aa1a-bf8c95b2a8a8"",
-                    ""path"": ""<Keyboard>/e"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""ChangeSkill"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""Gamepad"",
-                    ""id"": ""0ae0972f-f8d8-4c08-ab9b-eedec053d242"",
-                    ""path"": ""1DAxis"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""ChangeSkill"",
-                    ""isComposite"": true,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": ""negative"",
-                    ""id"": ""5fb31afe-fbfd-4107-984a-fd5f854ed14f"",
-                    ""path"": ""<Gamepad>/dpad/left"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""ChangeSkill"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""positive"",
-                    ""id"": ""6d85f2b3-c6a6-4a4d-984f-293133b1c615"",
-                    ""path"": ""<Gamepad>/dpad/right"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""ChangeSkill"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""98f14e8e-cded-4e0b-8269-0495c96dbfa9"",
-                    ""path"": ""<Keyboard>/r"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""UseSkill"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""1274b64a-eb4f-4f74-9230-6f50946fc328"",
                     ""path"": ""<Gamepad>/rightTrigger"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""UseSkill"",
+                    ""action"": ""BasicAttack"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -502,7 +405,7 @@ public partial class @CharacterActions: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""c365b7b6-0a88-4c4d-95bb-ee4a07f2704e"",
-                    ""path"": ""<Gamepad>/leftTrigger"",
+                    ""path"": ""<Gamepad>/leftShoulder"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -524,33 +427,11 @@ public partial class @CharacterActions: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""5c2d6a87-a32b-42f1-9ccc-28b8a1840061"",
-                    ""path"": ""<Gamepad>/rightStickPress"",
+                    ""path"": ""<Gamepad>/rightShoulder"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Target"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""d3802f7f-0fcb-4719-a290-41048d06c72e"",
-                    ""path"": ""<Mouse>/scroll"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""ChangeInteractable"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""8b7c99fa-2ca8-4ac8-a4c3-6f8e95d674a5"",
-                    ""path"": ""<Gamepad>/rightStick"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""ChangeInteractable"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -623,7 +504,7 @@ public partial class @CharacterActions: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""be0b6ffe-2bb6-402e-9e2f-5d1ad63767ad"",
-                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""path"": ""<Gamepad>/rightStickPress"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -667,7 +548,7 @@ public partial class @CharacterActions: IInputActionCollection2, IDisposable
                 {
                     ""name"": ""negative"",
                     ""id"": ""2dfc8762-e820-4e92-a029-b3d5e76caa8e"",
-                    ""path"": ""<Gamepad>/dpad/down"",
+                    ""path"": ""<Gamepad>/dpad/left"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -678,7 +559,7 @@ public partial class @CharacterActions: IInputActionCollection2, IDisposable
                 {
                     ""name"": ""positive"",
                     ""id"": ""b3091b80-6fe4-4047-a017-28df0c98636f"",
-                    ""path"": ""<Gamepad>/dpad/up"",
+                    ""path"": ""<Gamepad>/dpad/right"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -751,6 +632,116 @@ public partial class @CharacterActions: IInputActionCollection2, IDisposable
                     ""action"": ""ChangeItemPos"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""76ce2ea8-b95d-4d8a-a11e-23268219ae7b"",
+                    ""path"": ""<Keyboard>/1"",
+                    ""interactions"": """",
+                    ""processors"": ""Scale(factor=0)"",
+                    ""groups"": """",
+                    ""action"": ""UseSkill"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3644ce39-a788-4b68-adcc-265e3990043b"",
+                    ""path"": ""<Keyboard>/2"",
+                    ""interactions"": """",
+                    ""processors"": ""Scale"",
+                    ""groups"": """",
+                    ""action"": ""UseSkill"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b73c0c11-2893-433a-9b29-d5f0a25a1bd1"",
+                    ""path"": ""<Keyboard>/3"",
+                    ""interactions"": """",
+                    ""processors"": ""Scale(factor=2)"",
+                    ""groups"": """",
+                    ""action"": ""UseSkill"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""92a0d6de-14b2-466e-89f7-b52de7d683a5"",
+                    ""path"": ""<Keyboard>/4"",
+                    ""interactions"": """",
+                    ""processors"": ""Scale(factor=3)"",
+                    ""groups"": """",
+                    ""action"": ""UseSkill"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""353f003c-af72-4264-89c4-9108aa8282ea"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": ""Scale(factor=0)"",
+                    ""groups"": """",
+                    ""action"": ""UseSkill"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""fd6670a2-ddc3-4308-a786-cab8a6841027"",
+                    ""path"": ""<Gamepad>/buttonWest"",
+                    ""interactions"": """",
+                    ""processors"": ""Scale"",
+                    ""groups"": """",
+                    ""action"": ""UseSkill"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a79b7115-cd59-4bc6-b2ec-b2f9b524edfc"",
+                    ""path"": ""<Gamepad>/buttonNorth"",
+                    ""interactions"": """",
+                    ""processors"": ""Scale(factor=2)"",
+                    ""groups"": """",
+                    ""action"": ""UseSkill"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""bb0b7ccd-2b21-45d2-abb4-1b30d3422022"",
+                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""interactions"": """",
+                    ""processors"": ""Scale(factor=3)"",
+                    ""groups"": """",
+                    ""action"": ""UseSkill"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f18f2f8b-278e-4240-80e2-0234188397b3"",
+                    ""path"": ""<Keyboard>/shift"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ActiveSkill"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""49504ee1-0a4e-4006-9cff-1a573382af09"",
+                    ""path"": ""<Gamepad>/leftTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ActiveSkill"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -762,11 +753,10 @@ public partial class @CharacterActions: IInputActionCollection2, IDisposable
         m_CharacterInputs_Movement = m_CharacterInputs.FindAction("Movement", throwIfNotFound: true);
         m_CharacterInputs_MoveCamera = m_CharacterInputs.FindAction("MoveCamera", throwIfNotFound: true);
         m_CharacterInputs_MousePos = m_CharacterInputs.FindAction("MousePos", throwIfNotFound: true);
-        m_CharacterInputs_ChangeInteractable = m_CharacterInputs.FindAction("ChangeInteractable", throwIfNotFound: true);
         m_CharacterInputs_Interact = m_CharacterInputs.FindAction("Interact", throwIfNotFound: true);
         m_CharacterInputs_SecondaryAction = m_CharacterInputs.FindAction("SecondaryAction", throwIfNotFound: true);
         m_CharacterInputs_Jump = m_CharacterInputs.FindAction("Jump", throwIfNotFound: true);
-        m_CharacterInputs_ChangeSkill = m_CharacterInputs.FindAction("ChangeSkill", throwIfNotFound: true);
+        m_CharacterInputs_ActiveSkill = m_CharacterInputs.FindAction("ActiveSkill", throwIfNotFound: true);
         m_CharacterInputs_UseSkill = m_CharacterInputs.FindAction("UseSkill", throwIfNotFound: true);
         m_CharacterInputs_ChangeItem = m_CharacterInputs.FindAction("ChangeItem", throwIfNotFound: true);
         m_CharacterInputs_ChangeItemPos = m_CharacterInputs.FindAction("ChangeItemPos", throwIfNotFound: true);
@@ -859,11 +849,10 @@ public partial class @CharacterActions: IInputActionCollection2, IDisposable
     private readonly InputAction m_CharacterInputs_Movement;
     private readonly InputAction m_CharacterInputs_MoveCamera;
     private readonly InputAction m_CharacterInputs_MousePos;
-    private readonly InputAction m_CharacterInputs_ChangeInteractable;
     private readonly InputAction m_CharacterInputs_Interact;
     private readonly InputAction m_CharacterInputs_SecondaryAction;
     private readonly InputAction m_CharacterInputs_Jump;
-    private readonly InputAction m_CharacterInputs_ChangeSkill;
+    private readonly InputAction m_CharacterInputs_ActiveSkill;
     private readonly InputAction m_CharacterInputs_UseSkill;
     private readonly InputAction m_CharacterInputs_ChangeItem;
     private readonly InputAction m_CharacterInputs_ChangeItemPos;
@@ -897,10 +886,6 @@ public partial class @CharacterActions: IInputActionCollection2, IDisposable
         /// </summary>
         public InputAction @MousePos => m_Wrapper.m_CharacterInputs_MousePos;
         /// <summary>
-        /// Provides access to the underlying input action "CharacterInputs/ChangeInteractable".
-        /// </summary>
-        public InputAction @ChangeInteractable => m_Wrapper.m_CharacterInputs_ChangeInteractable;
-        /// <summary>
         /// Provides access to the underlying input action "CharacterInputs/Interact".
         /// </summary>
         public InputAction @Interact => m_Wrapper.m_CharacterInputs_Interact;
@@ -913,9 +898,9 @@ public partial class @CharacterActions: IInputActionCollection2, IDisposable
         /// </summary>
         public InputAction @Jump => m_Wrapper.m_CharacterInputs_Jump;
         /// <summary>
-        /// Provides access to the underlying input action "CharacterInputs/ChangeSkill".
+        /// Provides access to the underlying input action "CharacterInputs/ActiveSkill".
         /// </summary>
-        public InputAction @ChangeSkill => m_Wrapper.m_CharacterInputs_ChangeSkill;
+        public InputAction @ActiveSkill => m_Wrapper.m_CharacterInputs_ActiveSkill;
         /// <summary>
         /// Provides access to the underlying input action "CharacterInputs/UseSkill".
         /// </summary>
@@ -987,9 +972,6 @@ public partial class @CharacterActions: IInputActionCollection2, IDisposable
             @MousePos.started += instance.OnMousePos;
             @MousePos.performed += instance.OnMousePos;
             @MousePos.canceled += instance.OnMousePos;
-            @ChangeInteractable.started += instance.OnChangeInteractable;
-            @ChangeInteractable.performed += instance.OnChangeInteractable;
-            @ChangeInteractable.canceled += instance.OnChangeInteractable;
             @Interact.started += instance.OnInteract;
             @Interact.performed += instance.OnInteract;
             @Interact.canceled += instance.OnInteract;
@@ -999,9 +981,9 @@ public partial class @CharacterActions: IInputActionCollection2, IDisposable
             @Jump.started += instance.OnJump;
             @Jump.performed += instance.OnJump;
             @Jump.canceled += instance.OnJump;
-            @ChangeSkill.started += instance.OnChangeSkill;
-            @ChangeSkill.performed += instance.OnChangeSkill;
-            @ChangeSkill.canceled += instance.OnChangeSkill;
+            @ActiveSkill.started += instance.OnActiveSkill;
+            @ActiveSkill.performed += instance.OnActiveSkill;
+            @ActiveSkill.canceled += instance.OnActiveSkill;
             @UseSkill.started += instance.OnUseSkill;
             @UseSkill.performed += instance.OnUseSkill;
             @UseSkill.canceled += instance.OnUseSkill;
@@ -1049,9 +1031,6 @@ public partial class @CharacterActions: IInputActionCollection2, IDisposable
             @MousePos.started -= instance.OnMousePos;
             @MousePos.performed -= instance.OnMousePos;
             @MousePos.canceled -= instance.OnMousePos;
-            @ChangeInteractable.started -= instance.OnChangeInteractable;
-            @ChangeInteractable.performed -= instance.OnChangeInteractable;
-            @ChangeInteractable.canceled -= instance.OnChangeInteractable;
             @Interact.started -= instance.OnInteract;
             @Interact.performed -= instance.OnInteract;
             @Interact.canceled -= instance.OnInteract;
@@ -1061,9 +1040,9 @@ public partial class @CharacterActions: IInputActionCollection2, IDisposable
             @Jump.started -= instance.OnJump;
             @Jump.performed -= instance.OnJump;
             @Jump.canceled -= instance.OnJump;
-            @ChangeSkill.started -= instance.OnChangeSkill;
-            @ChangeSkill.performed -= instance.OnChangeSkill;
-            @ChangeSkill.canceled -= instance.OnChangeSkill;
+            @ActiveSkill.started -= instance.OnActiveSkill;
+            @ActiveSkill.performed -= instance.OnActiveSkill;
+            @ActiveSkill.canceled -= instance.OnActiveSkill;
             @UseSkill.started -= instance.OnUseSkill;
             @UseSkill.performed -= instance.OnUseSkill;
             @UseSkill.canceled -= instance.OnUseSkill;
@@ -1153,13 +1132,6 @@ public partial class @CharacterActions: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnMousePos(InputAction.CallbackContext context);
         /// <summary>
-        /// Method invoked when associated input action "ChangeInteractable" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
-        /// </summary>
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-        void OnChangeInteractable(InputAction.CallbackContext context);
-        /// <summary>
         /// Method invoked when associated input action "Interact" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>
         /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
@@ -1181,12 +1153,12 @@ public partial class @CharacterActions: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnJump(InputAction.CallbackContext context);
         /// <summary>
-        /// Method invoked when associated input action "ChangeSkill" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// Method invoked when associated input action "ActiveSkill" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>
         /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-        void OnChangeSkill(InputAction.CallbackContext context);
+        void OnActiveSkill(InputAction.CallbackContext context);
         /// <summary>
         /// Method invoked when associated input action "UseSkill" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>

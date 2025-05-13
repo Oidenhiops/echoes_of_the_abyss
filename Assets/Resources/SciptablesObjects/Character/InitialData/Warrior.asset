@@ -19,7 +19,6 @@ MonoBehaviour:
     characterScripts:
       managementCharacterHud: {fileID: 0}
       managementCharacterModelDirection: {fileID: 0}
-      managementCharacterSounds: {fileID: 0}
       managementCharacterObjects: {fileID: 0}
       managementCharacterSkills: {fileID: 0}
       managementPlayerCamera: {fileID: 0}
@@ -141,6 +140,11 @@ MonoBehaviour:
     isUsingItem: 0
     objectInstance: {fileID: 0}
   - objectId: 0
+    objectData: {fileID: 11400000, guid: 98703881d33348944bb44751e8883784, type: 2}
+    amount: 1
+    isUsingItem: 0
+    objectInstance: {fileID: 0}
+  - objectId: 0
     objectData: {fileID: 11400000, guid: 95967879a05ec8146bc4782b8372551c, type: 2}
     amount: 3
     isUsingItem: 0
@@ -150,11 +154,5 @@ MonoBehaviour:
     amount: 2
     isUsingItem: 0
     objectInstance: {fileID: 0}
-  - objectId: 0
-    objectData: {fileID: 11400000, guid: 98703881d33348944bb44751e8883784, type: 2}
-    amount: 1
-    isUsingItem: 0
-    objectInstance: {fileID: 0}
   characterAnimations: {fileID: 11400000, guid: e1c26a1abde824a46979ba4502d9d78c,
     type: 2}
-  characterSounds: {fileID: 11400000, guid: 1421512e37309ed46ba1102503747100, type: 2}

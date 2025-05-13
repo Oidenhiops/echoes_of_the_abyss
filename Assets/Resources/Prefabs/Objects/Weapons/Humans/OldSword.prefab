@@ -162,7 +162,7 @@ BoxCollider:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 1244862
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
@@ -182,7 +182,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8024ac2d8ed8d574082e09100bed48bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IDText: 29
+  IDText: 47
   typeInteract: 0
   canInteract: 1
 --- !u!114 &3906603032242566517
@@ -202,6 +202,6 @@ MonoBehaviour:
   colliderForMap: {fileID: 7296261363581413193}
   objectInfo:
     objectData: {fileID: 11400000, guid: 649c26d1c0cca62449cc90f4b9fc445f, type: 2}
-    amount: 0
+    amount: 1
   needInstance: 1
   typeAnimation: SwordAttack

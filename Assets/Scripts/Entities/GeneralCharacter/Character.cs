@@ -40,54 +40,94 @@ public class Character : MonoBehaviour
     }
     async Awaitable InitializeCharacter()
     {
-        if (characterInfo.isPlayer)
+        try
         {
-            if (GameData.Instance.saveData.gameInfo.characterInfo.characterSelected != null)
+            if (characterInfo.isPlayer)
             {
-                characterInfo.initialData = GameData.Instance.saveData.gameInfo.characterInfo.characterSelected.Clone();
+                if (GameData.Instance.saveData.gameInfo.characterInfo.characterSelected != null)
+                {
+                    characterInfo.initialData = GameData.Instance.saveData.gameInfo.characterInfo.characterSelected.Clone();
+                }
+                else
+                {
+                    characterInfo.initialData = characterInfo.initialData.Clone();
+                }
             }
-            else
+
+            await characterInfo.InitializeStatistics();
+            await InitializeAnimations();
+            await InitializeObjects();
+            await InitializeSkills();
+            await InitializeScriptsEvents();
+            characterInfo.regenerateResources = StartCoroutine(characterInfo.RegenerateResources());
+
+            if (characterInfo.isPlayer && characterInfo.characterScripts.managementCharacterHud != null)
             {
-                characterInfo.initialData = characterInfo.initialData.Clone();
+                characterInfo.characterScripts.managementCharacterHud.RefreshCurrentStatistics();
             }
+            characterInfo.rb.isKinematic = false;
+            characterInfo.isActive = true;
         }
-
-        await characterInfo.InitializeStatistics();
-        await InitializeAnimations();
-        await InitializeObjects();
-        await InitializeSkills();
-        await InitializeScriptsEvents();
-        characterInfo.regenerateResources = StartCoroutine(characterInfo.RegenerateResources());
-
-        if (characterInfo.isPlayer && characterInfo.characterScripts.managementCharacterHud != null)
+        catch(Exception e)
         {
-            characterInfo.characterScripts.managementCharacterHud.RefreshCurrentStatistics();
+            Debug.LogError(e);
+            await Awaitable.NextFrameAsync();
         }
-        characterInfo.rb.isKinematic = false;
-        characterInfo.isActive = true;
     }
     async Awaitable InitializeAnimations()
     {
-        characterInfo.characterScripts.characterAnimations.SetInitialData(characterInfo.initialData);
-        await Awaitable.NextFrameAsync();
+        try
+        {
+            characterInfo.characterScripts.characterAnimations.SetInitialData(characterInfo.initialData);
+            await Awaitable.NextFrameAsync();
+        }
+        catch (Exception e)
+        {
+            Debug.LogError(e);
+            await Awaitable.NextFrameAsync();
+        }
     }
     async Awaitable InitializeObjects()
     {
-        if (characterInfo.characterScripts.managementCharacterObjects != null) characterInfo.characterScripts.managementCharacterObjects.InitializeObjects();
-        await Awaitable.NextFrameAsync();
+        try
+        {
+            if (characterInfo.characterScripts.managementCharacterObjects != null) characterInfo.characterScripts.managementCharacterObjects.InitializeObjects();
+            await Awaitable.NextFrameAsync();
+        }
+        catch (Exception e)
+        {
+            Debug.LogError(e);
+            await Awaitable.NextFrameAsync();
+        }
     }
     async Awaitable InitializeSkills()
     {
-        if (characterInfo.isPlayer && characterInfo.characterScripts.managementCharacterSkills != null && GameData.Instance.saveData.gameInfo.characterInfo.characterSelected != null) characterInfo.characterScripts.managementCharacterSkills.InitializeSkills();
-        await Awaitable.NextFrameAsync();
+        try
+        {
+            if (characterInfo.isPlayer && characterInfo.characterScripts.managementCharacterSkills != null && GameData.Instance.saveData.gameInfo.characterInfo.characterSelected != null) characterInfo.characterScripts.managementCharacterSkills.InitializeSkills();
+            await Awaitable.NextFrameAsync();
+        }
+        catch (Exception e)
+        {
+            Debug.LogError(e);
+            await Awaitable.NextFrameAsync();
+        }
     }
     async Awaitable InitializeScriptsEvents()
     {
-        characterInfo.characterScripts.managementCharacterHud.InitializeHud();
-        characterInfo.characterScripts.managementCharacterObjects.InitializeObjectsEvents();
-        characterInfo.characterScripts.managementCharacterSkills.InitializeSkillsEvents();
-        characterInfo.characterScripts.managementCharacterInteract.InitializeInteractsEvents();
-        await Awaitable.NextFrameAsync();
+        try
+        {
+            if (characterInfo.characterScripts.managementCharacterHud) characterInfo.characterScripts.managementCharacterHud.InitializeHud();
+            if (characterInfo.characterScripts.managementCharacterObjects) characterInfo.characterScripts.managementCharacterObjects.InitializeObjectsEvents();
+            if (characterInfo.characterScripts.managementCharacterSkills) characterInfo.characterScripts.managementCharacterSkills.InitializeSkillsEvents();
+            if (characterInfo.characterScripts.managementCharacterInteract) characterInfo.characterScripts.managementCharacterInteract.InitializeInteractsEvents();
+            await Awaitable.NextFrameAsync();
+        }
+        catch (Exception e)
+        {
+            Debug.LogError(e);
+            await Awaitable.NextFrameAsync();
+        }
     }
     void HandleMove()
     {
@@ -191,7 +231,7 @@ public class Character : MonoBehaviour
             catch (Exception e)
             {
                 Debug.LogError(e);
-                return;
+                await Awaitable.NextFrameAsync();
             }
         }
         public void RefreshCurrentStatistics()
@@ -335,7 +375,7 @@ public class Character : MonoBehaviour
     }
     void OnDrawGizmos()
     {
-        Gizmos.color = characterInfo.isGrounded ? Color.red : Color.green;
+        Gizmos.color = characterInfo.isGrounded ? Color.green : Color.red;
         Gizmos.DrawWireCube(transform.position, new Vector3(0.5f, 0.1f, 0.5f));
     }
     [Serializable] public class Statistics

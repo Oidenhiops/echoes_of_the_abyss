@@ -3,9 +3,8 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using System;
-using System.Linq;
 using AYellowpaper.SerializedCollections;
-using UnityEngine.InputSystem;
+using UnityEngine.EventSystems;
 
 public class ManagementCharacterHud : MonoBehaviour
 {
@@ -15,8 +14,6 @@ public class ManagementCharacterHud : MonoBehaviour
     {
         if (character.characterInfo.isPlayer){
             GameManager.Instance.OnDeviceChanged += EnabledMobileHUD;
-            character.characterInputs.characterActionsInfo.OnSecondaryActionChange += ToggleSecondaryAction;
-            character.characterInputs.characterActions.CharacterInputs.ShowStats.started += ToggleShowStatistics;
             EnabledMobileHUD(GameManager.Instance.currentDevice);
         }
     }
@@ -25,8 +22,6 @@ public class ManagementCharacterHud : MonoBehaviour
         if (character.characterInfo.isPlayer)
         {
             GameManager.Instance.OnDeviceChanged -= EnabledMobileHUD;
-            character.characterInputs.characterActionsInfo.OnSecondaryActionChange -= ToggleSecondaryAction;
-            character.characterInputs.characterActions.CharacterInputs.ShowStats.started -= ToggleShowStatistics;
         }
     }
     void EnabledMobileHUD(GameManager.TypeDevice typeDevice)
@@ -37,7 +32,7 @@ public class ManagementCharacterHud : MonoBehaviour
             hud.SetActive(isActive);
         }
     }
-    void ToggleSecondaryAction(bool value)
+    public void ToggleSecondaryAction(bool value)
     {
         characterUi.objectsUi.containerObjects.color = !value ? Color.white : characterUi.objectsUi.containerObjectsSecondaryActionColor;
     }
@@ -101,11 +96,20 @@ public class ManagementCharacterHud : MonoBehaviour
             }
         }
     }
-    public void SendInformationMessage(string messageText, Color color)
+    public void SendInformationMessage(int id, Color color)
     {
-        GameObject message = Instantiate(Resources.Load<GameObject>("Prefabs/UI/InformationMessage/InformationMessage"), characterUi.informationMessageUi.containerInformationMessage.transform);
-        message.GetComponent<InformationMessages>().textMessage.text = messageText;
-        message.GetComponent<InformationMessages>().textMessage.color = color;
+        InformationMessages message = Instantiate(Resources.Load<GameObject>("Prefabs/UI/InformationMessage/InformationMessage"), characterUi.informationMessageUi.containerInformationMessage.transform).GetComponent<InformationMessages>();
+        message.textMessage.color = color;
+        message.managementLanguage.id = id;
+        message.managementLanguage.RefreshText(GameData.Instance.saveData.configurationsInfo.currentLanguage);
+        Destroy(message, 3);
+    }
+    public void SendInformationMessage(string[] ids, Color color)
+    {
+        InformationMessages message = Instantiate(Resources.Load<GameObject>("Prefabs/UI/InformationMessage/InformationMessage"), characterUi.informationMessageUi.containerInformationMessage.transform).GetComponent<InformationMessages>();
+        message.textMessage.color = color;
+        message.managementLanguage.dialogIds = ids;
+        message.managementLanguage.RefreshText(GameData.Instance.saveData.configurationsInfo.currentLanguage);
         Destroy(message, 3);
     }
     public void ChangeObject(int objectIndex)
@@ -151,70 +155,82 @@ public class ManagementCharacterHud : MonoBehaviour
         }
     }
     public void ToggleActiveObject(int pos, bool state)
-    {        
+    {
         characterUi.objectsUi.objects[pos].usingObjectSprite.gameObject.SetActive(state);
     }
-    public void RefreshObjectsForTake(GameObject[] objectsForTake)
+    public async Awaitable RefreshInteracts(GameObject[] objectsForTake)
     {
-        foreach (Transform child in characterUi.objectsUi.containerTakeObjects.transform)
+        try
         {
-            Destroy(child.gameObject);
-        }
-        characterUi.objectsUi.objectsForTake.Clear();
-
-        for (int i = 0; i < objectsForTake.Length; i++)
-        {
-            GameObject bannerObject = Instantiate(Resources.Load<GameObject>("Prefabs/UI/BannerTakeObjects/BannerTakeObjects"), characterUi.objectsUi.containerTakeObjects.transform);
-            ObjectsForTake objectForTake = new ObjectsForTake
+            foreach (Transform child in characterUi.interactUi.containerInteract)
             {
-                objectForTake = objectsForTake[i],
-                bannerObjectForTake = bannerObject
-            };
-            if (bannerObject.TryGetComponent<BannerTakeObjects>(out BannerTakeObjects bannerTakeObjects))
+                Destroy(child.gameObject);
+            }
+            characterUi.interactUi.interacts.Clear();
+            for (int i = 0; i < objectsForTake.Length; i++)
             {
-                bannerTakeObjects.objectForTake = objectsForTake[i];
-                bannerTakeObjects.managementCharacterObjects = character.characterInfo.characterScripts.managementCharacterObjects;
-                bannerTakeObjects.managementLanguage.currentLanguage = GameData.Instance.saveData.configurationsInfo.currentLanguage;
-                bannerTakeObjects.textObject.gameObject.SetActive(true);                
+                BannerInteract bannerInteract = Instantiate(Resources.Load<GameObject>("Prefabs/UI/BannerInteract/BannerInteract"), characterUi.interactUi.containerInteract).GetComponent<BannerInteract>();
+                bannerInteract.name = $"BannerInteract {i}";
+                ObjectsForTake objectForTake = new ObjectsForTake
+                {
+                    interact = objectsForTake[i],
+                    bannerInteract = bannerInteract
+                };
+                bannerInteract.managementCharacterObjects = character.characterInfo.characterScripts.managementCharacterObjects;
+                bannerInteract.managementCharacterInteract = character.characterInfo.characterScripts.managementCharacterInteract;
+                bannerInteract.onObjectSelect.container = characterUi.interactUi.containerInteract;
+                bannerInteract.onObjectSelect.viewport = characterUi.interactUi.viewportInteract;
+                bannerInteract.onObjectSelect.scrollRect = characterUi.interactUi.interactScrollRect;
+                bannerInteract.objectForTake = objectsForTake[i];
+                bannerInteract.managementLanguage.currentLanguage = GameData.Instance.saveData.configurationsInfo.currentLanguage;
+                bannerInteract.textObject.gameObject.SetActive(true);
                 if (objectsForTake[i].TryGetComponent<ObjectBase>(out ObjectBase managementObject))
                 {
-                    bannerTakeObjects.spriteObject.sprite = managementObject.objectInfo.objectData.objectSprite;
-                    bannerTakeObjects.managementLanguage.id = managementObject.managementInteract.IDText;
+                    bannerInteract.spriteObject.sprite = managementObject.objectInfo.objectData.objectSprite;
+                    bannerInteract.managementLanguage.id = managementObject.managementInteract.IDText;
+                    bannerInteract.managementLanguage.RefreshText();
                 }
                 else if (objectsForTake[i].TryGetComponent<ManagementInteract>(out ManagementInteract managementInteract))
                 {
-                    bannerTakeObjects.managementLanguage.id = managementInteract.IDText;
+                    bannerInteract.managementLanguage.id = managementInteract.IDText;
+                    bannerInteract.managementLanguage.RefreshText();
                 }
+                characterUi.interactUi.interacts.Add(objectForTake);
             }
-            characterUi.objectsUi.objectsForTake.Add(objectForTake);
-        }        
-    }
-    public void RefreshCurrentObjectForTake(GameObject[] objectsForTake,GameObject currentObjectForTake,int currentObjectForTakeIndex)
-    {
-        if (GameManager.Instance.currentDevice != GameManager.TypeDevice.MOBILE)
+            await Awaitable.NextFrameAsync();
+        }
+        catch (Exception e)
         {
-            foreach (ObjectsForTake currentObject in characterUi.objectsUi.objectsForTake)
+            Debug.LogError(e);
+            await Awaitable.NextFrameAsync();
+        }
+    }
+    public void UpdateScrollInteract()
+    {
+        if (character.characterInfo.characterScripts.managementCharacterInteract.currentInteracts.Length > 0)
+        {
+            if (character.characterInfo.characterScripts.managementCharacterInteract.currentInteractIndex > character.characterInfo.characterScripts.managementCharacterInteract.currentInteracts.Length - 1)
             {
-                if (currentObject.objectForTake == currentObjectForTake)
+                character.characterInfo.characterScripts.managementCharacterInteract.currentInteractIndex = character.characterInfo.characterScripts.managementCharacterInteract.currentInteracts.Length - 1;
+            }
+            characterUi.interactUi.interacts[character.characterInfo.characterScripts.managementCharacterInteract.currentInteractIndex].bannerInteract.GetComponent<OnObjectSelect>().ScrollTo(character.characterInfo.characterScripts.managementCharacterInteract.currentInteractIndex);
+            for (int i = 0; i < characterUi.interactUi.interacts.Count; i++)
+            {
+                if (i == character.characterInfo.characterScripts.managementCharacterInteract.currentInteractIndex)
                 {
-                    BannerTakeObjects bannerTakeObjects = currentObject.bannerObjectForTake.GetComponent<BannerTakeObjects>();
-                    bannerTakeObjects.takeButton.SetActive(true);
-                    bannerTakeObjects.backgroundObject.color = Color.yellow;
+                    characterUi.interactUi.interacts[i].bannerInteract.EnableButton();
                 }
                 else
                 {
-                    BannerTakeObjects bannerTakeObjects = currentObject.bannerObjectForTake.GetComponent<BannerTakeObjects>();
-                    bannerTakeObjects.takeButton.SetActive(false);
-                    bannerTakeObjects.backgroundObject.color = Color.white;
+                    characterUi.interactUi.interacts[i].bannerInteract.DisableButton();
                 }
             }
         }
-        float contentHeight = objectsForTake.Length * 50;
-        float viewportHeight = characterUi.objectsUi.bannerTakeObjectsScrollRect.viewport.rect.height;
-        float targetPosition = currentObjectForTakeIndex * 50;
-        targetPosition = Mathf.Clamp(targetPosition, 0, contentHeight - viewportHeight);
-        float normalizedPosition = 1 - (targetPosition / (contentHeight - viewportHeight));
-        characterUi.objectsUi.bannerTakeObjectsScrollRect.verticalNormalizedPosition = normalizedPosition;
+        else
+        {
+            character.characterInfo.characterScripts.managementCharacterInteract.currentInteractIndex = 0;
+            EventSystem.current.SetSelectedGameObject(null);
+        }
     }
     public void RefreshCurrentStatistics()
     {
@@ -254,20 +270,6 @@ public class ManagementCharacterHud : MonoBehaviour
             }
         }
     }
-    public void ChangeCurrentSkill(bool desactiveSkillPos,int pos)
-    {
-        for (int i = 0; i < characterUi.skillsUi.skills.Length; i++)
-        {
-            if (!desactiveSkillPos && i == pos) 
-            {
-                characterUi.skillsUi.skills[i].skillBackground.color = Color.yellow;
-            }
-            else
-            {
-                characterUi.skillsUi.skills[i].skillBackground.color = Color.white;
-            }
-        }
-    }
     public void UpdateStatusEffect(ManagementStatusEffect.StatusEffectsData statusEffectsData)
     {
         if (!characterUi.statusEffectsUi.statusEffectsData.ContainsKey(statusEffectsData.statusEffectSO.typeStatusEffect))
@@ -288,14 +290,14 @@ public class ManagementCharacterHud : MonoBehaviour
             characterUi.statusEffectsUi.statusEffectsData.Remove(typeStatusEffect);
         }
     }
-    void ToggleShowStatistics(InputAction.CallbackContext context)
+    public void ToggleShowStatistics(bool isOpen)
     {
-        bool isOpen = !characterUi.statisticsUi.mStatistics.GetBool("IsOpen");
         characterUi.statisticsUi.mStatistics.SetBool("IsOpen", isOpen);
     }
     [Serializable] public class CharacterUi
     {
         public HudUi hudUi;
+        public InteractUi interactUi;
         public ObjectsUi objectsUi;
         public SkillsUi skillsUi;
         public StatisticsUi statisticsUi;
@@ -324,20 +326,24 @@ public class ManagementCharacterHud : MonoBehaviour
         public Image staminaBarFront;
         public TMP_Text staminaText;
     }
+    [Serializable] public class InteractUi
+    {
+        public GameObject bannerInteract;
+        public RectTransform containerInteract;
+        public RectTransform viewportInteract;
+        public ScrollRect interactScrollRect;
+        public List<ObjectsForTake> interacts = new List<ObjectsForTake>();
+    }
     [Serializable] public class ObjectsUi
     {
         public ObjectsData[] objects = new ObjectsData[6];
-        public GameObject bannerTakeObjects;
-        public GameObject containerTakeObjects;
         public Image containerObjects;
         public Color containerObjectsSecondaryActionColor;
-        public List<ObjectsForTake> objectsForTake = new List<ObjectsForTake>();
-        public ScrollRect bannerTakeObjectsScrollRect;
     }
     [Serializable] public class ObjectsForTake
     {
-        public GameObject objectForTake;
-        public GameObject bannerObjectForTake;
+        public GameObject interact;
+        public BannerInteract bannerInteract;
     }
     [Serializable] public class ObjectsData
     {

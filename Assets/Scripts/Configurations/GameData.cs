@@ -39,7 +39,7 @@ public class GameData : MonoBehaviour
         catch (Exception e)
         {
             Debug.LogError(e);
-            return;
+            await InitializeAudioMixerData();
         }
     }
     void LoadCSV()
@@ -101,22 +101,30 @@ public class GameData : MonoBehaviour
     }
     async Awaitable InitializeAudioMixerData()
     {
-        await Awaitable.NextFrameAsync();
-        float decibelsBGM = 20 * Mathf.Log10(saveData.configurationsInfo.soundConfiguration.BGMalue / 100);
-        float decibelsSFX = 20 * Mathf.Log10(saveData.configurationsInfo.soundConfiguration.SFXalue / 100);
-        if (saveData.configurationsInfo.soundConfiguration.BGMalue == 0) decibelsBGM = -80;
-        if (saveData.configurationsInfo.soundConfiguration.SFXalue == 0) decibelsSFX = -80;
-        AudioManager.Instance.audioMixer.SetFloat(AudioManager.TypeSound.BGM.ToString(), decibelsBGM);
-        AudioManager.Instance.audioMixer.SetFloat(AudioManager.TypeSound.SFX.ToString(), decibelsSFX);
-        if (saveData.configurationsInfo.soundConfiguration.isMute)
+        try
         {
-            AudioManager.Instance.audioMixer.SetFloat(AudioManager.TypeSound.Master.ToString(), -80f);
+            await Awaitable.NextFrameAsync();
+            float decibelsBGM = 20 * Mathf.Log10(saveData.configurationsInfo.soundConfiguration.BGMalue / 100);
+            float decibelsSFX = 20 * Mathf.Log10(saveData.configurationsInfo.soundConfiguration.SFXalue / 100);
+            if (saveData.configurationsInfo.soundConfiguration.BGMalue == 0) decibelsBGM = -80;
+            if (saveData.configurationsInfo.soundConfiguration.SFXalue == 0) decibelsSFX = -80;
+            AudioManager.Instance.audioMixer.SetFloat(AudioManager.TypeSound.BGM.ToString(), decibelsBGM);
+            AudioManager.Instance.audioMixer.SetFloat(AudioManager.TypeSound.SFX.ToString(), decibelsSFX);
+            if (saveData.configurationsInfo.soundConfiguration.isMute)
+            {
+                AudioManager.Instance.audioMixer.SetFloat(AudioManager.TypeSound.Master.ToString(), -80f);
+            }
+            else
+            {
+                GameManager.Instance.StartCoroutine(AudioManager.Instance.FadeIn());
+            }
+            await Awaitable.NextFrameAsync();
         }
-        else 
+        catch (Exception e)
         {
-            GameManager.Instance.StartCoroutine(AudioManager.Instance.FadeIn());
+            Debug.LogError(e);
+            await Awaitable.NextFrameAsync();
         }
-        await Awaitable.NextFrameAsync();
     }
     public void SetStartingData()
     {        
@@ -177,12 +185,18 @@ public class GameData : MonoBehaviour
         saveData = JsonUtility.FromJson<SaveData>(dataString);
         return saveData;
     }
-    void WriteDataToJson()
+    public void WriteDataToJson()
     {
-        string dataString;
-        string jsonFilePath = DataPath();
-        dataString = JsonUtility.ToJson(saveData);
-        File.WriteAllText(jsonFilePath, dataString);
+        try
+        {
+            string jsonFilePath = DataPath();
+            string dataString = JsonUtility.ToJson(saveData);
+            File.WriteAllText(jsonFilePath, dataString);
+        }
+        catch (Exception e)
+        {
+            print(e);
+        }
     }
     string DataPath()
     {

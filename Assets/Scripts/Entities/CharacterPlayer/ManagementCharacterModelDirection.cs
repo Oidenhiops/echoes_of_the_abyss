@@ -64,19 +64,19 @@ public class ManagementCharacterModelDirection : MonoBehaviour, ManagementCharac
 
     void MoveWhitOutCamera()
     {
-        if (character.characterInfo.characterScripts.characterMove.GetDirectionMove() != Vector3.zero)
-        {
-            if (character.characterInfo.characterScripts.characterMove.GetDirectionMove().x != 0)
+        if (character.characterInputs.characterActionsInfo.movement != Vector2.zero)
+        {            
+            if (character.characterInputs.characterActionsInfo.movement.x != 0)
             {
-                movementDirectionAnimation.x = character.characterInfo.characterScripts.characterMove.GetDirectionMove().x;
+                movementDirectionAnimation.x = character.characterInputs.characterActionsInfo.movement.x;
             }
-            if (character.characterInfo.characterScripts.characterMove.GetDirectionMove().z != 0)
+            if (character.characterInputs.characterActionsInfo.movement.y != 0)
             {
-                movementDirectionAnimation.y = character.characterInfo.characterScripts.characterMove.GetDirectionMove().z;
+                movementDirectionAnimation.y = character.characterInputs.characterActionsInfo.movement.y;
             }
             character.characterInfo.characterScripts.characterAnimations.GetCharacterSprite().transform.localRotation = 
                 Quaternion.Euler(0, movementDirectionAnimation.x > 0 ? -180 : 0, 0);
-            float angle = Mathf.Atan2(movementDirectionAnimation.x, movementDirectionAnimation.y) * Mathf.Rad2Deg;
+            float angle = Mathf.Atan2(character.characterInfo.characterScripts.characterMove.GetDirectionMove().x, character.characterInfo.characterScripts.characterMove.GetDirectionMove().z) * Mathf.Rad2Deg;
             directionPlayer.transform.rotation = Quaternion.Lerp(directionPlayer.transform.rotation, Quaternion.Euler(0, angle, 0f), 0.3f);
         }
     }

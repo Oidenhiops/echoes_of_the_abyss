@@ -1,9 +1,6 @@
 using System;
-using System.Collections.Generic;
 using TMPro;
-using UnityEditor.PackageManager;
 using UnityEngine;
-using UnityEngine.Audio;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
@@ -21,13 +18,13 @@ public class ManagementOptions : MonoBehaviour
     public GameObject homeButton;
     public GameObject muteCheck;
     public GameObject resolutionButtons;
-    public Button buttonBack;
     public ControlsInfo[] controlsInfo;
     public InputAction backButton;
+    public GameManagerHelper gameManagerHelper;
     void OnEnable()
     {
         Time.timeScale = 0;
-        GameManager.Instance.isPause = false;
+        GameManager.Instance.isPause = true;
         InitializeLanguageDropdown();
         InitializeResolutionDropdown();
         SetFullScreenButtonsSprite();
@@ -40,6 +37,7 @@ public class ManagementOptions : MonoBehaviour
         ChangeMenuButtons(GameManager.Instance.currentDevice);
         muteCheck.SetActive(GameData.Instance.saveData.configurationsInfo.soundConfiguration.isMute);
         if (SceneManager.GetSceneByName("HomeScene").isLoaded) homeButton.SetActive(false);
+        gameManagerHelper.isInitializeComponent = true;
     }
     void OnDestroy()
     {
@@ -89,8 +87,8 @@ public class ManagementOptions : MonoBehaviour
         }
         else
         {
-            GetComponent<GameManagerHelper>().PlayASoundButton(AudioManager.Instance.GetAudioClip("TouchButtonAdvance"));
-            GetComponent<GameManagerHelper>().UnloadScene();
+            gameManagerHelper.PlayASoundButton(AudioManager.Instance.GetAudioClip("TouchButtonBack"));
+            gameManagerHelper.UnloadScene();
         }
     }
     public void SetSelectedButtonToBack(int buttonId)
@@ -112,6 +110,10 @@ public class ManagementOptions : MonoBehaviour
                             buttonsBackInfos[0].buttonsToSelect[1]
                         );
                     }
+                    else 
+                    {
+                        EventSystem.current.SetSelectedGameObject(buttonsBackInfos[buttonId].buttonsToSelect[0]);
+                    }
                 }
                 else
                 {
@@ -129,11 +131,11 @@ public class ManagementOptions : MonoBehaviour
     public void InitializeResolutionDropdown()
     {
         dropdownResolution.options.Clear();
-        foreach (var resolutions in GameData.Instance.saveData.configurationsInfo.resolutionConfiguration.allResolutions)
+        foreach (var resolution in GameData.Instance.saveData.configurationsInfo.resolutionConfiguration.allResolutions)
         {
             TMP_Dropdown.OptionData option = new TMP_Dropdown.OptionData
             {
-                text = $"{resolutions.width}X{resolutions.height}"
+                text = $"{resolution.width}X{resolution.height}"
             };
             dropdownResolution.options.Add(option);
         }

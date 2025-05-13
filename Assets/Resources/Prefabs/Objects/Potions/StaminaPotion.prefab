@@ -76,7 +76,7 @@ BoxCollider:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 1244862
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
@@ -96,7 +96,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8024ac2d8ed8d574082e09100bed48bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IDText: 25
+  IDText: 44
   typeInteract: 0
   canInteract: 0
 --- !u!114 &190250686305082690
@@ -116,7 +116,7 @@ MonoBehaviour:
   colliderForMap: {fileID: -4798912632294536567}
   objectInfo:
     objectData: {fileID: 11400000, guid: d9835861ae8bd2045994383e986603f1, type: 2}
-    amount: 0
+    amount: 1
   effect: {fileID: 9145901930122296505, guid: 63afec3caf25acf418ac89d7d5a064cb, type: 3}
 --- !u!1 &6090238503391484055
 GameObject:

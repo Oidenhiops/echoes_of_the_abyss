@@ -130,7 +130,12 @@ MonoBehaviour:
       currentCD: 0
   objects:
   - objectId: 0
-    objectData: {fileID: 11400000, guid: 1a044ff75674e8f449a720f7484e02bb, type: 2}
+    objectData: {fileID: 11400000, guid: 649c26d1c0cca62449cc90f4b9fc445f, type: 2}
+    amount: 1
+    isUsingItem: 0
+    objectInstance: {fileID: 0}
+  - objectId: 0
+    objectData: {fileID: 11400000, guid: 98703881d33348944bb44751e8883784, type: 2}
     amount: 1
     isUsingItem: 0
     objectInstance: {fileID: 0}
@@ -140,7 +145,7 @@ MonoBehaviour:
     isUsingItem: 0
     objectInstance: {fileID: 0}
   - objectId: 0
-    objectData: {fileID: 11400000, guid: 98703881d33348944bb44751e8883784, type: 2}
+    objectData: {fileID: 11400000, guid: 1a044ff75674e8f449a720f7484e02bb, type: 2}
     amount: 1
     isUsingItem: 0
     objectInstance: {fileID: 0}
