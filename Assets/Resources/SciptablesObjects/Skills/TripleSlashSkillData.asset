@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22d391e6a736c774594e857d496c4c96, type: 3}
   m_Name: TripleSlashSkillData
   m_EditorClassIdentifier: 
+  skillId: 2
   skillObject: {fileID: 1004922723046654044, guid: 088e8ed110160f349b622b190e39b314,
     type: 3}
   skillSprite: {fileID: 21300000, guid: 7994e5ae568d7de4db9a4a45e7e0e25e, type: 3}
@@ -19,20 +20,22 @@ MonoBehaviour:
     typeStatistics: 2
     baseValue: 6
     buffValue: 0
-    maxValue: 0
+    objectValue: 0
     currentValue: 0
+    maxValue: 0
   isPorcent: 0
   isFromBaseValue: 0
   needAnimation: 1
   skillAnimation:
     typeAnimation: 5
-    spritesDown: []
-    spritesUp: []
+    animationName: 
+    linkAnimation: 
+    spritesInfoDown: []
+    spritesInfoUp: []
     animationsEffects: 
     needAnimationEnd: 0
     loop: 0
     needInstance: 0
-    needFrameToInstance: 0
     frameToInstance: 0
     speedSpritesPerTimeMultplier: 1
     instanceObj: {fileID: 0}

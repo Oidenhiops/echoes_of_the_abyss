@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22d391e6a736c774594e857d496c4c96, type: 3}
   m_Name: SlashSkillData
   m_EditorClassIdentifier: 
+  skillId: 1
   skillObject: {fileID: 1004922723046654044, guid: 448d45c69c45007469f7321b265fa3c6,
     type: 3}
   skillSprite: {fileID: 21300000, guid: 470ae978409ae7943a53d35d6e865333, type: 3}
@@ -34,6 +35,7 @@ MonoBehaviour:
     animationsEffects: 
     needAnimationEnd: 0
     loop: 0
+    needInstance: 0
     frameToInstance: 0
     speedSpritesPerTimeMultplier: 1
     instanceObj: {fileID: 0}

@@ -427,7 +427,7 @@ public partial class @CharacterActions: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""5c2d6a87-a32b-42f1-9ccc-28b8a1840061"",
-                    ""path"": ""<Gamepad>/rightShoulder"",
+                    ""path"": ""<Gamepad>/rightStickPress"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -504,7 +504,7 @@ public partial class @CharacterActions: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""be0b6ffe-2bb6-402e-9e2f-5d1ad63767ad"",
-                    ""path"": ""<Gamepad>/rightStickPress"",
+                    ""path"": ""<Gamepad>/rightShoulder"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",

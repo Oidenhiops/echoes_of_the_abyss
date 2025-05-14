@@ -20,7 +20,7 @@ public class GrassTrack : MonoBehaviour
             grassMats.Add(child.GetComponent<Renderer>().material);
         }
     }
-    void Update()
+    void FixedUpdate()
     {
         RaycastHit[] objects = Physics.BoxCastAll(transform.position + offset, Vector3.one * size, Vector3.up, Quaternion.identity, rayDistance, layerMask);
 
@@ -30,11 +30,10 @@ public class GrassTrack : MonoBehaviour
             trackerPos = GetMidpoint(objects);
             ApplyMovement(trackerPos);
         }
-        else
+        else if (grassMats[0].GetVector("_TrakerPosition") != Vector4.zero)
         {
             time += Time.deltaTime * speed;
-            float t = (Mathf.Sin(time * Mathf.PI * 2) + 1) * 0.5f;
-            trackerPos = Vector3.Lerp(transform.position + Vector3.left * dist, transform.position + Vector3.right * dist, t);
+            trackerPos = Vector3.Lerp(grassMats[0].GetVector("_TrakerPosition"), Vector3.zero, time * Time.deltaTime);
             ApplyMovement(trackerPos);
         }
     }

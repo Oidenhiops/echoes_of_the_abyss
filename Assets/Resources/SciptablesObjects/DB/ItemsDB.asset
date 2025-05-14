@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9aea9dc84316edb4f93658e5e377635c, type: 3}
-  m_Name: ObjetsDB
+  m_Name: ItemsDB
   m_EditorClassIdentifier: 
-  objects:
+  items:
     _serializedList:
     - Key: 1
       Value: {fileID: 11400000, guid: 1a044ff75674e8f449a720f7484e02bb, type: 2}

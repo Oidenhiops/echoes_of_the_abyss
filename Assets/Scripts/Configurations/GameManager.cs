@@ -1,5 +1,7 @@
 using System;
+using System.Linq;
 using System.Threading.Tasks;
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
@@ -9,7 +11,6 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance { get; private set; }
     public ManagementOpenCloseScene openCloseScene;
     public bool isWebGlBuild;
-    public TypeDevice principalDevice;
     public TypeDevice _currentDevice;
     public event Action<TypeDevice> OnDeviceChanged;
     public TypeDevice currentDevice
@@ -24,9 +25,12 @@ public class GameManager : MonoBehaviour
             }
         }
     }
+    public bool lockDevice = false;
     public bool isPause;
     public bool _startGame;
     public Action<bool> OnStartGame;
+    public TMP_Text fpsText;
+    private float deltaTime;
     public bool startGame
     {
         get => _startGame;
@@ -50,12 +54,21 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        SetInitialDevice();
+    }
+    void Start()
+    {
+                SetInitialDevice();
         OnDeviceChanged += ValidateActiveMouse;
         ValidateActiveMouse(currentDevice);
     }
     void LateUpdate()
     {
+        deltaTime += (Time.unscaledDeltaTime - deltaTime) * 0.1f;
+        float fps = 1.0f / deltaTime;
+        fpsText.text = $"{Mathf.CeilToInt(fps)}";
+    }
+    void FixedUpdate()
+    {        
         CheckCurrentDevice();
     }
     public void ChangeSceneSelector(TypeScene typeScene)
@@ -122,40 +135,37 @@ public class GameManager : MonoBehaviour
     {
         if (!isWebGlBuild)
         {
-            if (Application.platform == RuntimePlatform.WindowsEditor ||
+            if (Gamepad.current != null)
+            {
+                currentDevice = TypeDevice.GAMEPAD;
+            }
+            else if (Touchscreen.current != null)
+            {
+                currentDevice = TypeDevice.MOBILE;
+            }
+            else if (Application.platform == RuntimePlatform.WindowsEditor ||
                 Application.platform == RuntimePlatform.WindowsPlayer ||
                  Application.platform == RuntimePlatform.OSXPlayer ||
                  Application.platform == RuntimePlatform.LinuxPlayer)
             {
                 currentDevice = TypeDevice.PC;
-                principalDevice = TypeDevice.PC;
-            }
-            else if (Application.platform == RuntimePlatform.Android || Application.platform == RuntimePlatform.IPhonePlayer)
-            {
-                currentDevice = TypeDevice.MOBILE;
-                principalDevice = TypeDevice.MOBILE;
-            }
-            else
-            {
-                currentDevice = TypeDevice.GAMEPAD;
-                principalDevice = TypeDevice.GAMEPAD;
             }
         }
         else
         {
             currentDevice = TypeDevice.PC;
-            principalDevice = TypeDevice.PC;
         }
     }
     void CheckCurrentDevice()
     {
+        if (lockDevice) return;
         if (!isWebGlBuild)
         {
             if (ValidateDeviceIsMobile())
             {
                 currentDevice = TypeDevice.MOBILE;
             }
-            else if (IsGamepadInput())
+            else if (ValidateIsGamepad())
             {
                 currentDevice = TypeDevice.GAMEPAD;
             }
@@ -169,36 +179,50 @@ public class GameManager : MonoBehaviour
             currentDevice = TypeDevice.PC;
         }
     }
-    bool ValidateDeviceIsMobile()
-    {
-        return Touchscreen.current != null;
-    }
     bool ValidateDeviceIsPc()
     {
-        return Keyboard.current.anyKey.wasPressedThisFrame ||
+        bool validateAnyPcInput = 
+            Keyboard.current.anyKey.wasPressedThisFrame ||
             Mouse.current.leftButton.wasPressedThisFrame ||
             Mouse.current.rightButton.wasPressedThisFrame ||
             Mouse.current.scroll.ReadValue() != Vector2.zero ||
             Mouse.current.delta.ReadValue() != Vector2.zero;
+        return validateAnyPcInput;
     }
-    bool IsGamepadInput()
+    bool ValidateIsGamepad()
     {
-        Gamepad gamepad = Gamepad.current;
-        if (gamepad == null) return false;
-
-        bool currentDeviceIsGamepad = Gamepad.current != null;
+        var gamePad = Gamepad.current;
+        if (gamePad == null || Gamepad.all.Count == 0 || !IsRealGamepadConnected()) return false;
         bool validateAnyGamepadInput =
-            gamepad.buttonSouth.wasPressedThisFrame ||
-            gamepad.buttonNorth.wasPressedThisFrame ||
-            gamepad.buttonEast.wasPressedThisFrame ||
-            gamepad.buttonWest.wasPressedThisFrame ||
-            gamepad.leftStick.ReadValue().magnitude > 0.1f ||
-            gamepad.rightStick.ReadValue().magnitude > 0.1f ||
-            gamepad.dpad.ReadValue().magnitude > 0.1f ||
-            gamepad.leftTrigger.wasPressedThisFrame ||
-            gamepad.rightTrigger.wasPressedThisFrame;
-
-        return currentDeviceIsGamepad && validateAnyGamepadInput;
+            gamePad.buttonSouth.wasPressedThisFrame ||
+            gamePad.buttonNorth.wasPressedThisFrame ||
+            gamePad.buttonEast.wasPressedThisFrame ||
+            gamePad.buttonWest.wasPressedThisFrame ||
+            gamePad.leftStick.ReadValue().magnitude > 0.1f ||
+            gamePad.rightStick.ReadValue().magnitude > 0.1f ||
+            gamePad.dpad.ReadValue().magnitude > 0.1f ||
+            gamePad.leftTrigger.wasPressedThisFrame ||
+            gamePad.rightTrigger.wasPressedThisFrame;        
+        return gamePad != null && validateAnyGamepadInput && !ValidateDeviceIsPc();
+    }
+    bool IsRealGamepadConnected()
+    {
+        return Gamepad.all.Any(g =>
+            g.displayName != "Gamepad" &&
+            g.enabled &&
+            g.wasUpdatedThisFrame
+        );
+    }
+    bool ValidateDeviceIsMobile()
+    {
+        var touchscreen = Touchscreen.current;
+        if (touchscreen == null) return false;
+        foreach (var touch in touchscreen.touches)
+        {
+            if (touch.press.isPressed || touch.press.wasPressedThisFrame || touch.delta.ReadValue().magnitude > 0.01f)
+                return true;
+        }
+        return false;
     }
     public enum TypeScene
     {

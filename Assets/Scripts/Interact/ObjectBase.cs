@@ -25,7 +25,7 @@ public class ObjectBase : MonoBehaviour
     }
     [System.Serializable]   public class ObjectInfo
     {
-        public ObjectsDataSO objectData;
+        public ItemsDataSO objectData;
         public int amount;
     }
 }

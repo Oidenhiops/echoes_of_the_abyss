@@ -3,7 +3,7 @@ using UnityEngine;
 public class Billboard : MonoBehaviour
 {
     public GameObject objectToBillboard;
-    private void LateUpdate()
+    private void FixedUpdate()
     {
         if (Camera.main != null)
         {

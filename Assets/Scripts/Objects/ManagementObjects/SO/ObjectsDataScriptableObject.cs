@@ -1,10 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "ObjectsData", menuName = "ScriptableObjects/ObjectsDataSO", order = 1)]
 
-public class ObjectsDataSO : ScriptableObject
+public class ItemsDataSO : ScriptableObject
 {
     public int objectId = 0;
     public TypeObject typeObject;

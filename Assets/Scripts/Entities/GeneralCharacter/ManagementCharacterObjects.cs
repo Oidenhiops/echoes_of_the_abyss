@@ -8,30 +8,51 @@ public class ManagementCharacterObjects : MonoBehaviour
     public GameObject rightHandPos;
     public ObjectsInfo[] objects = new ObjectsInfo[6];
     [SerializeField] ObjectsPositionsInfo[] objectsPositionsInfo;
-    public int objectSelectedPosition = 0;
+    public int itemIndex = 0;
     public void InitializeObjectsEvents()
     {
-        character.characterInputs.characterActions.CharacterInputs.ChangeItem.performed += OnChangeObject;
-        character.characterInputs.characterActions.CharacterInputs.ChangeItemPos.performed += OnChangeObjectPos;
-        character.characterInputs.characterActions.CharacterInputs.UseItem.performed += OnUseObject;
+        if (character.characterInfo.isPlayer)
+        {
+            character.characterInputs.characterActions.CharacterInputs.ChangeItem.performed += OnChangeItemGamepad;
+            character.characterInputs.characterActions.CharacterInputs.ChangeItemPos.performed += OnChangeItemPc;
+            character.characterInputs.characterActions.CharacterInputs.UseItem.performed += OnUseObject;
+            GameManager.Instance.OnDeviceChanged += ValidateShowItemPos;
+        }
     }
     public void HandleObjects()
     {
 
     }
-    public void OnChangeObject(InputAction.CallbackContext context)
+    public void ValidateShowItemPos(GameManager.TypeDevice typeDevice)
+    {
+        if (typeDevice != GameManager.TypeDevice.GAMEPAD)
+        {
+            character.characterInfo.characterScripts.managementCharacterHud.DisableItemPos();
+        }
+        else
+        {
+            character.characterInfo.characterScripts.managementCharacterHud.ActiveItemsPos(itemIndex);
+        }
+    }
+    public void OnChangeItemGamepad(InputAction.CallbackContext context)
     {
         if (character.characterInfo.isActive)
         {
             ChangeCurrentObject(context.ReadValue<float>() > 0);
         }
     }
-    public void OnChangeObjectPos(InputAction.CallbackContext context)
+    public void OnChangeItemPc(InputAction.CallbackContext context)
     {
-        if (character.characterInfo.isActive)
+        if (character.characterInfo.isActive && !character.characterInputs.characterActionsInfo.isSkillsActive)
         {
-            ChangeCurrentObject((int)context.ReadValue<float>());
+            itemIndex = (int)context.ReadValue<float>();
+            ValidateUseItem();
         }
+    }
+    public void OnUseItemMobile(int position)
+    {
+        itemIndex = position;
+        ValidateUseItem();
     }
     public void OnUseObject(InputAction.CallbackContext context)
     {
@@ -128,7 +149,7 @@ public class ManagementCharacterObjects : MonoBehaviour
                 }
             }
         }
-        ChangeCurrentObject(objectSelectedPosition);
+
         if (character.characterInfo.isPlayer) character.characterInfo.characterScripts.managementCharacterHud.RefreshObjects(objects);
         for (int i = 0; i < objects.Length; i++)
         {
@@ -141,16 +162,16 @@ public class ManagementCharacterObjects : MonoBehaviour
     }
     public void UseObject()
     {
-        if (objects[objectSelectedPosition].objectData != null)
+        if (objects[itemIndex].objectData != null)
         {
-            objects[objectSelectedPosition].objectData.objectInstance.GetComponent<ObjectBase>().UseObject(character, objects[objectSelectedPosition], this);
+            objects[itemIndex].objectData.objectInstance.GetComponent<ObjectBase>().UseObject(character, objects[itemIndex], this);
         }
     }
     public void DropObject()
     {
-        if (objects[objectSelectedPosition].objectData != null)
+        if (objects[itemIndex].objectData != null)
         {
-            objects[objectSelectedPosition].objectData.objectInstance.GetComponent<ObjectBase>().DropObject(character, objects[objectSelectedPosition], this);
+            objects[itemIndex].objectData.objectInstance.GetComponent<ObjectBase>().DropObject(character, objects[itemIndex], this);
         }
     }
     public void InstanceObjectInHand(GameObject objectInHand, bool isLeftHand)
@@ -188,22 +209,17 @@ public class ManagementCharacterObjects : MonoBehaviour
     }
     void ChangeCurrentObject(bool direction)
     {
-        objectSelectedPosition += direction ? 1 : -1;
-        if (objectSelectedPosition > objects.Length - 1)
+        itemIndex += direction ? 1 : -1;
+        if (itemIndex > objects.Length - 1)
         {
-            objectSelectedPosition = 0;
+            itemIndex = 0;
         }
-        else if (objectSelectedPosition < 0)
+        else if (itemIndex < 0)
         {
-            objectSelectedPosition = objects.Length - 1;
+            itemIndex = objects.Length - 1;
         }
 
-        character.characterInfo.characterScripts.managementCharacterHud.ChangeObject(objectSelectedPosition);
-    }
-    void ChangeCurrentObject(int position)
-    {
-        objectSelectedPosition = position;
-        character.characterInfo.characterScripts.managementCharacterHud.ChangeObject(objectSelectedPosition);
+        character.characterInfo.characterScripts.managementCharacterHud.ActiveItemsPos(itemIndex);
     }
     int ValidateAmountObjectToAdd(ObjectsInfo objectForIncreaseAmount, ObjectBase objectForDiscountAmount)
     {
@@ -266,7 +282,7 @@ public class ManagementCharacterObjects : MonoBehaviour
     {
         [NonSerialized] public int objectPos;
         public int objectId;
-        public ObjectsDataSO objectData;
+        public ItemsDataSO objectData;
         public int amount;
         public bool isUsingItem = false;
         public GameObject objectInstance;
