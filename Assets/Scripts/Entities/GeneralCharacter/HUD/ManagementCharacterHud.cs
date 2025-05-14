@@ -112,21 +112,25 @@ public class ManagementCharacterHud : MonoBehaviour
         message.managementLanguage.RefreshText(GameData.Instance.saveData.configurationsInfo.currentLanguage);
         Destroy(message, 3);
     }
-    public void ChangeObject(int objectIndex)
+    public void ActiveItemsPos(int objectIndex)
     {
-        if (characterUi.objectsUi.objects[0].objectBackground != null)
+        for (int i = 0; i < characterUi.objectsUi.objects.Length; i++)
         {
-            for (int i = 0; i < characterUi.objectsUi.objects.Length; i++)
+            if (i == objectIndex)
             {
-                if (i == objectIndex)
-                {
-                    characterUi.objectsUi.objects[i].objectBackground.color = Color.yellow;
-                }
-                else
-                {
-                    characterUi.objectsUi.objects[i].objectBackground.color = Color.white;
-                }
+                characterUi.objectsUi.objects[i].objectBackground.color = Color.yellow;
             }
+            else
+            {
+                characterUi.objectsUi.objects[i].objectBackground.color = Color.white;
+            }
+        }
+    }
+    public void DisableItemPos()
+    {
+        for (int i = 0; i < characterUi.objectsUi.objects.Length; i++)
+        {
+            characterUi.objectsUi.objects[i].objectBackground.color = Color.white;
         }
     }
     public void RefreshObjects(ManagementCharacterObjects.ObjectsInfo[] objects)

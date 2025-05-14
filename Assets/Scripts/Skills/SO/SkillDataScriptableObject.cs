@@ -2,6 +2,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "SkillsData", menuName = "ScriptableObjects/SkillsDataScriptableObject", order = 1)]
 public class SkillDataScriptableObject : ScriptableObject
 {
+    public int skillId = 0;
     public GameObject skillObject;
     public Sprite skillSprite;
     public Character.Statistics cost;

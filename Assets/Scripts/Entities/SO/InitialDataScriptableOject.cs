@@ -7,7 +7,7 @@ public class InitialDataSO : ScriptableObject
     public Texture2D atlas;
     public Texture2D atlasHand;
     public Character.CharacterInfo characterInfo = new Character.CharacterInfo();
-    public ManagementCharacterSkills.SkillInfo baseSkill;
+    public ManagementCharacterSkills.SkillInfo[] skills;
     public ManagementCharacterObjects.ObjectsInfo[] objects = new ManagementCharacterObjects.ObjectsInfo[0];
     public CharacterAnimationsSO characterAnimations;
     public InitialDataSO Clone()
@@ -18,7 +18,7 @@ public class InitialDataSO : ScriptableObject
         clone.atlas = this.atlas;
         clone.atlasHand = this.atlasHand;
         clone.characterInfo = this.characterInfo;
-        clone.baseSkill = this.baseSkill;
+        clone.skills = this.skills;
 
         clone.name = clone.atlas.name;
 

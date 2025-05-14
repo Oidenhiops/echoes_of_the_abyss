@@ -9,13 +9,12 @@ public class ChangeCharacterMenu : MonoBehaviour
     public StaticticsUi[] staticticsUi;
     public InitialDataSO characterSelected;
     public InitialDataSO[] allCharacters;
+    public bool isSkillWindow = false;
+    public bool isObjectsWindow = false;
     public TMP_Text nameCharacter;
     public int currentIndex = 0;
     public Character character;
-    public Image skillSprite;
-    public ManagementLanguage skillText;
-    public bool isSkillWindow = false;
-    public bool isObjectsWindow = false;
+    public GameObject containerSkills;
     public GameObject containerObjects;
     public Button backButton;
     public Button playButton;
@@ -24,7 +23,7 @@ public class ChangeCharacterMenu : MonoBehaviour
     {        
         allCharacters = Resources.LoadAll<InitialDataSO>("SciptablesObjects/Character/InitialData");
         characterSelected = GameData.Instance.saveData.gameInfo.characterInfo.characterSelected;
-        GameData.Instance.saveData.gameInfo.characterInfo.currentSkills[0] = characterSelected.baseSkill;
+        GameData.Instance.saveData.gameInfo.characterInfo.currentSkills = characterSelected.skills;
         for (int i = 0; i < allCharacters.Length; i++)
         {
             if (characterSelected == allCharacters[i])
@@ -53,9 +52,28 @@ public class ChangeCharacterMenu : MonoBehaviour
             }
         }
         nameCharacter.text = Regex.Replace(characterSelected.name, "(?<=\\p{Ll})(\\p{Lu})", " $1");
-        skillSprite.sprite = characterSelected.baseSkill.skillData.skillSprite;
-        skillText.id = characterSelected.baseSkill.skillData.textId;      
+        SetSkillsData();
         SetObjectsData();
+    }
+    public void SetSkillsData()
+    {
+        for (int i = containerSkills.transform.childCount - 1; i >= 0; i--)
+        {
+            Destroy(containerSkills.transform.GetChild(i).gameObject);
+        }
+        GameData.Instance.saveData.gameInfo.characterInfo.currentSkills = new ManagementCharacterSkills.SkillInfo[4];
+        for (int i = 0; i < characterSelected.skills.Length; i++)
+        {
+            GameData.Instance.saveData.gameInfo.characterInfo.currentSkills[i] = new ManagementCharacterSkills.SkillInfo
+            {
+                skillId = characterSelected.skills[i].skillData.skillId,
+                skillData = characterSelected.skills[i].skillData,
+                cdInfo = new SkillDataScriptableObject.CdInfo(),
+            };
+            GameObject characterSkillInstance = Instantiate(Resources.Load<GameObject>("Prefabs/UI/Menu/ChangeCharacterSkill/SkillBackground"), containerSkills.transform);
+            CharacterSkillMenu characterSkill = characterSkillInstance.GetComponent<CharacterSkillMenu>();
+            characterSkill.SetSkillData(characterSelected.skills[i].skillData.skillSprite);
+        }
     }
     public void SetObjectsData()
     {
@@ -68,8 +86,8 @@ public class ChangeCharacterMenu : MonoBehaviour
         {
             GameData.Instance.saveData.gameInfo.characterInfo.currentObjects[i] = new ManagementCharacterObjects.ObjectsInfo{
                 objectPos = characterSelected.objects[i].objectPos,
-                objectData = characterSelected.objects[i].objectData,
                 objectId = characterSelected.objects[i].objectData.objectId,
+                objectData = characterSelected.objects[i].objectData,
                 amount = characterSelected.objects[i].amount,
                 isUsingItem = characterSelected.objects[i].isUsingItem,
             };
@@ -98,9 +116,8 @@ public class ChangeCharacterMenu : MonoBehaviour
         }
         characterSelected = allCharacters[currentIndex];
         GameData.Instance.saveData.gameInfo.characterInfo.characterSelected = characterSelected;
-        GameData.Instance.saveData.gameInfo.characterInfo.currentSkills[0] = characterSelected.baseSkill;
+        GameData.Instance.saveData.gameInfo.characterInfo.currentSkills = characterSelected.skills;
         GameData.Instance.saveData.gameInfo.characterInfo.characterSelectedName = characterSelected.name;
-        GameData.Instance.SaveGameData();
         SetCharacterSprite();
         SetCharacterData();
     }

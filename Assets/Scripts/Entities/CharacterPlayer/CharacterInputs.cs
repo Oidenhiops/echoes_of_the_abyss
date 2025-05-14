@@ -27,7 +27,6 @@ public class CharacterInputs : MonoBehaviour
     }
     void Update()
     {
-        CurrentDevice();
         characterActionsInfo.moveCamera = DirectionPosition();
     }
     void InitInputs()
@@ -68,7 +67,15 @@ public class CharacterInputs : MonoBehaviour
     }
     void OnMovementInput(InputAction.CallbackContext context)
     {
-        characterActionsInfo.movement = context.ReadValue<Vector2>();
+        Vector2 value = context.ReadValue<Vector2>();
+        if (MathF.Abs(value.x) > 0.1f || MathF.Abs(value.y) > 0.1f)
+        {
+            characterActionsInfo.movement = value;
+        }
+        else
+        {
+            characterActionsInfo.movement = Vector2.zero;
+        }
     }
     void OnPauseInput(InputAction.CallbackContext context)
     {
@@ -93,54 +100,6 @@ public class CharacterInputs : MonoBehaviour
     {
         characterActionsInfo.isShowStats = !characterActionsInfo.isShowStats;
         character.characterInfo.characterScripts.managementCharacterHud.ToggleShowStatistics(characterActionsInfo.isShowStats);
-    }
-    void CurrentDevice()
-    {
-        if (!GameManager.Instance.isWebGlBuild)
-        {
-            if (ValidateDeviceIsMobile())
-            {
-                GameManager.Instance.currentDevice = GameManager.TypeDevice.MOBILE;
-            }
-            else if (IsGamepadInput())
-            {
-                GameManager.Instance.currentDevice = GameManager.TypeDevice.GAMEPAD;
-            }
-            else if (ValidateDeviceIsPc())
-            {
-                GameManager.Instance.currentDevice = GameManager.TypeDevice.PC;
-            }
-        }
-        else
-        {
-            GameManager.Instance.currentDevice = GameManager.TypeDevice.PC;
-        }
-    }
-    bool ValidateDeviceIsMobile(){
-        return Touchscreen.current != null;
-    }
-    bool ValidateDeviceIsPc(){
-        return Keyboard.current.anyKey.wasPressedThisFrame ||
-            Mouse.current.leftButton.wasPressedThisFrame ||
-            Mouse.current.rightButton.wasPressedThisFrame ||
-            Mouse.current.scroll.ReadValue() != Vector2.zero ||
-            Mouse.current.delta.ReadValue() != Vector2.zero;
-    }
-    bool IsGamepadInput()
-    {
-        Gamepad gamepad = Gamepad.current;
-        if (gamepad == null) return false;
-        bool currentDeviceIsGamepad = Gamepad.current != null;
-        bool validateAnyGamepadInput = gamepad.buttonSouth.wasPressedThisFrame ||
-               gamepad.buttonNorth.wasPressedThisFrame ||
-               gamepad.buttonEast.wasPressedThisFrame ||
-               gamepad.buttonWest.wasPressedThisFrame ||
-               gamepad.leftStick.ReadValue() != Vector2.zero ||
-               gamepad.rightStick.ReadValue() != Vector2.zero ||
-               gamepad.dpad.ReadValue() != Vector2.zero ||
-               gamepad.leftTrigger.wasPressedThisFrame ||
-               gamepad.rightTrigger.wasPressedThisFrame;
-        return currentDeviceIsGamepad && validateAnyGamepadInput;
     }
     Vector2 DirectionPosition()
     {
@@ -195,7 +154,7 @@ public class CharacterInputs : MonoBehaviour
     void ValidateShowMouse(bool showAttackDiection)
     {
         if (GameManager.Instance.currentDevice != GameManager.TypeDevice.PC)
-        {            
+        {
             if (showAttackDiection)
             {
                 attackDirection.SetActive(true);
@@ -204,6 +163,10 @@ public class CharacterInputs : MonoBehaviour
             {
                 attackDirection.SetActive(false);
             }
+        }
+        else
+        {
+            attackDirection.SetActive(false);
         }
     }
     [Serializable] public class CharacterActionsInfo

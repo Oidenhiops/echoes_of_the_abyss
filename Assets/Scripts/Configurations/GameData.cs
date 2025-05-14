@@ -7,7 +7,8 @@ public class GameData : MonoBehaviour
 {
     public static GameData Instance { get; private set; }
     string nameSaveData = "SaveData.json";
-    public ObjectsDBSO objectsDB;
+    public ItemsDBSO itemsDB;
+    public SkillsDBSO skillsDB;
     public SaveData saveData = new SaveData();
     public List<string[]> csvData = new List<string[]>();
     void Awake()
@@ -32,14 +33,15 @@ public class GameData : MonoBehaviour
             saveData.gameInfo.characterInfo.characterSelected = Resources.Load<InitialDataSO>($"SciptablesObjects/Character/InitialData/{saveData.gameInfo.characterInfo.characterSelectedName}");
             LoadCSV();
             InitializeResolutionData();
-            InitializeObjects();
+            InitializeItems();
+            InitializeSkills();
             Application.targetFrameRate = saveData.configurationsInfo.FpsLimit;
             await InitializeAudioMixerData();
         }
         catch (Exception e)
         {
             Debug.LogError(e);
-            await InitializeAudioMixerData();
+            await Awaitable.NextFrameAsync();
         }
     }
     void LoadCSV()
@@ -73,11 +75,18 @@ public class GameData : MonoBehaviour
         saveData.configurationsInfo.currentLanguage = language;
         SaveGameData();
     }
-    void InitializeObjects()
+    void InitializeItems()
     {
         foreach(ManagementCharacterObjects.ObjectsInfo objectsDataSO in saveData.gameInfo.characterInfo.currentObjects)
         {
-            objectsDataSO.objectData = objectsDB.GetObject(objectsDataSO.objectId);
+            objectsDataSO.objectData = itemsDB.GetItem(objectsDataSO.objectId);
+        }
+    }
+    void InitializeSkills()
+    {
+        foreach(ManagementCharacterSkills.SkillInfo skillDataSO in saveData.gameInfo.characterInfo.currentSkills)
+        {
+            skillDataSO.skillData = skillsDB.GetSkill(skillDataSO.skillId);
         }
     }
     void InitializeResolutionData()

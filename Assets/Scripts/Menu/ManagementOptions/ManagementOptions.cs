@@ -34,6 +34,7 @@ public class ManagementOptions : MonoBehaviour
         GameManager.Instance.OnDeviceChanged += ChangeMenuButtons;
         backButton.started += BackHandle;
         backButton.Enable();
+        if (GameManager.Instance.currentDevice == GameManager.TypeDevice.PC) Cursor.visible = true;
         ChangeMenuButtons(GameManager.Instance.currentDevice);
         muteCheck.SetActive(GameData.Instance.saveData.configurationsInfo.soundConfiguration.isMute);
         if (SceneManager.GetSceneByName("HomeScene").isLoaded) homeButton.SetActive(false);
@@ -52,7 +53,7 @@ public class ManagementOptions : MonoBehaviour
                 menuHelper.SelectButton();
             }
         }
-        if (GameManager.Instance.principalDevice == GameManager.TypeDevice.PC) GameManager.Instance.OnDeviceChanged -= ChangeMenuButtons;
+        GameManager.Instance.OnDeviceChanged -= ChangeMenuButtons;
         Time.timeScale = 1;
         GameManager.Instance.isPause = false;
     }

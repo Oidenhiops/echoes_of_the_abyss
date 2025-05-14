@@ -123,8 +123,14 @@ MonoBehaviour:
           currentValue: 0
           maxValue: 0
     colorBlood: {r: 0.36862746, g: 0, b: 0, a: 1}
-  baseSkill:
+  skills:
+  - idSkill: 0
     skillData: {fileID: 11400000, guid: 79155538a9ecbf24bb0076ced960536d, type: 2}
+    cdInfo:
+      cd: 0
+      currentCD: 0
+  - idSkill: 0
+    skillData: {fileID: 11400000, guid: b5b6ccb435b9db14aa8e7d20cc84bdc8, type: 2}
     cdInfo:
       cd: 0
       currentCD: 0

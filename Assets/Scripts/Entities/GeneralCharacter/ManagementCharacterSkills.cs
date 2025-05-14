@@ -9,7 +9,7 @@ public class ManagementCharacterSkills : MonoBehaviour
     [SerializeField] ManagementCharacterHud managementCharacterHud;
     [SerializeField] ManagementCharacterAnimations managementCharacterAnimations;
     [SerializeField] SkillInfo[] currentSkills = new SkillInfo[5];
-    int currentSkillIndex = 0;
+    public int currentSkillIndex = 0;
     bool usingSkill;
     public void InitializeSkillsEvents()
     {
@@ -37,9 +37,17 @@ public class ManagementCharacterSkills : MonoBehaviour
         }
     }
     void OnUseSkill(InputAction.CallbackContext context){
-        if (character.characterInputs.characterActionsInfo.isSkillsActive && context.action.triggered)
+        if (character.characterInfo.isActive && character.characterInputs.characterActionsInfo.isSkillsActive && context.action.triggered)
         {
             currentSkillIndex = (int)context.ReadValue<float>();
+            ValidateUseSkill();
+        }
+    }
+    public void OnUseSkillMobile(int posSkill)
+    {
+        if (character.characterInfo.isActive)
+        {
+            currentSkillIndex = posSkill;
             ValidateUseSkill();
         }
     }
@@ -126,6 +134,7 @@ public class ManagementCharacterSkills : MonoBehaviour
     }
     [Serializable] public class SkillInfo
     {
+        public int skillId;
         public SkillDataScriptableObject skillData;
         public SkillDataScriptableObject.CdInfo cdInfo = new SkillDataScriptableObject.CdInfo();
     }
