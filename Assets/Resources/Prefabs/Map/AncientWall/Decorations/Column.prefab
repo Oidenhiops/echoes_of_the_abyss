@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8541987752399817034}
   - component: {fileID: 615920350314755526}
   - component: {fileID: 5053054290111521942}
+  - component: {fileID: 2774346373151531518}
   m_Layer: 6
   m_Name: Column
   m_TagString: Untagged
@@ -52,7 +53,7 @@ MeshRenderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
+  m_DynamicOccludee: 0
   m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
@@ -108,3 +109,20 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.8239902, y: 2.0870588, z: 0.8240334}
   m_Center: {x: -0.000011980534, y: 1.0435294, z: 0.000012457371}
+--- !u!114 &2774346373151531518
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2341461624147193977}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8501396e19502f942afa295768c6930e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteKeys: []
+  meshRenderer: {fileID: 615920350314755526}
+  meshFilter: {fileID: 8541987752399817034}
+  originalDecorationMesh: {fileID: 0}
+  meshCollider: {fileID: 0}

@@ -5,8 +5,6 @@ public class ManagementPlayerMovement : MonoBehaviour, Character.ICharacterMove
 {
     public Character character;
     Vector3 movementDirection;
-    Vector3 camForward;
-    Vector3 camRight;
     float jumpForce = 3;
     public void Move()
     {
@@ -16,7 +14,7 @@ public class ManagementPlayerMovement : MonoBehaviour, Character.ICharacterMove
             0,
             character.characterInputs.characterActionsInfo.movement.y
         ).normalized;
-        CamDirection();
+        character.characterInfo.characterScripts.managementPlayerCamera.CamDirection(out Vector3 camForward,out Vector3 camRight);
         Vector3 camDirection = (inputs.x * camRight + inputs.z * camForward).normalized;
         movementDirection = new Vector3
         (
@@ -37,17 +35,6 @@ public class ManagementPlayerMovement : MonoBehaviour, Character.ICharacterMove
         {
             character.characterInfo.rb.linearVelocity += movementDirection / 10;
         }
-    }
-    void CamDirection()
-    {
-        camForward = Camera.main.transform.forward;
-        camRight = Camera.main.transform.right;
-
-        camForward.y = 0;
-        camRight.y = 0;
-
-        camForward = camForward.normalized;
-        camRight = camRight.normalized;
     }
     void Jump()
     {

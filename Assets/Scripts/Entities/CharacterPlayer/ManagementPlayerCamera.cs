@@ -19,12 +19,15 @@ public class ManagementPlayerCamera : MonoBehaviour
     {
         currentSpeed = typeDevice == GameManager.TypeDevice.PC ? baseSpeed : baseSpeed * 40;
     }
-    public void MoveCamera()
+    public void CamDirection(out Vector3 camForward, out Vector3 camRight)
     {
-        if (character.characterInputs.characterActionsInfo.isUnlockCamera)
-        {
-            vcam.HorizontalAxis.Value += character.characterInputs.characterActions.CharacterInputs.MoveCamera.ReadValue<Vector2>().x * currentSpeed;
-            if (vcam.HorizontalAxis.Value == 0) vcam.HorizontalAxis.Value += 0.001f;
-        }
+        camForward = Camera.main.transform.forward;
+        camRight = Camera.main.transform.right;
+
+        camForward.y = 0;
+        camRight.y = 0;
+
+        camForward = camForward.normalized;
+        camRight = camRight.normalized;
     }
 }

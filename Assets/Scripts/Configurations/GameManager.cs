@@ -29,8 +29,6 @@ public class GameManager : MonoBehaviour
     public bool isPause;
     public bool _startGame;
     public Action<bool> OnStartGame;
-    public TMP_Text fpsText;
-    private float deltaTime;
     public bool startGame
     {
         get => _startGame;
@@ -57,15 +55,10 @@ public class GameManager : MonoBehaviour
     }
     void Start()
     {
-                SetInitialDevice();
+        QualitySettings.vSyncCount = 0;
+        SetInitialDevice();
         OnDeviceChanged += ValidateActiveMouse;
         ValidateActiveMouse(currentDevice);
-    }
-    void LateUpdate()
-    {
-        deltaTime += (Time.unscaledDeltaTime - deltaTime) * 0.1f;
-        float fps = 1.0f / deltaTime;
-        fpsText.text = $"{Mathf.CeilToInt(fps)}";
     }
     void FixedUpdate()
     {        
@@ -94,6 +87,7 @@ public class GameManager : MonoBehaviour
         try
         {
             startGame = false;
+            openCloseScene.sceneToGo = typeScene.ToString();
             openCloseScene.openCloseSceneAnimator.SetBool("Out", true);
             await AudioManager.Instance.FadeOut();
             while (openCloseScene.openCloseSceneAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime < 1f) await Task.Delay(TimeSpan.FromSeconds(0.05)); ;
@@ -181,12 +175,15 @@ public class GameManager : MonoBehaviour
     }
     bool ValidateDeviceIsPc()
     {
+        var keyboard = Keyboard.current;
+        var mouse = Mouse.current;
+        if (keyboard == null || mouse == null) return false;
         bool validateAnyPcInput = 
-            Keyboard.current.anyKey.wasPressedThisFrame ||
-            Mouse.current.leftButton.wasPressedThisFrame ||
-            Mouse.current.rightButton.wasPressedThisFrame ||
-            Mouse.current.scroll.ReadValue() != Vector2.zero ||
-            Mouse.current.delta.ReadValue() != Vector2.zero;
+            keyboard.anyKey.wasPressedThisFrame ||
+            mouse.leftButton.wasPressedThisFrame ||
+            mouse.rightButton.wasPressedThisFrame ||
+            mouse.scroll.ReadValue() != Vector2.zero ||
+            mouse.delta.ReadValue() != Vector2.zero;
         return validateAnyPcInput;
     }
     bool ValidateIsGamepad()

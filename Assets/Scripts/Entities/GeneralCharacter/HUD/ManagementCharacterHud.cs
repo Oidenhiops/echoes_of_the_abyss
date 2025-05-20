@@ -12,7 +12,9 @@ public class ManagementCharacterHud : MonoBehaviour
     public CharacterUi characterUi;
     public void InitializeHud()
     {
-        if (character.characterInfo.isPlayer){
+        characterUi.generalHud.SetActive(true);
+        if (character.characterInfo.isPlayer)
+        {
             GameManager.Instance.OnDeviceChanged += EnabledMobileHUD;
             EnabledMobileHUD(GameManager.Instance.currentDevice);
         }
@@ -300,6 +302,7 @@ public class ManagementCharacterHud : MonoBehaviour
     }
     [Serializable] public class CharacterUi
     {
+        public GameObject generalHud;
         public HudUi hudUi;
         public InteractUi interactUi;
         public ObjectsUi objectsUi;

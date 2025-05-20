@@ -75,6 +75,8 @@ MonoBehaviour:
   needSpritePerTime: 1
   objectInstanceAnimation:
     typeAnimation: 0
+    animationName: 
+    linkAnimation: 
     spritesInfoDown:
     - generalSprite: {fileID: 1579101246, guid: bc11b31968eb9f947bc15526bbbb7954,
         type: 3}
@@ -184,13 +186,14 @@ MonoBehaviour:
     animationsEffects: 
     needAnimationEnd: 0
     loop: 0
+    needInstance: 0
     frameToInstance: 0
     speedSpritesPerTimeMultplier: 1
     instanceObj: {fileID: 0}
     instance: {fileID: 0}
   objectInstanceAnimationInfo:
-    baseSpritePerTime: 0.1
-    currentSpritePerTime: 0.1
+    baseSpritePerTime: 0.05
+    currentSpritePerTime: 0.05
     currentSpriteIndex: 0
     animations: []
 --- !u!114 &4182155154083143042

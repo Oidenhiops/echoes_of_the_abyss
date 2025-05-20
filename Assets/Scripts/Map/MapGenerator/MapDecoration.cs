@@ -3,46 +3,48 @@ using UnityEngine;
 public class MapDecoration : MonoBehaviour
 {
     public Sprite[] spriteKeys;
-    public Mesh mesh;
     public MeshRenderer meshRenderer;
-    [NaughtyAttributes.Button]  public void DrawBlock(){
-        SetTextureFromAtlas();
+    public MeshFilter meshFilter;
+    public Mesh originalDecorationMesh;
+    public MeshCollider meshCollider;
+    [NaughtyAttributes.Button]
+    public void DrawBlock()
+    {
+        if (spriteKeys.Length > 0) SetTextureFromAtlas();
     }
     void SetTextureFromAtlas()
     {
         Mesh newMesh = GetMeshByTexture();
-        Vector2[] uvs = meshRenderer.GetComponent<MeshFilter>().mesh.uv;        
         if (newMesh != null)
         {
-            meshRenderer.GetComponent<MeshFilter>().mesh = newMesh;
-            uvs = newMesh.uv;
-            if (GetComponent<MeshCollider>() != null)
+            meshFilter.mesh = newMesh;
+            if (meshCollider != null)
             {
-                GetComponent<MeshCollider>().sharedMesh = newMesh;
+                meshCollider.sharedMesh = newMesh;
             }
         }
+        Vector2[] uvs = newMesh.uv;
         Texture2D texture = spriteKeys[Random.Range(0, spriteKeys.Length)].texture;
-        meshRenderer.material.mainTexture = texture;
         Rect spriteRect = spriteKeys[Random.Range(0, spriteKeys.Length)].textureRect;
         for (int i = 0; i < uvs.Length; i++)
         {
             uvs[i].x = Mathf.Lerp(spriteRect.x / texture.width, (spriteRect.x + spriteRect.width) / texture.width, uvs[i].x);
             uvs[i].y = Mathf.Lerp(spriteRect.y / texture.height, (spriteRect.y + spriteRect.height) / texture.height, uvs[i].y);
         }
-        meshRenderer.GetComponent<MeshFilter>().mesh.uv = uvs;
+        newMesh.uv = uvs;
     }
     public Mesh GetMeshByTexture()
     {
         Mesh copia = new Mesh();
-        copia.vertices = mesh.vertices;
-        copia.triangles = mesh.triangles;
-        copia.uv = mesh.uv;
-        copia.normals = mesh.normals;
-        copia.colors = mesh.colors;
-        copia.tangents = mesh.tangents;
-        copia.bounds = mesh.bounds;
-        copia.boneWeights = mesh.boneWeights;
-        copia.bindposes = mesh.bindposes;
+        copia.vertices = originalDecorationMesh.vertices;
+        copia.triangles = originalDecorationMesh.triangles;
+        copia.uv = originalDecorationMesh.uv;
+        copia.normals = originalDecorationMesh.normals;
+        copia.colors = originalDecorationMesh.colors;
+        copia.tangents = originalDecorationMesh.tangents;
+        copia.bounds = originalDecorationMesh.bounds;
+        copia.boneWeights = originalDecorationMesh.boneWeights;
+        copia.bindposes = originalDecorationMesh.bindposes;
         return copia;
     }
 }

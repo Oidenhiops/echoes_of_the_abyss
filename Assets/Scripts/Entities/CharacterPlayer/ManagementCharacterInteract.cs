@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 
 public class ManagementCharacterInteract : MonoBehaviour
 {
+    RaycastHit[] hitBuffer = new RaycastHit[20];
+    List<GameObject> interactables = new List<GameObject>(20);
     public Character character;
     public GameObject[] _currentInteracts;
     public event Action<GameObject[]> OnInteractsChanged;
@@ -51,7 +53,7 @@ public class ManagementCharacterInteract : MonoBehaviour
     {
         if (character.characterInfo.isPlayer)
         {
-            currentInteracts = CheckInteracts();
+            CheckInteracts();
         }
     }
     void OnInteract(InputAction.CallbackContext context)
@@ -90,26 +92,31 @@ public class ManagementCharacterInteract : MonoBehaviour
     {
         character.characterInfo.characterScripts.managementCharacterHud.UpdateScrollInteract();
     }
-    GameObject[] CheckInteracts()
+    public void CheckInteracts()
     {
-        RaycastHit[] hits = Physics.BoxCastAll
-        (
+        int count = Physics.BoxCastNonAlloc(
             transform.position + offset,
             size / 2,
             Vector3.up,
+            hitBuffer,
             Quaternion.identity,
             0,
             layerMask
         );
-        List<GameObject> objectsChecked = new List<GameObject>();
-        foreach (var objectForChecked in hits)
+
+        interactables.Clear();
+
+        for (int i = 0; i < count; i++)
         {
-            if (objectForChecked.collider.GetComponent<ManagementInteract>().canInteract)
+            var hit = hitBuffer[i];
+            var interact = hit.collider.GetComponent<ManagementInteract>();
+            if (interact != null && interact.canInteract)
             {
-                objectsChecked.Add(objectForChecked.collider.gameObject);
+                interactables.Add(hit.collider.gameObject);
             }
         }
-        return objectsChecked.ToArray();
+
+        currentInteracts = interactables.ToArray();
     }
     void OnDrawGizmos()
     {

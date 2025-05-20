@@ -1,24 +1,19 @@
-using System.Collections.Generic;
 using UnityEngine;
 
 public class GrassTrack : MonoBehaviour
 {
-    [SerializeField] Vector3 trackerPos;
-    [SerializeField] List<Material> grassMats;
-    [SerializeField] GameObject[] objects;
+    Vector3 trackerPos;
+    Material grassMat;
+    [SerializeField] Renderer grassRenderer;
     float size = 0.65f;
     Vector3 offset = new Vector3(0, 0.32f, 0);
-    [SerializeField] float rayDistance = 1;
+    float rayDistance = 0.25f;
     [SerializeField] LayerMask layerMask;
     float time = 0;
-    public float speed = 2;
-    public float dist;
+    float speed = 0.1f;
     void Start()
     {
-        foreach (Transform child in transform)
-        {
-            grassMats.Add(child.GetComponent<Renderer>().material);
-        }
+        grassMat = grassRenderer.material;
     }
     void FixedUpdate()
     {
@@ -28,22 +23,14 @@ public class GrassTrack : MonoBehaviour
         {
             time = 0;
             trackerPos = GetMidpoint(objects);
-            ApplyMovement(trackerPos);
+            grassMat.SetVector("_TrakerPosition", trackerPos);
         }
-        else if (grassMats[0].GetVector("_TrakerPosition") != Vector4.zero)
+        else if (grassMat.GetVector("_TrakerPosition") != Vector4.zero)
         {
             time += Time.deltaTime * speed;
-            trackerPos = Vector3.Lerp(grassMats[0].GetVector("_TrakerPosition"), Vector3.zero, time * Time.deltaTime);
-            ApplyMovement(trackerPos);
+            trackerPos = Vector3.Lerp(grassMat.GetVector("_TrakerPosition"), Vector3.zero, time * Time.deltaTime);
+            grassMat.SetVector("_TrakerPosition", trackerPos);
         }
-    }
-    void ApplyMovement(Vector3 pos)
-    {
-        foreach (Material grass in grassMats)
-        {
-            grass.SetVector("_TrakerPosition", pos);
-        }
-
     }
     Vector3 GetMidpoint(RaycastHit[] transforms)
     {

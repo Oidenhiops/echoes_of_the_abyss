@@ -152,5 +152,8 @@ MonoBehaviour:
   - {fileID: 1869873213, guid: 495a2223931df654fbd05578946deb8a, type: 3}
   - {fileID: 2147160837, guid: 495a2223931df654fbd05578946deb8a, type: 3}
   - {fileID: 40468384, guid: 495a2223931df654fbd05578946deb8a, type: 3}
-  mesh: {fileID: 5062246478642505140, guid: 8540a3d09c6c2f54aadd2d20aa1704f8, type: 3}
   meshRenderer: {fileID: 2452205672414686258}
+  meshFilter: {fileID: 5114638761775893628}
+  originalDecorationMesh: {fileID: 5062246478642505140, guid: 8540a3d09c6c2f54aadd2d20aa1704f8,
+    type: 3}
+  meshCollider: {fileID: 8974246287789012950}

@@ -6,6 +6,7 @@ using UnityEngine;
 
 public class Character : MonoBehaviour
 {
+    public bool autoInit;
     public GameManagerHelper gameManagerHelper;
     public CharacterInputs characterInputs;
     public CharacterInfo characterInfo;
@@ -15,7 +16,7 @@ public class Character : MonoBehaviour
     }
     void Start()
     {
-        _= InitializeCharacter();
+        if (autoInit) _ = InitializeCharacter();
     }
     void Update()
     {
@@ -32,13 +33,12 @@ public class Character : MonoBehaviour
                     HandleAttack();
                     HandleObjects();
                     HandleSkills();
-                    HandleCamera();
                     HandleInteract();
                 }
             }
         }
     }
-    async Awaitable InitializeCharacter()
+    public async Awaitable InitializeCharacter()
     {
         try
         {
@@ -155,10 +155,6 @@ public class Character : MonoBehaviour
     void HandleHud()
     {
         if (characterInfo.characterScripts.managementCharacterHud) characterInfo.characterScripts.managementCharacterHud.HandleHud();
-    }
-    void HandleCamera()
-    {
-        if (characterInfo.isPlayer && characterInfo.characterScripts.managementPlayerCamera) characterInfo.characterScripts.managementPlayerCamera.MoveCamera();
     }
     void HandleInteract()
     {
@@ -323,14 +319,17 @@ public class Character : MonoBehaviour
             var mainModule = particleSystem.main;
             mainModule.startColor = colorBlood;
         }
+        Collider[] hitColliders = new Collider[10];
         protected bool SetGrounded()
-        {            
-            return Physics.OverlapBox
-            (
+        {
+            int hitCount = Physics.OverlapBoxNonAlloc(
                 characterScripts.owner.transform.position,
                 new Vector3(0.5f, 0.1f, 0.5f) / 2,
-                Quaternion.identity,                
-                LayerMask.GetMask("Map")).Length > 0;
+                hitColliders,
+                Quaternion.identity,
+                LayerMask.GetMask("Map")
+            );
+            return hitCount > 0;
         }
         public IEnumerator RegenerateResources()
         {

@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2429016980536352368}
   - component: {fileID: 8435834260907238621}
   - component: {fileID: 5409086896174603477}
-  - component: {fileID: 3018953567185608675}
+  - component: {fileID: 7338830608767283458}
   m_Layer: 6
   m_Name: AncientWall
   m_TagString: Untagged
@@ -54,7 +54,7 @@ MeshRenderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
+  m_DynamicOccludee: 0
   m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
@@ -123,11 +123,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c486f7b8a3c18d4ea4f0e6702b23951, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  listener: {fileID: 0}
   isWalkable: 0
   meshRenderer: {fileID: 2429016980536352368}
+  meshCollider: {fileID: 8435834260907238621}
+  meshFilter: {fileID: 455265274620422842}
   blockInfo:
     atlasMaterial: {fileID: 2100000, guid: 067e45d630c917541aeffb0f14ca32cf, type: 2}
+    keyForVariations: {fileID: 0}
     typeBlock: 1
     tileRules:
       _serializedList:
@@ -39139,7 +39141,7 @@ MonoBehaviour:
             type: 3}
       - Key: {fileID: 1996889962, guid: 8a03fd90ea8ec464d8732e2865c6f75d, type: 3}
         Value:
-          mesh: {fileID: 2561514869340647536, guid: c72295f7b33a0834184024d1d15c2a30,
+          mesh: {fileID: 2561514869340647536, guid: a92e37520ccf59c4da312f592b4a6bd1,
             type: 3}
       - Key: {fileID: 662331234, guid: 8a03fd90ea8ec464d8732e2865c6f75d, type: 3}
         Value:
@@ -39297,6 +39299,25 @@ MonoBehaviour:
         Value:
           mesh: {fileID: 2561514869340647536, guid: bd5c0006de386c74b933eb05a8d67fe9,
             type: 3}
+    variationTextures:
+      _serializedList:
+      - Key: {fileID: 1996889962, guid: 8a03fd90ea8ec464d8732e2865c6f75d, type: 3}
+        Value:
+        - {fileID: -62929713, guid: 8a03fd90ea8ec464d8732e2865c6f75d, type: 3}
+        - {fileID: 1595007477, guid: 8a03fd90ea8ec464d8732e2865c6f75d, type: 3}
+        - {fileID: -324216257, guid: 8a03fd90ea8ec464d8732e2865c6f75d, type: 3}
+        - {fileID: 126880575, guid: 8a03fd90ea8ec464d8732e2865c6f75d, type: 3}
+        - {fileID: 695639783, guid: 8a03fd90ea8ec464d8732e2865c6f75d, type: 3}
+        - {fileID: -1911781645, guid: 8a03fd90ea8ec464d8732e2865c6f75d, type: 3}
+        - {fileID: 339972861, guid: 8a03fd90ea8ec464d8732e2865c6f75d, type: 3}
+        - {fileID: -1444158532, guid: 8a03fd90ea8ec464d8732e2865c6f75d, type: 3}
+        - {fileID: 1922391763, guid: 8a03fd90ea8ec464d8732e2865c6f75d, type: 3}
+        - {fileID: 1823954771, guid: 8a03fd90ea8ec464d8732e2865c6f75d, type: 3}
+        - {fileID: 1265156081, guid: 8a03fd90ea8ec464d8732e2865c6f75d, type: 3}
+        - {fileID: -1940545936, guid: 8a03fd90ea8ec464d8732e2865c6f75d, type: 3}
+        - {fileID: -1230251664, guid: 8a03fd90ea8ec464d8732e2865c6f75d, type: 3}
+        - {fileID: -945610741, guid: 8a03fd90ea8ec464d8732e2865c6f75d, type: 3}
+        - {fileID: -508026483, guid: 8a03fd90ea8ec464d8732e2865c6f75d, type: 3}
   directionsBlocks: 
   detectUp: 1
   detectDown: 0
@@ -39318,7 +39339,11 @@ MonoBehaviour:
   detectBackRigth: 1
   drawGizmos: 0
   blockSelectedIndex: 0
---- !u!65 &3018953567185608675
+  newRuleInfo:
+    bitMask: 0
+    spriteRule: {fileID: 0}
+    uvsRule: []
+--- !u!65 &7338830608767283458
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

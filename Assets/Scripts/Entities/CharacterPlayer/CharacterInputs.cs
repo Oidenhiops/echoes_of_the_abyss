@@ -9,7 +9,6 @@ public class CharacterInputs : MonoBehaviour
     public CharacterActions characterActions;
     public CharacterActionsInfo characterActionsInfo;
     public GameObject attackDirection;
-    public GameObject mousePos;
     private float timeRestoreMovementMouse = 1f;
     public float restoreMovementMouse = 0;
     void OnEnable()
@@ -27,7 +26,7 @@ public class CharacterInputs : MonoBehaviour
     }
     void Update()
     {
-        characterActionsInfo.moveCamera = DirectionPosition();
+        ValidateShowDirection();
     }
     void InitInputs()
     {
@@ -35,10 +34,9 @@ public class CharacterInputs : MonoBehaviour
         characterActions.CharacterInputs.MousePos.canceled += OnMouseInput;
         characterActions.CharacterInputs.Movement.performed += OnMovementInput;
         characterActions.CharacterInputs.Movement.canceled += OnMovementInput;
+        characterActions.CharacterInputs.MoveCamera.performed += OnMoveCamera;
         characterActions.CharacterInputs.ActiveSkill.performed += OnActiveSkill;
         characterActions.CharacterInputs.ActiveSkill.canceled += OnActiveSkill;
-        characterActions.CharacterInputs.UnlockCamera.performed += OnUnlockCamera;
-        characterActions.CharacterInputs.UnlockCamera.canceled += OnUnlockCamera;
         characterActions.CharacterInputs.Pause.performed += OnPauseInput;
         characterActions.CharacterInputs.SecondaryAction.started += OnEnableSecondaryAction;        
         character.characterInputs.characterActions.CharacterInputs.ShowStats.started += OnShowStats;
@@ -52,17 +50,6 @@ public class CharacterInputs : MonoBehaviour
         else
         {
             characterActionsInfo.isSkillsActive = false;
-        }
-    }
-        void OnUnlockCamera(InputAction.CallbackContext context)
-    {
-        if (context.action.IsPressed())
-        {
-            characterActionsInfo.isUnlockCamera = true;
-        }
-        else
-        {
-            characterActionsInfo.isUnlockCamera = false;
         }
     }
     void OnMovementInput(InputAction.CallbackContext context)
@@ -84,6 +71,18 @@ public class CharacterInputs : MonoBehaviour
             character.gameManagerHelper.ChangeScene(1);
         }
     }
+    void OnMoveCamera(InputAction.CallbackContext context)
+    {
+        restoreMovementMouse = timeRestoreMovementMouse;
+        if (GameManager.Instance.currentDevice == GameManager.TypeDevice.PC)
+        {
+            characterActionsInfo.moveCamera = GetMouseDirection().normalized;
+        }
+        else
+        {
+            characterActionsInfo.moveCamera = context.ReadValue<Vector2>();
+        }
+    }
     void OnMouseInput(InputAction.CallbackContext context)
     {
         characterActionsInfo.mousePos = context.ReadValue<Vector2>();
@@ -101,13 +100,9 @@ public class CharacterInputs : MonoBehaviour
         characterActionsInfo.isShowStats = !characterActionsInfo.isShowStats;
         character.characterInfo.characterScripts.managementCharacterHud.ToggleShowStatistics(characterActionsInfo.isShowStats);
     }
-    Vector2 DirectionPosition()
+    void ValidateShowDirection()
     {
-        if (characterActions.CharacterInputs.UnlockCamera.IsInProgress())
-        {
-            return Vector2.zero;
-        }
-        if (characterActions.CharacterInputs.MoveCamera.ReadValue<Vector2>() != Vector2.zero || restoreMovementMouse > 0 && characterActions.CharacterInputs.BasicAttack.triggered || restoreMovementMouse > 0 && characterActions.CharacterInputs.UseSkill.triggered)
+        if (restoreMovementMouse > 0 && characterActions.CharacterInputs.BasicAttack.triggered || restoreMovementMouse > 0 && characterActions.CharacterInputs.UseSkill.triggered)
         {
             restoreMovementMouse = timeRestoreMovementMouse;
         }
@@ -115,41 +110,24 @@ public class CharacterInputs : MonoBehaviour
         {
             restoreMovementMouse -= Time.deltaTime;
             ValidateShowMouse(true);
-            if (GameManager.Instance.currentDevice == GameManager.TypeDevice.PC)
-            {
-                Ray ray = Camera.main.ScreenPointToRay(character.characterInputs.characterActionsInfo.mousePos);
-                if (Physics.Raycast(ray, out RaycastHit raycastHit, Mathf.Infinity, LayerMask.GetMask("MouseHit")))
-                {
-                    mousePos.transform.position = raycastHit.point;
-                    Vector2 direction = new Vector2(mousePos.transform.localPosition.x, mousePos.transform.localPosition.z).normalized;
-                    return direction;
-                }
-            }
-            else if (GameManager.Instance.currentDevice == GameManager.TypeDevice.GAMEPAD || GameManager.Instance.currentDevice == GameManager.TypeDevice.MOBILE)
-            {
-                if (characterActions.CharacterInputs.MoveCamera.ReadValue<Vector2>() != Vector2.zero)
-                {
-                    return characterActions.CharacterInputs.MoveCamera.ReadValue<Vector2>();
-                }
-                else
-                {
-                    return characterActionsInfo.moveCamera;
-                }
-            }
         }
         else
         {
+            characterActionsInfo.moveCamera = Vector2.zero;
             ValidateShowMouse(false);
         }
-        if (GameManager.Instance.currentDevice == GameManager.TypeDevice.GAMEPAD)
-        {
-            return characterActions.CharacterInputs.MoveCamera.ReadValue<Vector2>();
-        }
-        if (GameManager.Instance.currentDevice == GameManager.TypeDevice.MOBILE && characterActions.CharacterInputs.BasicAttack.IsPressed())
-        {
-            return characterActions.CharacterInputs.MoveCamera.ReadValue<Vector2>();
-        }
-        return Vector2.zero;
+    }
+    Vector2 GetMouseDirection()
+    {
+        Vector2 mousePos = characterActionsInfo.mousePos;
+        Vector2 screenCenter = new Vector2(Screen.width / 2f, Screen.height / 2f);
+        Vector2 direction = mousePos - screenCenter;
+        float normalizedX = direction.x / (Screen.width / 2f);
+        float normalizedY = direction.y / (Screen.height / 2f);
+        normalizedX = Mathf.Clamp(normalizedX, -1f, 1f);
+        normalizedY = Mathf.Clamp(normalizedY, -1f, 1f);
+
+        return new Vector2(normalizedX, normalizedY);
     }
     void ValidateShowMouse(bool showAttackDiection)
     {
@@ -190,6 +168,5 @@ public class CharacterInputs : MonoBehaviour
         }
         public bool isSkillsActive = false;
         public bool isShowStats = false;
-        public bool isUnlockCamera = false;
     }
 }

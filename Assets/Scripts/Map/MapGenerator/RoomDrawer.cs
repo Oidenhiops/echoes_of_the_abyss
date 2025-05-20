@@ -11,9 +11,10 @@ public class RoomDrawer : MonoBehaviour
     public GameObject blocksContainer;
     public List<MapBlock> mapBlocks = new List<MapBlock>();
     public List<MapDecoration> decorationsBlocks = new List<MapDecoration>();
-    public List<MeshRenderer> blocksRender = new List<MeshRenderer>();
     public SerializedDictionary<DirectionBridges, BridgesInfo> bridges;
-    public bool autoInit;
+    public MapBlock[] mapBlocksForSpawn;
+    public Vector3[] spawnPos;
+    public bool autoInit;    
     void Start()
     {
         if (autoInit) DrawMap();
@@ -23,9 +24,11 @@ public class RoomDrawer : MonoBehaviour
     {
         StartCoroutine(DrawRoom());
     }
-    public IEnumerator DrawRoom()
+    IEnumerator DrawRoom()
     {
         DrawBlocks();
+        yield return new WaitForSeconds(0.1f);
+        DrawBridges();
         yield return new WaitForSeconds(0.1f);
         BuildNavMesh();
     }
@@ -40,13 +43,57 @@ public class RoomDrawer : MonoBehaviour
             decorationsBlocks[i].DrawBlock();
         }
     }
+    public void ActiveBridges(DirectionBridges directionBridges)
+    {
+        if (bridges.TryGetValue(directionBridges, out BridgesInfo bridgesInfo))
+        {
+            bridgesInfo.bridge.SetActive(true);
+        }
+    }
+    public void DrawBridges()
+    {
+        List<DirectionBridges> toRemove = new List<DirectionBridges>();
+
+        foreach (var kvp in bridges)
+        {
+            DirectionBridges direction = kvp.Key;
+            var bridgeData = kvp.Value;
+
+            if (bridgeData.bridge.activeSelf)
+            {
+                foreach (var block in bridgeData.blocks)
+                {
+                    block.DrawBlock();
+                }
+            }
+            else
+            {
+                Destroy(bridgeData.bridge);
+                toRemove.Add(direction);
+            }
+        }
+        foreach (var dir in toRemove)
+        {
+            bridges.Remove(dir);
+        }
+    }
     void BuildNavMesh()
     {
-        //navMeshSurface.BuildNavMesh();
+        // navMeshSurface.BuildNavMesh();
     }
     void UpdateNavMesh()
     {
         //navMeshSurface.UpdateNavMesh(navMeshSurface.navMeshData);
+    }
+    [NaughtyAttributes.Button]
+    public void GetSpawnPos()
+    {
+        List<Vector3> newSpawnPos = new List<Vector3>();
+        foreach (MapBlock mapBlock in mapBlocksForSpawn)
+        {
+            newSpawnPos.Add(mapBlock.transform.position + Vector3.up);
+        }
+        spawnPos = newSpawnPos.ToArray();
     }
     [Serializable] public class BridgesInfo
     {

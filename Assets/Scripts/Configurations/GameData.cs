@@ -37,6 +37,7 @@ public class GameData : MonoBehaviour
             InitializeSkills();
             Application.targetFrameRate = saveData.configurationsInfo.FpsLimit;
             await InitializeAudioMixerData();
+            saveData.configurationsInfo.canShowFps = true;
         }
         catch (Exception e)
         {
@@ -245,6 +246,20 @@ public class GameData : MonoBehaviour
                 {
                     _currentLanguage = value;
                     OnLanguageChange?.Invoke(_currentLanguage);
+                }
+            }
+        }
+        public bool _canShowFps;
+        public Action<bool> OnCanShowFpsChange;
+        public bool canShowFps
+        {
+            get => _canShowFps;
+            set
+            {
+                if (_canShowFps != value)
+                {
+                    _canShowFps = value;
+                    OnCanShowFpsChange?.Invoke(_canShowFps);
                 }
             }
         }

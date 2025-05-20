@@ -6,7 +6,7 @@ TextureImporter:
   serializedVersion: 13
   mipmaps:
     mipMapMode: 0
-    enableMipMap: 1
+    enableMipMap: 0
     sRGBTexture: 1
     linearTexture: 0
     fadeOut: 0
@@ -21,7 +21,7 @@ TextureImporter:
     heightScale: 0.25
     normalMapFilter: 0
     flipGreenChannel: 0
-  isReadable: 1
+  isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
@@ -69,8 +69,8 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 4
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
+    maxTextureSize: 1024
+    resizeAlgorithm: 1
     textureFormat: 4
     textureCompression: 0
     compressionQuality: 50
@@ -153,11 +153,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 690
+        y: 966
         width: 69
         height: 138
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -175,11 +175,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 69
-        y: 690
+        y: 966
         width: 69
         height: 138
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -197,11 +197,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 138
-        y: 690
+        y: 966
         width: 69
         height: 138
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -219,11 +219,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 207
-        y: 690
+        y: 966
         width: 69
         height: 138
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -241,11 +241,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 276
-        y: 690
+        y: 966
         width: 69
         height: 138
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -263,11 +263,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 345
-        y: 690
+        y: 966
         width: 69
         height: 138
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -285,11 +285,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 414
-        y: 690
+        y: 966
         width: 69
         height: 138
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -307,11 +307,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 483
-        y: 690
+        y: 966
         width: 69
         height: 138
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -329,11 +329,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 552
+        y: 828
         width: 69
         height: 138
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -351,11 +351,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 69
-        y: 552
+        y: 828
         width: 69
         height: 138
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -373,11 +373,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 138
-        y: 552
+        y: 828
         width: 69
         height: 138
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -395,11 +395,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 207
-        y: 552
+        y: 828
         width: 69
         height: 138
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -417,11 +417,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 276
-        y: 552
+        y: 828
         width: 69
         height: 138
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -439,11 +439,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 345
-        y: 552
+        y: 828
         width: 69
         height: 138
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -461,11 +461,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 414
-        y: 552
+        y: 828
         width: 69
         height: 138
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -483,11 +483,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 483
-        y: 552
+        y: 828
         width: 69
         height: 138
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -505,11 +505,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 414
+        y: 690
         width: 69
         height: 138
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -527,11 +527,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 69
-        y: 414
+        y: 690
         width: 69
         height: 138
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -549,11 +549,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 138
-        y: 414
+        y: 690
         width: 69
         height: 138
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -571,11 +571,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 207
-        y: 414
+        y: 690
         width: 69
         height: 138
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -593,11 +593,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 276
-        y: 414
+        y: 690
         width: 69
         height: 138
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -615,11 +615,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 345
-        y: 414
+        y: 690
         width: 69
         height: 138
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -637,11 +637,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 414
-        y: 414
+        y: 690
         width: 69
         height: 138
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -659,11 +659,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 483
-        y: 414
+        y: 690
         width: 69
         height: 138
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -681,11 +681,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 276
+        y: 552
         width: 69
         height: 138
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -703,11 +703,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 69
-        y: 276
+        y: 552
         width: 69
         height: 138
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -725,11 +725,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 138
-        y: 276
+        y: 552
         width: 69
         height: 138
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -747,11 +747,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 207
-        y: 276
+        y: 552
         width: 69
         height: 138
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -769,11 +769,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 276
-        y: 276
+        y: 552
         width: 69
         height: 138
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -791,11 +791,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 345
-        y: 276
+        y: 552
         width: 69
         height: 138
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -813,11 +813,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 414
-        y: 276
+        y: 552
         width: 69
         height: 138
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -835,11 +835,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 483
-        y: 276
+        y: 552
         width: 69
         height: 138
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -857,11 +857,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 138
+        y: 414
         width: 69
         height: 138
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -879,11 +879,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 69
-        y: 138
+        y: 414
         width: 69
         height: 138
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -901,11 +901,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 138
-        y: 138
+        y: 414
         width: 69
         height: 138
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -923,11 +923,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 207
-        y: 138
+        y: 414
         width: 69
         height: 138
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -945,11 +945,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 276
-        y: 138
+        y: 414
         width: 69
         height: 138
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -967,11 +967,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 345
-        y: 138
+        y: 414
         width: 69
         height: 138
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -989,11 +989,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 414
-        y: 138
+        y: 414
         width: 69
         height: 138
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1011,11 +1011,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
+        y: 276
         width: 69
         height: 138
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1033,11 +1033,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 69
-        y: 0
+        y: 276
         width: 69
         height: 138
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1055,11 +1055,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 138
-        y: 0
+        y: 276
         width: 69
         height: 138
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1077,11 +1077,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 207
-        y: 0
+        y: 276
         width: 69
         height: 138
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1099,11 +1099,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 276
-        y: 0
+        y: 276
         width: 69
         height: 138
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1121,11 +1121,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 345
-        y: 0
+        y: 276
         width: 69
         height: 138
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1143,11 +1143,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 414
-        y: 0
+        y: 276
         width: 69
         height: 138
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1165,11 +1165,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 483
-        y: 0
+        y: 276
         width: 69
         height: 138
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1186,7 +1186,7 @@ TextureImporter:
       name: AncientWallAtlas_47
       rect:
         serializedVersion: 2
-        x: 483
+        x: 0
         y: 138
         width: 69
         height: 138
@@ -1200,6 +1200,314 @@ TextureImporter:
       bones: []
       spriteID: de6b42e8b639bc34380950f3ae24fac8
       internalID: -62929713
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AncientWallAtlas_48
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 138
+        width: 69
+        height: 138
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a6c1cc44f9d45b54192553ecddcc9e96
+      internalID: 1595007477
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AncientWallAtlas_49
+      rect:
+        serializedVersion: 2
+        x: 138
+        y: 138
+        width: 69
+        height: 138
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2f542d19505f5184e916678a6cc566ac
+      internalID: -324216257
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AncientWallAtlas_50
+      rect:
+        serializedVersion: 2
+        x: 207
+        y: 138
+        width: 69
+        height: 138
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6a708fa436af8bb408cabc38a27dbb63
+      internalID: 126880575
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AncientWallAtlas_51
+      rect:
+        serializedVersion: 2
+        x: 276
+        y: 138
+        width: 69
+        height: 138
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 20ac3e92220dba7409d2da0ff4fa4cef
+      internalID: 695639783
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AncientWallAtlas_52
+      rect:
+        serializedVersion: 2
+        x: 345
+        y: 138
+        width: 69
+        height: 138
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d1e88c3943425e648b3bfbcae6317d6d
+      internalID: -1911781645
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AncientWallAtlas_53
+      rect:
+        serializedVersion: 2
+        x: 414
+        y: 138
+        width: 69
+        height: 138
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b4fdca23b78d43a4bbc36763ee19b2b0
+      internalID: 339972861
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AncientWallAtlas_54
+      rect:
+        serializedVersion: 2
+        x: 483
+        y: 138
+        width: 69
+        height: 138
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 74e7e613f7cbc9b4a8c34ce6abb23e8f
+      internalID: -1444158532
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AncientWallAtlas_55
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 69
+        height: 138
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4b0d72e98eb272641a3250b3a89178fd
+      internalID: 1922391763
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AncientWallAtlas_56
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 0
+        width: 69
+        height: 138
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ccdc231fa8638494e848e7d234d598ba
+      internalID: 1823954771
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AncientWallAtlas_57
+      rect:
+        serializedVersion: 2
+        x: 138
+        y: 0
+        width: 69
+        height: 138
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 639435f7a59713144b0fb54d158f4410
+      internalID: 1265156081
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AncientWallAtlas_58
+      rect:
+        serializedVersion: 2
+        x: 207
+        y: 0
+        width: 69
+        height: 138
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c38d3d2a235f7234885b78216a0a85a8
+      internalID: -1940545936
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AncientWallAtlas_59
+      rect:
+        serializedVersion: 2
+        x: 276
+        y: 0
+        width: 69
+        height: 138
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cb515cb8ffe645f4a8c57ed49c7d3944
+      internalID: -1230251664
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AncientWallAtlas_60
+      rect:
+        serializedVersion: 2
+        x: 345
+        y: 0
+        width: 69
+        height: 138
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 47e48ce2532715841998caaf71b1e02f
+      internalID: -945610741
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AncientWallAtlas_61
+      rect:
+        serializedVersion: 2
+        x: 414
+        y: 0
+        width: 69
+        height: 138
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e1ec725a933a9834980325c2ff61532e
+      internalID: -508026483
       vertices: []
       indices: 
       edges: []
@@ -1261,8 +1569,22 @@ TextureImporter:
       AncientWallAtlas_45: -1754503259
       AncientWallAtlas_46: -410095843
       AncientWallAtlas_47: -62929713
+      AncientWallAtlas_48: 1595007477
+      AncientWallAtlas_49: -324216257
       AncientWallAtlas_5: -1105531193
+      AncientWallAtlas_50: 126880575
+      AncientWallAtlas_51: 695639783
+      AncientWallAtlas_52: -1911781645
+      AncientWallAtlas_53: 339972861
+      AncientWallAtlas_54: -1444158532
+      AncientWallAtlas_55: 1922391763
+      AncientWallAtlas_56: 1823954771
+      AncientWallAtlas_57: 1265156081
+      AncientWallAtlas_58: -1940545936
+      AncientWallAtlas_59: -1230251664
       AncientWallAtlas_6: -293319068
+      AncientWallAtlas_60: -945610741
+      AncientWallAtlas_61: -508026483
       AncientWallAtlas_7: 1996889962
       AncientWallAtlas_8: 662331234
       AncientWallAtlas_9: -1435213776

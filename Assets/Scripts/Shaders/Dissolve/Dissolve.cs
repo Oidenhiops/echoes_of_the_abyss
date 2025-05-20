@@ -28,12 +28,10 @@ public class Dissolve : MonoBehaviour
         }
         AppearObject();
     }
-    [NaughtyAttributes.Button]
     public void AppearObject()
     {
         StartCoroutine(AppearObj());
     }
-    [NaughtyAttributes.Button]
     public void DissolveObject()
     {
         StartCoroutine(DissolveObj());

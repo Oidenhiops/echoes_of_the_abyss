@@ -8,6 +8,7 @@ using UnityEngine.UI;
 public class ManagementOpenCloseScene : MonoBehaviour
 {
     public Animator openCloseSceneAnimator;
+    public string sceneToGo;
     public bool _finishLoad;
     public Action<bool>OnFinishLoadChange;
     public float speedFill;
@@ -25,7 +26,6 @@ public class ManagementOpenCloseScene : MonoBehaviour
     }
     public float currentLoad = 0;
     public Image loaderImage;
-    public bool auto = false;
     void Start()
     {
         ResetValues();
@@ -34,7 +34,7 @@ public class ManagementOpenCloseScene : MonoBehaviour
     {
         if (!finishLoad)
         {
-            float value = currentLoad / 100 > 0 ? currentLoad / 100 : 1;
+            float value = currentLoad / 100;
             loaderImage.fillAmount = Mathf.MoveTowards(loaderImage.fillAmount, value, speedFill * Time.unscaledDeltaTime);
             if (loaderImage.fillAmount == 1)
             {
@@ -58,7 +58,7 @@ public class ManagementOpenCloseScene : MonoBehaviour
     }
     public void AdjustLoading(float amount)
     {
-        currentLoad += amount;
+        currentLoad = amount;
     }
     public async Awaitable FinishLoad()
     {
@@ -107,19 +107,19 @@ public class ManagementOpenCloseScene : MonoBehaviour
     }
     public void ResetValues()
     {
-        if (auto)
+        try
         {
-            try
+            loaderImage.fillAmount = 0;
+            currentLoad = 0;
+            finishLoad = false;
+            if (sceneToGo == "HomeScene" || sceneToGo == "")
             {
-                loaderImage.fillAmount = 0;
-                currentLoad = 0;
-                finishLoad = false;
                 StartCoroutine(AutoCharge());
             }
-            catch(Exception e)
-            {
-                print(e);
-            }
+        }
+        catch (Exception e)
+        {
+            print(e);
         }
     }
 }

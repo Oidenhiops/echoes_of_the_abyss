@@ -387,7 +387,7 @@ MonoBehaviour:
     initialData: {fileID: 11400000, guid: fbcd7d4f710bf254a81b8d8d0fe93deb, type: 2}
     isPlayer: 1
     isActive: 0
-    rb: {fileID: 0}
+    rb: {fileID: 1685311188314700044}
     characterStatistics:
       _serializedList:
       - Key: 1

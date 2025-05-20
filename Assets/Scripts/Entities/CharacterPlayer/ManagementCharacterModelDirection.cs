@@ -85,9 +85,21 @@ public class ManagementCharacterModelDirection : MonoBehaviour, ManagementCharac
         if (character.characterInputs.characterActionsInfo.moveCamera != Vector2.zero)
         {
             movementDirectionAnimation = character.characterInputs.characterActionsInfo.moveCamera;
-            character.characterInfo.characterScripts.characterAnimations.GetCharacterSprite().transform.localRotation = 
+            character.characterInfo.characterScripts.characterAnimations.GetCharacterSprite().transform.localRotation =
                 Quaternion.Euler(0, movementDirectionAnimation.x > 0 ? -180 : 0, 0);
-            float angle = Mathf.Atan2(movementDirectionAnimation.x, movementDirectionAnimation.y) * Mathf.Rad2Deg;
+
+            Vector3 inputs = new Vector3
+            (
+                movementDirectionAnimation.x,
+                0,
+                movementDirectionAnimation.y
+            ).normalized;
+            character.characterInfo.characterScripts.managementPlayerCamera.CamDirection(out Vector3 camForward, out Vector3 camRight);
+            Vector3 camDirection = (inputs.x * camRight + inputs.z * camForward).normalized;
+            Vector2 direction = new Vector2(camDirection.x, camDirection.z).normalized;
+            character.characterInfo.characterScripts.characterAnimations.GetCharacterSprite().transform.localRotation =
+                Quaternion.Euler(0, movementDirectionAnimation.x > 0 ? -180 : 0, 0);
+            float angle = Mathf.Atan2(direction.x, direction.y) * Mathf.Rad2Deg;
             directionPlayer.transform.rotation = Quaternion.Lerp(directionPlayer.transform.rotation, Quaternion.Euler(0, angle, 0f), 0.3f);
         }
     }

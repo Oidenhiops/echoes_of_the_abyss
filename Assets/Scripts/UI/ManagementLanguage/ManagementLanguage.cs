@@ -22,7 +22,6 @@ public class ManagementLanguage : MonoBehaviour
         GameData.Instance.saveData.configurationsInfo.OnLanguageChange += RefreshText;
         RefreshText();
     }
-    [NaughtyAttributes.Button]
     public void RefreshText(GameData.TypeLanguage language = GameData.TypeLanguage.English)
     {
         dialogText.text = "";

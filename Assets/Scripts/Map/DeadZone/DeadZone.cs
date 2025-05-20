@@ -15,5 +15,9 @@ public class DeadZone : MonoBehaviour
                 null
             );
         }
+        else
+        {
+            Destroy(other.gameObject);
+        }
     }
 }
