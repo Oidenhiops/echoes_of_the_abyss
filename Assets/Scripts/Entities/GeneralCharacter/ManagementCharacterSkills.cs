@@ -13,7 +13,7 @@ public class ManagementCharacterSkills : MonoBehaviour
     bool usingSkill;
     public void InitializeSkillsEvents()
     {
-        character.characterInputs.characterActions.CharacterInputs.UseSkill.performed += OnUseSkill;
+        if (character.characterInputs) character.characterInputs.characterActions.CharacterInputs.UseSkill.performed += OnUseSkill;
     }
     public void HandleSkills()
     {

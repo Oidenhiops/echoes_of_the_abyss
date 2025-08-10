@@ -9,10 +9,8 @@ public class PathFollowNM : MonoBehaviour, Character.ICharacterMove
     public bool canMove = false;
     void Start()
     {
-        na = GetComponent<NavMeshAgent>();
         na.updateRotation = false;
         na.enabled = false;
-        character.characterInfo.isActive = true;
     }
     void Update()
     {

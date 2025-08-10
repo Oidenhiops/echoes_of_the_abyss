@@ -95,6 +95,9 @@ VFXRenderer:
   m_ReflectionProbeUsage: 0
   m_RayTracingMode: 0
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_StaticBatchInfo:
@@ -128,7 +131,6 @@ GameObject:
   - component: {fileID: 1757110576625652437}
   - component: {fileID: 5511634520356646631}
   - component: {fileID: 3263117862545109767}
-  - component: {fileID: 6056472247487358736}
   - component: {fileID: 2203351414022413947}
   m_Layer: 17
   m_Name: TripleSlash1
@@ -201,19 +203,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.2, y: 0.8, z: 0.6}
   m_Center: {x: 0, y: 0.4, z: 0}
---- !u!114 &6056472247487358736
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 394187005330145297}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0a3ec9d5b6f57a43aaa0b180959b21c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  slashEffect: {fileID: 9147116217768195049}
 --- !u!114 &2203351414022413947
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -229,11 +218,11 @@ MonoBehaviour:
   instanceAttackInfo:
     typeDamage: 1
     damage: 0
+    isPorcent: 0
     colorDamage: {r: 1, g: 1, b: 1, a: 1}
-    objectMakeDamage: {fileID: 0}
+    characterMakeDamage: {fileID: 0}
     canDestroy: 0
-    needPush: 0
-    pushForce: 5
+    statusEffects: []
     timeHitStop: 0
     isMultipleAttack: 0
     timeToRestoreCharacterToHit: 0.1
@@ -293,8 +282,9 @@ MonoBehaviour:
   - typeStatistics: 4
     baseValue: 200
     buffValue: 0
-    maxValue: 0
+    objectValue: 0
     currentValue: 0
+    maxValue: 0
   currentStatistics: []
   characterMakeDamage: {fileID: 0}
   speed: 250
@@ -309,7 +299,6 @@ GameObject:
   - component: {fileID: 2667193922144251009}
   - component: {fileID: 8150396142275055795}
   - component: {fileID: 1164646797060869459}
-  - component: {fileID: 7596918450100459844}
   - component: {fileID: 47151505721973223}
   m_Layer: 17
   m_Name: TripleSlash2
@@ -382,19 +371,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.2, y: 0.8, z: 0.6}
   m_Center: {x: 0, y: 0.4, z: 0}
---- !u!114 &7596918450100459844
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4042308874238230085}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0a3ec9d5b6f57a43aaa0b180959b21c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  slashEffect: {fileID: 4868481098066038205}
 --- !u!114 &47151505721973223
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -410,11 +386,11 @@ MonoBehaviour:
   instanceAttackInfo:
     typeDamage: 1
     damage: 0
+    isPorcent: 0
     colorDamage: {r: 1, g: 1, b: 1, a: 1}
-    objectMakeDamage: {fileID: 0}
+    characterMakeDamage: {fileID: 0}
     canDestroy: 0
-    needPush: 0
-    pushForce: 5
+    statusEffects: []
     timeHitStop: 0
     isMultipleAttack: 0
     timeToRestoreCharacterToHit: 0.1
@@ -514,6 +490,9 @@ VFXRenderer:
   m_ReflectionProbeUsage: 0
   m_RayTracingMode: 0
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_StaticBatchInfo:
@@ -631,6 +610,9 @@ VFXRenderer:
   m_ReflectionProbeUsage: 0
   m_RayTracingMode: 0
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_StaticBatchInfo:
@@ -664,7 +646,6 @@ GameObject:
   - component: {fileID: 7690445372011549464}
   - component: {fileID: 4514352814586228522}
   - component: {fileID: 6887021957425574602}
-  - component: {fileID: 2798873887892301533}
   - component: {fileID: 7836224549963287967}
   m_Layer: 17
   m_Name: TripleSlash3
@@ -737,19 +718,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.2, y: 0.8, z: 0.6}
   m_Center: {x: 0, y: 0.4, z: 0}
---- !u!114 &2798873887892301533
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8620768666311868892}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0a3ec9d5b6f57a43aaa0b180959b21c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  slashEffect: {fileID: 876623234711728676}
 --- !u!114 &7836224549963287967
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -765,11 +733,11 @@ MonoBehaviour:
   instanceAttackInfo:
     typeDamage: 1
     damage: 0
+    isPorcent: 0
     colorDamage: {r: 1, g: 1, b: 1, a: 1}
-    objectMakeDamage: {fileID: 0}
+    characterMakeDamage: {fileID: 0}
     canDestroy: 0
-    needPush: 0
-    pushForce: 5
+    statusEffects: []
     timeHitStop: 0
     isMultipleAttack: 0
     timeToRestoreCharacterToHit: 0.1

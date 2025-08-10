@@ -79,7 +79,7 @@ public class RoomDrawer : MonoBehaviour
     }
     void BuildNavMesh()
     {
-        // navMeshSurface.BuildNavMesh();
+        navMeshSurface.BuildNavMesh();
     }
     void UpdateNavMesh()
     {

@@ -9,7 +9,7 @@ public class ManagementCharacterAnimations : MonoBehaviour
     [SerializeField] MeshRenderer meshRendererCharacter;
     [SerializeField] MeshRenderer meshRendererHand;
     public CharacterAnimationsSO.CharacterAnimationsInfo characterAnimationsInfo;
-    public CharacterAnimationsSO.AnimationsInfo currentAnimation;
+    public CharacterAnimationsSO.AnimationsInfo currentAnimation = new CharacterAnimationsSO.AnimationsInfo();
     public GameObject leftHand;
     public GameObject rightHand;
     [SerializeField] CharacterAnimationsEffectsInfo characterAnimationsEffectsInfo;

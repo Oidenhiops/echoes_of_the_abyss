@@ -3,9 +3,11 @@ using UnityEngine;
 
 public class RoomSpawner : MonoBehaviour
 {
+    public RoomDrawer roomDrawer;
     public GameObject blockWalls;
     int _amountEnemies;
     public Action<int> OnAllEnemiesDie;
+    public GameObject characterPrefab;
     public int amountSpawns;
     public int amountEnemies
     {
@@ -42,8 +44,18 @@ public class RoomSpawner : MonoBehaviour
     public void SpawnEnemies()
     {
         amountSpawns--;
-        amountEnemies = UnityEngine.Random.Range(4, 10);
-        print(amountEnemies);
+        // amountEnemies = UnityEngine.Random.Range(4, 10);
+        amountEnemies = 1;
+        for (int i = 0; i < amountEnemies; i++)
+        {
+            Character character = Instantiate(characterPrefab, transform.position, Quaternion.identity, transform).GetComponent<Character>();
+            character.transform.localPosition = GetSpawnPosition();
+            _ = character.InitializeCharacter();
+        }
+    }
+    public Vector3 GetSpawnPosition()
+    {
+        return roomDrawer.spawnPos[UnityEngine.Random.Range(0, roomDrawer.spawnPos.Length - 1)];
     }
     void FinishBattle()
     {

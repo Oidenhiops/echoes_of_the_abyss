@@ -337,6 +337,7 @@ GameObject:
   - component: {fileID: 7985792512032563270}
   - component: {fileID: 4901381864539942042}
   - component: {fileID: 2849091386784508898}
+  - component: {fileID: 5512378973831541742}
   - component: {fileID: 334464347712420031}
   - component: {fileID: 6354645912475856525}
   - component: {fileID: 2745207021960222820}
@@ -428,6 +429,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b4268d6f80c7e946904269071639ca8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  autoInit: 0
   gameManagerHelper: {fileID: 0}
   characterInputs: {fileID: 0}
   characterInfo:
@@ -440,13 +442,13 @@ MonoBehaviour:
       managementCharacterInteract: {fileID: 0}
       characterAttack: {fileID: 4901381864539942042}
       characterAnimations: {fileID: 2731720836664213740}
-      managementStatusEffect: {fileID: 0}
+      managementStatusEffect: {fileID: 5512378973831541742}
       dissolve: {fileID: 334464347712420031}
       owner: {fileID: 3267473307002927260}
     initialData: {fileID: 11400000, guid: fbcd7d4f710bf254a81b8d8d0fe93deb, type: 2}
     isPlayer: 0
     isActive: 0
-    rb: {fileID: 0}
+    rb: {fileID: 4116982597303857081}
     characterStatistics:
       _serializedList:
       - Key: 1
@@ -552,6 +554,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   character: {fileID: 3267473307002927260}
   characterUi:
+    generalHud: {fileID: 0}
     hudUi:
       healthBarBack: {fileID: 520263412315394904}
       healthBarFront: {fileID: 8290193411131689729}
@@ -562,6 +565,12 @@ MonoBehaviour:
       staminaBarBack: {fileID: 0}
       staminaBarFront: {fileID: 0}
       staminaText: {fileID: 0}
+    interactUi:
+      bannerInteract: {fileID: 0}
+      containerInteract: {fileID: 0}
+      viewportInteract: {fileID: 0}
+      interactScrollRect: {fileID: 0}
+      interacts: []
     objectsUi:
       objects:
       - objectBackground: {fileID: 0}
@@ -588,12 +597,8 @@ MonoBehaviour:
         spriteObject: {fileID: 0}
         usingObjectSprite: {fileID: 0}
         amount: {fileID: 0}
-      bannerTakeObjects: {fileID: 0}
-      containerTakeObjects: {fileID: 0}
       containerObjects: {fileID: 0}
       containerObjectsSecondaryActionColor: {r: 0, g: 0, b: 0, a: 0}
-      objectsForTake: []
-      bannerTakeObjectsScrollRect: {fileID: 0}
     skillsUi:
       skills:
       - skillBackground: {fileID: 0}
@@ -769,7 +774,7 @@ MonoBehaviour:
   objectsPositionsInfo:
   - typeObjectPosition: 2
     objectPosition: {fileID: 7465426428550166288}
-  objectSelectedPosition: 0
+  itemIndex: 0
 --- !u!114 &4901381864539942042
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -801,22 +806,42 @@ MonoBehaviour:
   managementCharacterHud: {fileID: 8441756717079699773}
   managementCharacterAnimations: {fileID: 2731720836664213740}
   currentSkills:
-  - skillData: {fileID: 0}
+  - skillId: 0
+    skillData: {fileID: 0}
     cdInfo:
       cd: 0
       currentCD: 0
-  - skillData: {fileID: 0}
+  - skillId: 0
+    skillData: {fileID: 0}
     cdInfo:
       cd: 0
       currentCD: 0
-  - skillData: {fileID: 0}
+  - skillId: 0
+    skillData: {fileID: 0}
     cdInfo:
       cd: 0
       currentCD: 0
-  - skillData: {fileID: 0}
+  - skillId: 0
+    skillData: {fileID: 0}
     cdInfo:
       cd: 0
       currentCD: 0
+  currentSkillIndex: 0
+--- !u!114 &5512378973831541742
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2374517195415127662}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 165a51c73b078e94f8b40728ce717a9e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  character: {fileID: 3267473307002927260}
+  statusEffects:
+    _serializedList: []
 --- !u!114 &334464347712420031
 MonoBehaviour:
   m_ObjectHideFlags: 0

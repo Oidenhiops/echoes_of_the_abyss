@@ -938,7 +938,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 864f394153cd13f45b17960e06f1e45a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  roomDrawer: {fileID: 8037985617533267367}
   blockWalls: {fileID: 324992322828980792}
+  characterPrefab: {fileID: 2374517195415127662, guid: 2150a74cc325f2e4490b6c06e67ce131,
+    type: 3}
   amountSpawns: 0
 --- !u!65 &2124398950210838247
 BoxCollider:

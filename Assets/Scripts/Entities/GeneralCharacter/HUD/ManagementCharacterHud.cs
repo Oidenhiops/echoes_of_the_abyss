@@ -12,7 +12,6 @@ public class ManagementCharacterHud : MonoBehaviour
     public CharacterUi characterUi;
     public void InitializeHud()
     {
-        characterUi.generalHud.SetActive(true);
         if (character.characterInfo.isPlayer)
         {
             GameManager.Instance.OnDeviceChanged += EnabledMobileHUD;
